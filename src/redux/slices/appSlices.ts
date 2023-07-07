@@ -9,12 +9,23 @@ const initialState = {
 
 // Регистрация пользователя
 export const authSignUp = createAsyncThunk(
-  "auth/SignUp",
-  async (_, thunkAPI) => {
+  "auth/signUp",
+  async ({ login, password, fName, lName }, thunkAPI) => {
     try {
-      return;
+      const res = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ login, password, fName, lName }),
+      });
+      const json = await res.json();
+      if (json.error) {
+        return thunkAPI.rejectWithValue(json.error);
+      }
+      return json;
     } catch (error) {
-      return;
+      thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -38,15 +49,19 @@ const appSlices = createSlice({
   extraReducers: (builder) => {
     builder
       //Регистрация
-      .addCase(authSignUp.pending, (state, action) => {
-        console.log(action);
+      .addCase(authSignUp.pending, (state) => {
+        state.signUp = true;
+        state.error = null;
       })
       .addCase(authSignUp.fulfilled, (state, action) => {
-        console.log(action);
+        state.signInUp = false;
+        state.error = null;
       })
       .addCase(authSignUp.rejected, (state, action) => {
-        console.log(action);
+        state.signUp = false;
+        state.error = action.payload as string;
       })
+
       //Вход
       .addCase(authSignIn.pending, (state, action) => {
         console.log(action);
