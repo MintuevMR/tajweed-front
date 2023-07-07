@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import logo from "../../assets/logo.png";
+import icon2 from "../../assets/islam_5lhb2v3612up_256.png"
 //import { authSignUp } from "../../features/appSlices";
 
 import styles from "./signUp.module.css";
@@ -27,7 +29,13 @@ const SignUp = () => {
     <section>
       <div className={styles.logo}>
         <div className={styles.logo__name}>
-          <a href="/login">Tajweed</a>
+          <a href="/">
+            <img src={logo} alt="logo-img" />
+          </a>
+          <a className={styles.tajweed} href="/">Tajweed</a>
+        </div>
+        <div className={styles.illustration__logo}>
+          <img src={icon2} alt="illustration" />
         </div>
       </div>
       <div className={styles.main}>
@@ -59,7 +67,7 @@ const SignUp = () => {
               id={styles.login}
               value={login}
               onChange={handleSetLogin}
-              placeholder="login"
+              placeholder="Логин"
             />
           </div>
           <div className={styles.password}>

@@ -43,7 +43,6 @@ const SignIn = () => {
           <a className={styles.tajweed} href="/">Tajweed</a>
         </div>
         <div className={styles.illustration__logo}>
-          {/* <img src={icon1} alt="illustration" /> */}
           <img src={icon2} alt="illustration" />
         </div>
       </div>
@@ -57,10 +56,9 @@ const SignIn = () => {
 
         <form onSubmit={handleSignIp}>
           <div className={styles.login}>
-            {/* <label>Login</label> */}
             <input
               type="text"
-              id="login"
+              id={styles.login}
               onChange={handleSetLogin}
               value={login}
               placeholder="Логин"
@@ -69,7 +67,7 @@ const SignIn = () => {
           <div className={styles.password}>
             <input
               type="password"
-              id="password"
+              id={styles.password}
               onChange={handleSetPassword}
               value={password}
               placeholder="Пароль"

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
   margin: 0;
 }
@@ -10,53 +11,10 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
 } */
-
-#password,
-#login,
-#fname,
-#lname {
-  width: 100%;
-  padding: 16px 14px;
-  margin-top: 25px;
-  border: 1px solid #919eab4d;
-  border-radius: 10px;
-}
-
-#password:focus,
-#login:focus,
-#fname:focus,
-#lname:focus {
-  outline: none;
-  border: 2px solid #3258fb;
-}
-
-#password {
-  background-repeat: no-repeat;
-  background-position: 95%;
-}
-
-.login {
-  position: relative;
-}
-.login label {
-  position: absolute;
-  top: 15px;
-  left: 10px;
-  padding: 0 5px;
-  background-color: white;
-  color: rgb(116, 116, 116);
-}
-
-form button {
-  padding: 15px;
-  color: white;
-  background: rgba(38, 153, 7, 1);
-  border: none;
-  border-radius: 8px;
-  width: 100%;
-  transition: 1s;
-  margin-top: 24px;
-}
