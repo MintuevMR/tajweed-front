@@ -1,0 +1,115 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #ffffff;
+}
+.plashkaSvg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.logo {
+  font-family: "Rubik", "Yanone Kaffeesatz", sans-serif;
+  font-size: 36px;
+  font-weight: bolder;
+  letter-spacing: 5px;
+  margin-right: 20px;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.navList li {
+  margin-right: 30px;
+}
+
+.navList li:last-child {
+  margin-right: 0;
+}
+
+.buttons {
+  display: flex;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+.loginButton,
+.registerButton {
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffc745;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.loginButton:hover,
+.registerButton:hover {
+  background: linear-gradient(130deg, #f4a51d, #f3cc41);
+}
+.slogan {
+  font-family: "Rubik", "Yanone Kaffeesatz", sans-serif;
+  font-size: 48px;
+  color: white;
+  font-weight: bolder;
+  width: 650px;
+  line-height: 72px;
+  margin-right: 20px;
+  position: absolute;
+  top: 180px;
+  left: 20px;
+}
+.slogan div {
+  color: #fff;
+  font-family: "Rubik", "Yanone Kaffeesatz", sans-serif;
+  font-size: 24px;
+  font-style: unset;
+  font-weight: 1; /* Update font-weight to a lighter value */
+  line-height: 72px;
+}
+
+.slogan button {
+  width: 223px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 64px;
+  background: linear-gradient(138deg, #f4a51d 0%, #f3cc41 100%);
+  color: #fffffc;
+  text-align: center;
+  font-family: "Rubik", "Yanone Kaffeesatz", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 70px;
+}
+.slogan > img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
