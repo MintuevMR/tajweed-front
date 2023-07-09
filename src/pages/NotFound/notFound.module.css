@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  height: 100vh;
+}
+
+.content {
+  width: 100%;
+  background-color: #fbfbfb;
+}
+
+.img {
+  width: 50%;
+}
