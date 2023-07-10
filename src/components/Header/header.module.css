@@ -1,3 +1,10 @@
+.headerTop {
+  width: 100%;
+  height: 700px;
+  background: linear-gradient(130deg, #164804 0%, #269907 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 69%, 0 100%);
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -22,8 +29,6 @@
   left: 0;
   z-index: -1;
 }
-
-
 
 .logoText {
   font-family: "Rubik", "Yanone Kaffeesatz", sans-serif;

@@ -5,24 +5,25 @@ import logo from "../../assets/logo.png";
 
 const Header = () => {
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <img src={logo} alt="logo" />
-          <div className={styles.logoText}>Tajvid</div>
-        </div>
-        <nav className={styles.nav}>
-          <ul className={styles.navList}>
-            <li>Азкары</li>
-            <li>Контакты</li>
-            <li>О нас</li>
-          </ul>
-        </nav>
-        <div className={styles.buttons}>
-          <button className={styles.loginButton}>Войти</button>
-          <button className={styles.registerButton}>Регистрация</button>
-        </div>
-        <svg
+    <div className={styles.headerTop}>
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <div className={styles.logo}>
+            <img src={logo} alt="logo" />
+            <div className={styles.logoText}>Tajvid</div>
+          </div>
+          <nav className={styles.nav}>
+            <ul className={styles.navList}>
+              <li>Азкары</li>
+              <li>Контакты</li>
+              <li>О нас</li>
+            </ul>
+          </nav>
+          <div className={styles.buttons}>
+            <button className={styles.loginButton}>Войти</button>
+            <button className={styles.registerButton}>Регистрация</button>
+          </div>
+          {/* <svg
           className={styles.plashkaSvg}
           xmlns="http://www.w3.org/2000/svg"
           width="1512"
@@ -44,13 +45,14 @@ const Header = () => {
               <stop offset="1" stopColor="#269907" />
             </linearGradient>
           </defs>
-        </svg>
-      </header>
-      <div className={styles.slogan}>
-        Не будь чужим для КОРАНА
-        <div>Зарегистрируйся и научись читать Коран у себя дома</div>
-        <button> Начать сейчас</button>
-        <img src={socialIcons} alt="icons" />
+        </svg> */}
+        </header>
+        <div className={styles.slogan}>
+          Не будь чужим для КОРАНА
+          <div>Зарегистрируйся и научись читать Коран у себя дома</div>
+          <button> Начать сейчас</button>
+          <img src={socialIcons} alt="icons" />
+        </div>
       </div>
     </div>
   );

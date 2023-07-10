@@ -60,7 +60,7 @@ const Temp = () => {
         </div>
         <div className={styles.prevNext}>
           <button>Предыдущий урок</button>
-          <button>Следующий урок</button>
+          <button>Следующий урок</button> 
         </div>
       </div>
     </main>
