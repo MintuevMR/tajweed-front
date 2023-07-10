@@ -1,0 +1,46 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footerText {
+    position: absolute;
+    left: 50%;
+    bottom: 170px;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-family: "Rubik", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  .footerLogoText {
+    position: absolute;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-family: "Rubik", sans-serif;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .footerContent {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footerLogo {
+    width: 140px;
+    flex-shrink: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 70px;
+    transform: translateX(-270%);
+  }
+
+  
