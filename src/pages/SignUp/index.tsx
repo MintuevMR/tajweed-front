@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../../assets/logo.png";
-import icon2 from "../../assets/islam_5lhb2v3612up_256.png"
+import icon2 from "../../assets/islam_5lhb2v3612up_256.png";
 //import { authSignUp } from "../../features/appSlices";
+
+import { Link } from 'react-router-dom';
 
 import styles from "./signUp.module.css";
 
@@ -29,10 +31,12 @@ const SignUp = () => {
     <section>
       <div className={styles.logo}>
         <div className={styles.logo__name}>
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="logo-img" />
-          </a>
-          <a className={styles.tajweed} href="/">Tajweed</a>
+          </Link>
+          <Link className={styles.tajweed} to="/">
+            Tajweed
+          </Link>
         </div>
         <div className={styles.illustration__logo}>
           <img src={icon2} alt="illustration" />
@@ -48,32 +52,37 @@ const SignUp = () => {
           </div>
         </div>
         <form onSubmit={handleSignUp}>
-          <div className={styles.fullname}>
-            <div className="fname">
-              <input type="text" id={styles.fname} required placeholder="Имя" />
-            </div>
-            <div className={styles.lname}>
+          <div>
+            <div>
               <input
                 type="text"
-                id={styles.lname}
+                className={styles.fname}
+                required
+                placeholder="Имя"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                className={styles.lname}
                 required
                 placeholder="Фамилия"
               />
             </div>
           </div>
-          <div className={styles.login}>
+          <div>
             <input
               type="text"
-              id={styles.login}
+              className={styles.login}
               value={login}
               onChange={handleSetLogin}
               placeholder="Логин"
             />
           </div>
-          <div className={styles.password}>
+          <div>
             <input
               type="password"
-              id={styles.password}
+              className={styles.password}
               value={password}
               onChange={handleSetPassword}
               placeholder="Пароль"
@@ -86,7 +95,7 @@ const SignUp = () => {
       </div>
       <div className={styles.action}>
         <p>Уже есть аккаунт?</p>
-        <a href="/login">Войти</a>
+        <Link href="/login">Войти</Link>
       </div>
     </section>
   );
