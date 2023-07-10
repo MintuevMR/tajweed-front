@@ -1,0 +1,159 @@
+.teachersBlock {
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center ;
+  }
+  .headerSpan{
+   font-size: 36px;
+   font: icon;
+   line-height: 72px;
+   font-weight: 600;
+   font-size: 27px;
+  }
+  .teacherWomanImg{
+    background: gold;
+  }
+  img {
+    display: inline-block;
+    max-width: 100%;
+  }
+  .teachersImgBlock{
+    background: #ffc745;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    border-radius: 50%;
+  }
+  .teachers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #F2F2F2;
+  }
+  hr {
+   height: 3px;
+   background-color: #2caa05;
+   border-radius: 5px;
+  }
+  .teacherName {
+    text-align: center;
+    margin: 10px;
+  }
+  .teacherDirection {
+    text-align: center;
+    display: block;
+    font-size: 20px;
+  }
+  .teacher {
+    margin: 60px;
+  }
+  .iconContact {
+    display: flex;
+  }
+  .greenDiv {
+    background-image: url(../../assets/greenBlock.svg);
+    width: 587px;
+    height: 434px;
+    margin-top: 70px;
+    margin-bottom: 60px;
+  }
+  .Contacts {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .surtTeacher {
+    border-radius: 50%;
+  }
+  .textContacts {
+    display: flex;
+    width: 542px;
+    height: 144px;
+    top: 1977px;
+    left: 890px;
+    font: icon;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 72px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .videoBlock{
+    position: relative;
+    overflow: hidden;
+  }
+  .videoBlock::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+  
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  .videoMedia {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+  }
+  #myVideo {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+  .intro_content{
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 3;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   color: white;
+  }
+  .footer {
+    height: 200px;
+  }
+  #videoIcon{
+    height: 75px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 26px;
+    font: optional;
+  }
+  .icon_content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .greenDiv{
+    display: flex;
+  }
+  .facebook{
+    margin-top: 60px;
+    margin-left: 30px;
+  }
+  .whatsapp{
+    margin-top: 218px;
+  }
+  .telegram{
+    margin-top: 125px;
+    margin-left: 70px;
+  }
+  .twitter{
+    margin-top: 280px;
+  }
+  .tiktok{
+    margin-top: 130px;
+    margin-right: 77px ;
+  }

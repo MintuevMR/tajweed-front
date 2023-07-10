@@ -3,6 +3,7 @@ import styles from "./header.module.css";
 import socialIcons from "../../assets/icons.png";
 import logo from "../../assets/logo.png";
 
+
 const Header = () => {
   return (
     <div className={styles.headerTop}>
@@ -57,5 +58,6 @@ const Header = () => {
     </div>
   );
 };
+
 
 export default Header;
