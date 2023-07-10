@@ -1,15 +1,15 @@
-import teacherImg from "../../assets/man.svg";
+import teacherImg from "../../../assets/man.svg";
 import styles from "./Home.module.css";
-import teacherWomanImg from "../../assets/woman.svg";
-import facebook from "../../assets/facebook.svg";
-import whatsapp from "../../assets/whatsapp.svg";
-import twitter from "../../assets/twitter.svg";
-import telegram from "../../assets/Telegram.svg";
-import tiktok from "../../assets/tiktok.svg";
-import video from "../../assets/video.mp4";
-import booksImg from "../../assets/bookIcon.svg";
-import playIcon from "../../assets/playIcon.svg";
-import studentCap from "../../assets/student-cap.svg";
+import teacherWomanImg from "../../../assets/woman.svg";
+import facebook from "../../../assets/facebook.svg";
+import whatsapp from "../../../assets/whatsapp.svg";
+import twitter from "../../../assets/twitter.svg";
+import telegram from "../../../assets/Telegram.svg";
+import tiktok from "../../../assets/tiktok.svg";
+import video from "../../../assets/video.mp4";
+import booksImg from "../../../assets/bookIcon.svg";
+import playIcon from "../../../assets/playIcon.svg";
+import studentCap from "../../../assets/student-cap.svg";
 
 function HomeMain() {
   return (

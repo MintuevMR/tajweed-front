@@ -1,6 +1,7 @@
 import React from "react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "./Header";
+import HomeMain from "./Home";
+import Footer from "./Footer";
 import styles from './home.module.css'
 
 
@@ -8,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Header/>
-      <div className={styles.mmm}></div>
+      <HomeMain/>
       <Footer />
     </div>
   );
