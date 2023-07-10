@@ -1,12 +1,16 @@
 import React from "react";
 import styles from "./header.module.css";
-import socialIcons from "../../assets/icons.png"
+import socialIcons from "../../assets/icons.png";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <div className={styles.logo}>Tajvid</div>
+        <div className={styles.logo}>
+          <img src={logo} alt="logo" />
+          <div className={styles.logoText}>Tajvid</div>
+        </div>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li>Азкары</li>
@@ -42,12 +46,11 @@ const Header = () => {
           </defs>
         </svg>
       </header>
-      <div className={styles.slogan}>Не будь чужим для КОРАНА
+      <div className={styles.slogan}>
+        Не будь чужим для КОРАНА
         <div>Зарегистрируйся и научись читать Коран у себя дома</div>
         <button> Начать сейчас</button>
-        <img src={socialIcons} alt="" />
-        
-
+        <img src={socialIcons} alt="icons" />
       </div>
     </div>
   );

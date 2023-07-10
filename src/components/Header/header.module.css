@@ -23,14 +23,22 @@
   z-index: -1;
 }
 
-.logo {
+
+
+.logoText {
   font-family: "Rubik", "Yanone Kaffeesatz", sans-serif;
   font-size: 36px;
   font-weight: bolder;
   letter-spacing: 5px;
   margin-right: 20px;
   position: absolute;
-  top: 30px;
+  top: 45px;
+  left: 150px;
+}
+.logo img {
+  margin-right: 20px;
+  position: absolute;
+  top: 3px;
   left: 20px;
 }
 
@@ -80,7 +88,7 @@
   line-height: 72px;
   margin-right: 20px;
   position: absolute;
-  top: 180px;
+  top: 200px;
   left: 20px;
 }
 .slogan div {
