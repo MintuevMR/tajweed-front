@@ -16,7 +16,8 @@ import Home from "./pages/Home/Index.tsx";
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<SignIn />} />
       <Route path="/register" element={<SignUp />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/lessons" element={<Lessons />} />
