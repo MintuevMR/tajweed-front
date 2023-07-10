@@ -1,0 +1,38 @@
+main {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 50px;
+  background-color: #fbfbfb;
+}
+
+.card {
+  padding: 35px;
+  width: 300px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.card div{
+  word-wrap: break-word;
+}
+
+.card .icons {
+  position: relative;
+  cursor: pointer;
+  top: -15px;
+  left: 215px;
+}
+
+.card:hover {
+  background-color: rgba(38, 153, 7, 1);
+  color: white;
+}

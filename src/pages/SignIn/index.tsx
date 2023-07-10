@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import styles from './signIn.module.css'
 import { authSignIn } from "../../redux/slices/appSlices";
 
 import logo from "../../assets/logo.png";
-import icon2 from "../../assets/islam_5lhb2v3612up_256.png"
+import icon2 from "../../assets/islam_5lhb2v3612up_256.png";
 
 const SignIn = () => {
   const [login, setLogin] = useState("");
@@ -38,10 +39,12 @@ const SignIn = () => {
     <section>
       <div className={styles.logo}>
         <div className={styles.logo__name}>
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="logo-img" />
-          </a>
-          <a className={styles.tajweed} href="/">Tajweed</a>
+          </Link>
+          <Link className={styles.tajweed} to="/">
+            Tajweed
+          </Link>
         </div>
         <div className={styles.illustration__logo}>
           <img src={icon2} alt="illustration" />
@@ -56,25 +59,24 @@ const SignIn = () => {
         </div>
 
         <form onSubmit={handleSignIp}>
-          <div className={styles.login}>
+          <div>
             <input
               type="text"
-              id={styles.login}
+              className={styles.login}
               onChange={handleSetLogin}
               value={login}
               placeholder="Логин"
             />
           </div>
-          <div className={styles.password}>
+          <div>
             <input
               type="password"
-              id={styles.password}
+              className={styles.password}
               onChange={handleSetPassword}
               value={password}
               placeholder="Пароль"
             />
           </div>
-
           <div className={styles.button}>
             <button type="submit">Войти</button>
           </div>
