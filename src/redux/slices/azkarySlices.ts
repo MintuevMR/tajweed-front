@@ -29,7 +29,6 @@ export const fetchAzkary = createAsyncThunk("fetch/azkary", async (_, thunkAPI) 
           console.log(action.payload);
           state.azkary = action.payload;
         })
-
     },
   });
   

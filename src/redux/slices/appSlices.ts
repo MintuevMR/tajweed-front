@@ -32,12 +32,25 @@ export const authSignUp = createAsyncThunk(
 
 // Вход пользователя
 export const authSignIn = createAsyncThunk(
-  "auth/SignIn",
-  async (_, thunkAPI) => {
+  "auth/signIn",
+  async ({ login, password }, thunkAPI) => {
     try {
-      return;
+      const res = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ login, password }),
+      });
+      const token = await res.json();
+
+      if (token.error) {
+        return thunkAPI.rejectWithValue(token.error);
+      }
+      localStorage.setItem("token", token.token);
+      return token;
     } catch (error) {
-      return;
+      throw error;
     }
   }
 );
@@ -54,8 +67,9 @@ const appSlices = createSlice({
         state.error = null;
       })
       .addCase(authSignUp.fulfilled, (state, action) => {
-        state.signInUp = false;
-        state.error = null;
+        // state.signInUp = false;
+        // state.error = null;
+        console.log(action);
       })
       .addCase(authSignUp.rejected, (state, action) => {
         state.signUp = false;

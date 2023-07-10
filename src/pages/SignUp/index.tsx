@@ -4,18 +4,21 @@ import logo from "../../assets/logo.png";
 import icon2 from "../../assets/islam_5lhb2v3612up_256.png";
 //import { authSignUp } from "../../features/appSlices";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import styles from "./signUp.module.css";
 
 const SignUp = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
 
   const dispatch = useDispatch();
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    console.log(login, password, fname, lname);
     //dispatch(authSignUp({login, password}))
   };
 
@@ -57,6 +60,8 @@ const SignUp = () => {
               <input
                 type="text"
                 className={styles.fname}
+                value={fname}
+                onChange={(e) => setFname(e.target.value)}
                 required
                 placeholder="Имя"
               />
@@ -65,6 +70,8 @@ const SignUp = () => {
               <input
                 type="text"
                 className={styles.lname}
+                value={lname}
+                onChange={(e) => setLname(e.target.value)}
                 required
                 placeholder="Фамилия"
               />
