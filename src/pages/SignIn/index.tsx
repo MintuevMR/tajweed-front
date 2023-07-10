@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import styles from "./signIn.module.css";
+
+import styles from './signIn.module.css'
+import { authSignIn } from "../../redux/slices/appSlices";
 
 import logo from "../../assets/logo.png";
 import icon2 from "../../assets/islam_5lhb2v3612up_256.png";
@@ -79,10 +81,10 @@ const SignIn = () => {
             <button type="submit">Войти</button>
           </div>
         </form>
-        <div className={styles.action}>
-          <p>Нет учетной записи?</p>
-          <Link to={"/auth"}>Зарегистрироваться</Link>
-        </div>
+      <div className={styles.action}>
+        <p>Нет учетной записи?</p>
+        <Link to={"/register"}>Зарегистрироваться</Link>
+      </div>
       </div>
     </section>
   );
