@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from './signIn.module.css'
+import { authSignIn } from "../../redux/slices/appSlices";
 
 import logo from "../../assets/logo.png";
 import icon2 from "../../assets/islam_5lhb2v3612up_256.png"
@@ -73,21 +74,14 @@ const SignIn = () => {
               placeholder="Пароль"
             />
           </div>
-          {/* <div className={styles.checkbox}> */}
-            {/* <label className={styles.custom_check}>
-              Запомнить меня
-              <input type="checkbox" />
-              <span className={styles.checkmark}></span>
-            </label> */}
-            {/* <a href="/">Забыли пароль?</a> */}
-          {/* </div> */}
+
           <div className={styles.button}>
             <button type="submit">Войти</button>
           </div>
         </form>
       <div className={styles.action}>
         <p>Нет учетной записи?</p>
-        <Link to={"/auth"}>Зарегистрироваться</Link>
+        <Link to={"/register"}>Зарегистрироваться</Link>
       </div>
       </div>
     </section>
