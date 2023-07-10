@@ -1,27 +1,63 @@
 .alphabet {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-    font-family: "Amiri Quran";
-  }
-  
-  .alphabet span {
-    height: 70px;
-    border-radius: 10px;
-    padding-bottom: 25px;
-    text-align: center;
-    font-size: 36px;
-    transition: 0.3s;
-    -webkit-box-shadow: 0px 5px 13px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 13px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 13px 2px rgba(34, 60, 80, 0.2);
-    cursor: pointer;
-  }
-  
-  .alphabet span:hover {
-    background-color: rgb(6, 110, 70);
-    color: white;
-  }
+  width: 900px;
+  margin: auto;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  font-family: "Amiri Quran";
+}
+
+.alphabet span {
+  vertical-align: middle;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 36px;
+  transition: 0.3s;
+  -webkit-box-shadow: 0px 5px 13px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 13px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 13px 2px rgba(34, 60, 80, 0.2);
+  cursor: pointer;
+}
+
+.alphabet span:hover {
+  background-color: rgba(38, 153, 7, 1);
+  color: white;
+}
+
+button {
+  padding: 15px;
+  color: white;
+  background: rgba(38, 153, 7, 1);
+  border: none;
+  border-radius: 8px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background: rgb(37, 86, 18);
+}
+
+.prevNext{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+main {
+  display: flex;
+  height: 100vh;
+}
+
+.content {
+  width: 100%;
+  background-color: #fbfbfb;
+}
+
+.img {
+  width: 50%;
+}
