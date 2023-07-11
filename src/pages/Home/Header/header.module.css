@@ -12,6 +12,10 @@
   align-items: flex-start;
 }
 
+.navList{
+  cursor: pointer;
+}
+
 .header {
   position: absolute;
   top: 0;

@@ -164,6 +164,11 @@ function HomeMain() {
           </div>
         </div>
       </div>
+      <div className={styles.aboutUs}   >
+        <h3>О нас  </h3>
+         
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore temporibus hic repellendus corrupti? Repellat, veniam. Hic quas officiis reprehenderit quasi iusto veniam. Animi ea perferendis dolorem aliquam nemo quibusdam odio.</p>
+      </div>
     </>
   );
 }

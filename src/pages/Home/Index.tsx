@@ -7,7 +7,7 @@ import styles from './home.module.css'
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.general}>
       <Header/>
       <HomeMain/>
       <Footer />

@@ -61,6 +61,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: white;
   }
   .surtTeacher {
     border-radius: 50%;
@@ -156,4 +157,25 @@
   .tiktok{
     margin-top: 130px;
     margin-right: 77px ;
+  }
+  .aboutUs {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 800px;
+    margin: auto;
+    margin-top: 40px;
+    }
+  .aboutUs h3{
+    font-size: px;
+   margin: 7px;
+   padding: 10px;
+   border-bottom: 2px solid green;
+   margin-bottom: 10px;
+  }
+  .aboutUs p{
+    margin: 7px;
+    text-align: center;
+    font-size: 24px;
   }

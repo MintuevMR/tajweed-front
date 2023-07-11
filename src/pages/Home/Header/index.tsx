@@ -5,6 +5,13 @@ import logo from "../../../assets/logo.png";
 
 
 const Header = () => {
+  const handleScrollUp = () => {
+    window.scrollTo({ top: 2300, behavior: "smooth" });
+  };
+  const handleScroll = () => {
+    window.scrollTo({ top: 1400, behavior: "smooth" });
+  };
+
   return (
     <div className={styles.headerTop}>
       <div className={styles.container}>
@@ -16,8 +23,8 @@ const Header = () => {
           <nav className={styles.nav}>
             <ul className={styles.navList}>
               <li>Азкары</li>
-              <li>Контакты</li>
-              <li>О нас</li>
+              <li onClick={handleScroll}>Контакты</li>
+              <li onClick={handleScrollUp}>О нас</li>
             </ul>
           </nav>
           <div className={styles.buttons}>
