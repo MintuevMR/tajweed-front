@@ -32,7 +32,7 @@ const ProfileSidebar = () => {
           <span className={`${styles.icons} icons material-symbols-outlined`}>
             auto_stories
           </span>
-          <Link to={"/"}> Азкары </Link>
+          <Link to={"/azkary"}> Азкары </Link>
         </div>
         <div className={styles.menuItem}>
           <span className={`${styles.icons} icons material-symbols-outlined`}>
