@@ -1,12 +1,9 @@
-
-
 .container {
-  background-color: #eae8e8;
+  background-color: #fbfbfb;
   margin: auto;
 }
 
 .darkMode {
-  /* background-color: #1f1f1f; */
   background-color: black;
   color: #ffffff;
 }
@@ -23,62 +20,22 @@
   padding: 7px;
   border: solid 1px black;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
   animation: slide-up 0.9s ease-in-out;
-  background-color: #ffffff80;
+  /* background-color: #ffffff80; */
   height: 30px;
 }
 
-.body_evering_img {
-  background-image: url(../../assets/evering-img.jpg); /*Путь к картинке*/
-  background-size: cover; /* Растягиваем картинку  по ширине */
-  background-repeat: no-repeat; /* Картинка фона без повторения */
-  background-position: center; /* Позиция фона по центру */
-
-  width: 100%;
-  height: 660px;
-}
-.body_morning_img {
-  background-image: url(../../assets/morning-img.jpg); /*Путь к картинке*/
-  background-size: cover; /* Растягиваем картинку  по ширине */
-  background-repeat: no-repeat; /* Картинка фона без повторения */
-  background-position: center; /* Позиция фона по центру */
-
-  width: 100%;
-  height: 660px;
-}
-
-.logo {
+.body_evering, .body_morning {
   display: flex;
 }
-.logo_a {
-  color: white;
-  margin-top: 32px;
-  /* text-decoration: underline; */
-}
-.logo_name {
-  width: 300px;
-  display: flex;
-  margin-bottom: 100px;
-  margin-left: 33px;
-}
-.logo_name img {
-  width: 80px;
-}
-.tajweed {
-  font-size: 28px;
-  margin-top: 30px;
-  margin-left: 15px;
-  color: #fff;
-}
 
-.body_evering_img h1,
-.body_morning_img h1 {
-  color: white;
+.body_evering h2,
+.body_morning h2 {
   text-align: center;
   font-size: 70px;
-  /* margin-top: 150px; */
+  width: 1076px;
 }
 .strelka {
   cursor: pointer;
@@ -90,7 +47,6 @@
   bottom: 55px;
 
   background-color: rgba(0, 0, 0, 0.382);
-
   margin-left: -30px;
 }
 .scrollButton {
@@ -104,7 +60,6 @@
   background-color: #ffffff80;
   border-radius: 25%;
   border: solid 1px black;
-  /* margin-left: -30px; */
 }
 .scrollButton p {
   margin-right: 16px;
@@ -118,27 +73,27 @@
 .modal {
   position: fixed;
   bottom: 50px;
-  left: 48px;
-  background-color: #ffffff;
+  left: 30px;
+  /* background-color: #ffffff; */
+  /* background-color: #ffffff80; */
   padding: 7px;
   animation: slide-up 0.9s ease-in-out;
-
-  background-color: #ffffff80;
   border: solid 1px black;
+  color: black;
   border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  height: 30px;
+  width: 115px;
+  text-align: center;
 }
-@keyframes slide-up {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+ 
 .counter {
   position: fixed;
   bottom: 90px;
   left: 50px;
+  color: black;
+  cursor: pointer;
 }
 .counter p {
   background-color: #ffffff60;
@@ -159,17 +114,23 @@
 }
 .counter_plus {
   padding: 3px 60px;
+  border: solid 1px black;
+  border-radius: 5px;
 }
 .counter_reset {
   width: 133px;
+  height: 30px;
   align-items: center;
+  border: solid 1px black;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .card_azkar {
   background-color: #ffffff;
   width: 650px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .footer_text {
@@ -219,25 +180,34 @@
   /* border-bottom: 1px solid rgb(160, 158, 158); */
 }
 .description_img {
-  margin: 10px;
+  /* margin: 10px; */
+  width: 80px;
 }
 
-.logo_a{
-    position: relative;
-    display: inline-block;
-    height: 30px;
+.main {
+  display: flex;
 }
-.logo_a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 1px;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff; /* Цвет линии */
-    transform: scaleX(0); /* Начальная ширина линии (0 - скрыта) */
-    transition: transform 0.3s ease-in-out; /* Плавный переход */
-  }
-.logo_a:hover::after {
-    transform: scaleX(1); /* Расширение линии при наведении */
-  }
+.content {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 50px;
+  background-color: #fbfbfb;
+}
+
+.content_link {
+  padding: 100px;
+  width: 400px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+  text-align: center;
+}
+.content_link:hover {
+  background-color: rgba(38, 153, 7, 1);
+  color: white;
+}
