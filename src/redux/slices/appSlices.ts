@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
+
 
 const initialState = {
   error: null,
@@ -10,17 +12,18 @@ const initialState = {
 // Регистрация пользователя
 export const authSignUp = createAsyncThunk(
   "auth/signUp",
-  async ({ login, password, fName, lName }, thunkAPI) => {
+  async ({ login, password, firstName, lastName }, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password, fName, lName }),
+        body: JSON.stringify({ login, password, firstName, lastName }),
       });
       const json = await res.json();
-      if (json.error) {
+
+      if (json.error || json.error[0].msg) {
         return thunkAPI.rejectWithValue(json.error);
       }
       return json;
@@ -44,6 +47,8 @@ export const authSignIn = createAsyncThunk(
       });
       const token = await res.json();
 
+
+
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
@@ -64,16 +69,18 @@ const appSlices = createSlice({
       //Регистрация
       .addCase(authSignUp.pending, (state) => {
         state.signUp = true;
-        state.error = null;
       })
       .addCase(authSignUp.fulfilled, (state, action) => {
-        // state.signInUp = false;
-        // state.error = null;
-        console.log(action);
+        state.signUp = false;
+        state.error = null;
       })
       .addCase(authSignUp.rejected, (state, action) => {
         state.signUp = false;
-        state.error = action.payload as string;
+        if (Array.isArray(action.payload)){
+          state.error = action.payload[0].msg;
+        }else{
+          state.error = action.payload;
+        }
       })
 
       //Вход

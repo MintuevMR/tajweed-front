@@ -31,9 +31,9 @@ const SignIn = () => {
     setPassword(e.target.value);
   };
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
 
   return (
     <section>
