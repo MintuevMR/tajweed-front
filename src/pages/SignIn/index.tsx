@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import styles from './signIn.module.css'
 import { authSignIn } from "../../redux/slices/appSlices";
@@ -11,9 +11,13 @@ import icon2 from "../../assets/islam_5lhb2v3612up_256.png";
 const SignIn = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const error = useSelector((state) => {
     return state.application.error;
+  });
+
+  const token = useSelector((state) => {
+    return state.application.token;
   });
 
   const dispatch = useDispatch();
@@ -21,6 +25,9 @@ const SignIn = () => {
   const handleSignIp = (e) => {
     e.preventDefault();
     dispatch(authSignIn({ login, password }));
+    if(token) {
+      navigate('/profile')
+    }
   };
 
   const handleSetLogin = (e) => {
@@ -31,9 +38,9 @@ const SignIn = () => {
     setPassword(e.target.value);
   };
 
-  // if (error) {
-  //   return <div>{error}</div>;
-  // }
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <section>

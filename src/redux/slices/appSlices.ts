@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const initialState = {
   error: null,
   loading: null,
+  token: localStorage.getItem("token"),
   signUp: false,
   signIn: false,
 };
@@ -46,9 +47,6 @@ export const authSignIn = createAsyncThunk(
         body: JSON.stringify({ login, password }),
       });
       const token = await res.json();
-
-
-
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
@@ -88,7 +86,9 @@ const appSlices = createSlice({
         console.log(action);
       })
       .addCase(authSignIn.fulfilled, (state, action) => {
-        console.log(action);
+        if (action.payload) {
+          state.token = action.payload.token;
+        }
       })
       .addCase(authSignIn.rejected, (state, action) => {
         console.log(action);

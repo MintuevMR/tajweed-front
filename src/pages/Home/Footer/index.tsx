@@ -7,7 +7,7 @@ const Footer = () => {
         <div className={styles.footerContent}>
           <img src={logo} alt="Logo" className={styles.footerLogo} />
           <div className={styles.footerText}>Центр обучения КОРАНА</div>
-          <div className={styles.footerLogoText}>Tajvid</div>
+          <div className={styles.footerLogoText}>Tajweed</div>
         </div>
       </footer>
   );
