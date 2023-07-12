@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import application from "../slices/appSlices";
 import azkary from "../slices/azkarySlices"
 import lessons from "../slices/lessonSlice" 
+import user from "../slices/userSlices"
 
 export const store = configureStore({
   reducer: {
     application,
     azkary,
-    lessons
+    lessons,
+    user,
   },
 });
 

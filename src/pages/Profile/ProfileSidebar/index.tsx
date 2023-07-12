@@ -1,35 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './profileSidebar.module.css'
 import teacherImg from "../../../assets/man.svg";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { userInfo } from '../../../redux/slices/userSlices';
 
 const ProfileSidebar = () => {
-  const token = useSelector ((state) => state.application.token);
+  const user = useSelector((state) => state.user.user)
+  const dispath = useDispatch();
 
-  
+  useEffect(() =>{
+    dispath(userInfo())
+  }, [])
 
-  function parseJwt (token) {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload).firstName
-}
-
-
-    return (
+  return (
         <div className={styles.wrapper}>
         <header>
           <div>
             <img width={50}
-              src={teacherImg}
+              src={!user?.avatar ? teacherImg : `http://localhost:3000${user?.avatar}`}
               alt=""
             />
           </div>
           <div>
-            <Link to={"/profile"}>{parseJwt(token)}</Link>
+            <Link to={"/profile"}>{`${user?.lastName} ${user?.firstName}.`}</Link>
           </div>
         </header>
         <div className={styles.menuItem}>

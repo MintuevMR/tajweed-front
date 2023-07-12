@@ -84,9 +84,6 @@ const evening = () => {
       )}
 
       <div className={styles.body_morning}>
-        <div className={styles.themeButton} onClick={toggleDarkMode}>
-          Сменить тему
-        </div>
         <ProfileSidebar />
 
         <div className={styles.container}>
@@ -100,9 +97,7 @@ const evening = () => {
                 return (
                   <div
                     key={item.id}
-                    className={`${styles.card_azkar} ${
-                      darkMode ? styles.darkCard : ""
-                    }`}
+                    className={styles.card_azkar}
                   >
                     <h1 className={styles.header_text} ref={scrollRef}>
                       {item.headerText} {item.number}
@@ -132,9 +127,7 @@ const evening = () => {
                 return (
                   <div
                     key={item.id}
-                    className={`${styles.card_azkar} ${
-                      darkMode ? styles.darkCard : ""
-                    }`}
+                    className={styles.card_azkar}
                   >
                     <h1 className={styles.header_text} ref={scrollRef}>
                       {item.headerText} {item.number}
