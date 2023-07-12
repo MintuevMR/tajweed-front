@@ -26,7 +26,7 @@ export const fetchAzkary = createAsyncThunk("fetch/azkary", async (_, thunkAPI) 
     extraReducers: (builder) => {
       builder
         .addCase(fetchAzkary.fulfilled, (state, action) => {
-          console.log(action.payload);
+          // console.log(action.payload);
           state.azkary = action.payload;
         })
     },
