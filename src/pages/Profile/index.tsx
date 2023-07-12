@@ -2,8 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "./ProfileSidebar";
 import styles from "./profile.module.css";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+
+  const token = useSelector ((state) => state.application.token);
+  
+  function parseJwt (token) {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload)
+}
+
+
+const user = parseJwt(token)
+
   return (
     <main>
       <ProfileSidebar />
@@ -17,9 +33,13 @@ const Profile = () => {
         </div>
         <div className={styles.profileChange}>
           <form className={styles.form} >
-            <input type="text" placeholder="Имя" />
-            <input type="text" placeholder="Фамилия" />
+            <label htmlFor="">Имя</label>
+            <input type="text" placeholder={user.firstName} />
+            <label htmlFor="">Фамилия</label>
+            <input type="text" placeholder={user.lastName} />
+            <label htmlFor="">Город</label>
             <input type="text" placeholder="Город проживания" />
+            <label htmlFor="">Страна</label>
             <input type="text" placeholder="Страна" />
             <button className={styles.button}>Сохранить</button>
           </form>
