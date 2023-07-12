@@ -61,3 +61,6 @@ main {
 .img {
   width: 50%;
 }
+.votingMain {
+  display: flex;
+  }

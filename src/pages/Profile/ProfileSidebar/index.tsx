@@ -7,15 +7,13 @@ import { userInfo } from '../../../redux/slices/userSlices';
 
 const ProfileSidebar = () => {
   const user = useSelector((state) => state.user.user)
-  const dispath = useDispatch ();
+  const dispath = useDispatch();
 
   useEffect(() =>{
     dispath(userInfo())
   }, [])
 
-
-
-    return (
+  return (
         <div className={styles.wrapper}>
         <header>
           <div>
