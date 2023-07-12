@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "./ProfileSidebar";
 import styles from "./profile.module.css";
-import { useSelector } from "react-redux";
+import teacherImg from "../../assets/man.svg";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  userChangeAvatar,
+  userChangeInfo,
+  userInfo,
+} from "../../redux/slices/userSlices";
 
 const Profile = () => {
+  const user = useSelector((state) => state.user.user);
 
-  const token = useSelector ((state) => state.application.token);
-  
-  function parseJwt (token) {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload)
-}
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const dispatch = useDispatch();
 
+  const handleChangeUserInfo = (e) => {
+    e.preventDefault();
+    dispatch(userChangeInfo({ firstName, lastName }));
+    setFirstName("");
+    setLastName("");
+  };
 
-const user = parseJwt(token)
+  useEffect(() => {
+    dispatch(userInfo());
+  }, []);
+
+  const formData = new FormData();
+
+  const handleChangeAva = (e) => {
+    e.preventDefault();
+    dispatch(userChangeAvatar(formData));
+  };
+
+  const handleChangeFile = async (e) => {
+    const file = e.target.files[0];
+    formData.append("image", file);
+  };
 
   return (
     <main>
@@ -32,24 +52,40 @@ const user = parseJwt(token)
           </p>
         </div>
         <div className={styles.profileChange}>
-          <form className={styles.form} >
+          <form className={styles.form} onSubmit={handleChangeUserInfo}>
             <label htmlFor="">Имя</label>
-            <input type="text" placeholder={user.firstName} />
+            <input
+              type="text"
+              placeholder={user?.firstName}
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
             <label htmlFor="">Фамилия</label>
-            <input type="text" placeholder={user.lastName} />
+            <input
+              type="text"
+              placeholder={user?.lastName}
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
             <label htmlFor="">Город</label>
-            <input type="text" placeholder="Город проживания" />
+            <input type="text" readOnly placeholder="Грозный" />
             <label htmlFor="">Страна</label>
-            <input type="text" placeholder="Страна" />
+            <input type="text" readOnly placeholder="Россия" />
             <button className={styles.button}>Сохранить</button>
           </form>
           <div>
             <img
-              src="https://fs-thb01.getcourse.ru/fileservice/file/thumbnail/h/AB.daaac963f1a169895bc1022dc918118a.jpg/s/70x70/a/177331/sc/131"
-              alt=""
+              width={100}
+              src={
+                !user?.avatar
+                  ? teacherImg
+                  : `http://localhost:3000${user?.avatar}`
+              }
             />
-            <div>сменить аватар</div>
-            <div>удалить</div>
+            <div>
+              <input type="file" onChange={handleChangeFile} />
+              <button onClick={handleChangeAva}>отправить </button>
+            </div>
           </div>
         </div>
       </div>
