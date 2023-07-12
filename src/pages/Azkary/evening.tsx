@@ -31,10 +31,6 @@ const evening = () => {
     setCounter(0);
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 200) {
@@ -56,7 +52,7 @@ const evening = () => {
   }, []);
 
   return (
-    <div className={`${styles.container} ${darkMode ? styles.darkMode : ""}`}>
+    <div className={styles.container}>
       <div className={styles.modal} onClick={handleCounterClick}>
         Счетчик
       </div>
@@ -71,10 +67,7 @@ const evening = () => {
               {" "}
               +{" "}
             </div>
-            <div
-              className={styles.counter_reset}
-              onClick={handleResetCounter}
-            >
+            <div className={styles.counter_reset} onClick={handleResetCounter}>
               {" "}
               Сброс{" "}
             </div>
@@ -83,22 +76,14 @@ const evening = () => {
       )}
 
       <div className={styles.body_evering}>
-        <div className={styles.themeButton} onClick={toggleDarkMode}>
-          Сменить тему
-        </div>
         <ProfileSidebar />
 
         <div className={styles.container}>
           <h2>Вечерние азкары</h2>
           {azkary.map((item) => {
-            if (item.discriptionText && item.headerText === "Вечерний азкар") {
+            if (item.discriptionText && item.headerText === "Вечерний ") {
               return (
-                <div
-                  key={item.id}
-                  className={`${styles.card_azkar} ${
-                    darkMode ? styles.darkCard : ""
-                  }`}
-                >
+                <div key={item.id} className={styles.card_azkar}>
                   <h1 className={styles.header_text}>
                     {item.headerText} {item.number}
                   </h1>
@@ -123,12 +108,7 @@ const evening = () => {
             }
             if (item.headerText === "Вечерний азкар") {
               return (
-                <div
-                  key={item.id}
-                  className={`${styles.card_azkar} ${
-                    darkMode ? styles.darkCard : ""
-                  }`}
-                >
+                <div key={item.id} className={styles.card_azkar}>
                   <h1 className={styles.header_text}>
                     {item.headerText} {item.number}
                   </h1>
