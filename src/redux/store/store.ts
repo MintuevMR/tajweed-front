@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import application from "../slices/appSlices";
 import azkary from "../slices/azkarySlices"
+import user from "../slices/userSlices"
 
 export const store = configureStore({
   reducer: {
     application,
     azkary,
+    user,
   },
 });
 
