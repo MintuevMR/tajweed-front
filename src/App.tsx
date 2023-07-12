@@ -24,7 +24,9 @@ function App() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/profile" element={ <Navigate to="/login"/>} />
+        <Route path="/azkary" element={ <Navigate to="/login"/>} />
         <Route path="/lessons" element={ <Navigate to="/login"/>} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     ) : (
