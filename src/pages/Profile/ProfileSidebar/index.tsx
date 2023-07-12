@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 const ProfileSidebar = () => {
   const token = useSelector ((state) => state.application.token);
 
-  console.log(token);
   
 
   function parseJwt (token) {

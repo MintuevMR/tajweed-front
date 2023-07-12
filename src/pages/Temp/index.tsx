@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./temp.module.css";
 import ProfileSidebar from "../Profile/ProfileSidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLessons } from "../../redux/slices/lessonSlice";
 
 const Temp = () => {
+
+ const lessons = useSelector((state) => state.lessons.lessons)
+
+  const dispatch = useDispatch();
+
+  
+
+  useEffect(()=> {
+    dispatch(fetchLessons())
+  }, [])
+ 
+
+  
+
+   
+   
+ 
   const alphabet = [
     "ا",
     "ب",
@@ -40,6 +59,7 @@ const Temp = () => {
     <main>
       <ProfileSidebar />
       <div className={styles.content }>
+      
         <div className={styles.alphabet} dir="rtl">
           {alphabet.map((huruf, index) => {
             return (
@@ -57,7 +77,9 @@ const Temp = () => {
               </span>
             );
           })}
-        </div>
+        </div> 
+        
+        
         <div className={styles.prevNext}>
           <button>Предыдущий урок</button>
           <button>Следующий урок</button> 
