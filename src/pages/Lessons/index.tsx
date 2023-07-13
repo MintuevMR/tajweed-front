@@ -4,15 +4,13 @@ import ProfileSidebar from "../Profile/ProfileSidebar";
 import React, { useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLessons } from "../../redux/slices/lessonSlice";
-
-
-
+import { AppDispatch, RootState } from "../../redux/store/store";
 
 const Lessons = () => {
 
-  const lessons = useSelector((state) => state.lessons.lessons)
+  const lessons = useSelector((state: RootState) => state.lessons.lessons)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
  
   useEffect(()=> {

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import styles from "./azkary.module.css";
-import ProfileSidebar from "../Profile/ProfileSidebar/index";
-
-import strelkaup from "../../assets/strelkaup.png";
-import vnimanie from "../../assets/vnimanie.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAzkary } from "../../redux/slices/azkarySlices";
+import styles from "./azkary.module.css";
+import ProfileSidebar from "../Profile/ProfileSidebar/index";
+import strelkaup from "../../assets/strelkaup.png";
+import vnimanie from "../../assets/vnimanie.png";
+import { AppDispatch, RootState } from "../../redux/store/store";
+
 
 const evening = () => {
   const [counter, setCounter] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const dispatch = useDispatch();
-  const azkary = useSelector((state) => state.azkary.azkary);
+  const dispatch = useDispatch<AppDispatch>();
+  const azkary = useSelector((state: RootState) => state.azkary.azkary);
 
   const handleScrollUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

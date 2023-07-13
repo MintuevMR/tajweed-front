@@ -6,7 +6,6 @@ import SignIn from "./pages/SignIn/index.tsx";
 import Azkary from "./pages/Azkary/index.tsx";
 import Morning from "./pages/Azkary/morning.tsx";
 import Evening from "./pages/Azkary/evening.tsx";
-
 import "./App.css";
 import SignUp from "./pages/SignUp";
 import Lessons from "./pages/Lessons/index.tsx";
@@ -15,13 +14,16 @@ import Home from "./pages/Home/Index.tsx";
 import { useSelector } from "react-redux";
 import Voting from "./pages/Temp/voting.tsx";
 import Forms from "./pages/Temp/forms.tsx";
+
+import { RootState } from "./redux/store/store.ts";
+
 import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
 import Tashdid from "./pages/Temp/tashdid.tsx";
 
 function App() {
-  const token = useSelector((state) => state.application.token);
+  const token = useSelector((state: RootState) => state.application.token);
 
   return (
     !token ? (

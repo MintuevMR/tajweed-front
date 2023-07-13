@@ -1,20 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./azkary.module.css";
 import ProfileSidebar from "../Profile/ProfileSidebar/index";
-
 import strelkaup from "../../assets/strelkaup.png";
 import vnimanie from "../../assets/vnimanie.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAzkary } from "../../redux/slices/azkarySlices";
+import { AppDispatch, RootState } from "../../redux/store/store";
 
 const evening = () => {
   const [counter, setCounter] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const scrollRef = useRef(null);
   const [showScrollButton, setShowScrollButton] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-  const dispatch = useDispatch();
-  const azkary = useSelector((state) => state.azkary.azkary);
+  const dispatch = useDispatch<AppDispatch>();
+  const azkary = useSelector((state: RootState) => state.azkary.azkary);
 
   const handleScrollUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,10 +29,6 @@ const evening = () => {
 
   const handleResetCounter = () => {
     setCounter(0);
-  };
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
   };
 
   useEffect(() => {
@@ -57,7 +52,7 @@ const evening = () => {
   }, []);
 
   return (
-    <div className={`${styles.container} ${darkMode ? styles.darkMode : ""}`}>
+    <div className={styles.container}>
       <div className={styles.modal} onClick={handleCounterClick}>
         Счетчик
       </div>
