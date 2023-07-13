@@ -15,9 +15,10 @@ import Home from "./pages/Home/Index.tsx";
 import { useSelector } from "react-redux";
 import Voting from "./pages/Temp/voting.tsx";
 import Forms from "./pages/Temp/forms.tsx";
+import { RootState } from "./redux/store/store.ts";
 
 function App() {
-  const token = useSelector((state) => state.application.token);
+  const token = useSelector((state: RootState) => state.application.token);
 
   return (
     !token ? (
