@@ -9,7 +9,7 @@ const Lessons = () => {
       <ProfileSidebar />
       <div className={styles.content}>
         <div className={styles.card}>
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
+          <span className={`${styles.icons} material-symbols-outlined`}>
             bookmarks
           </span>
           <div>

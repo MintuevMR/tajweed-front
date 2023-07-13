@@ -55,7 +55,7 @@ const ProfileSidebar = () => {
           <span className={`${styles.icons} icons material-symbols-outlined`}>
             bookmarks
           </span>
-          <Link to={"/"}> Мои закладки </Link>
+          <Link to={"/bookmarks"}> Мои закладки </Link>
         </div>
         <div className={styles.menuItem}>
           <span className={`${styles.icons} icons material-symbols-outlined`}>
