@@ -1,10 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialState = {
-    azkary: [],
+interface AzkaryState {
+  azkary: AzkaryItem[];
 }
 
-export const fetchAzkary = createAsyncThunk("fetch/azkary", async (_, thunkAPI) => {
+interface AzkaryItem {
+  id: string;
+  headerText: string;
+  number: string;
+  arabText: string;
+  translateText: string;
+  transcriptText: string;
+  discriptionText: string;
+  footerCount: string;
+  footerName: string;
+  __v: number;
+}
+
+export const fetchAzkary = createAsyncThunk< AzkaryItem[], void, { rejectValue: string | unknown}>("fetch/azkary", async (_, thunkAPI) => {
     try {
       const res = await fetch(`http://localhost:3000/azkary`);
   
@@ -15,18 +28,17 @@ export const fetchAzkary = createAsyncThunk("fetch/azkary", async (_, thunkAPI) 
       }
       return azkary;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   });
 
   const azkarySclices = createSlice({
     name: "azkary",
-    initialState,
+    initialState: { azkary: [] } as AzkaryState,
     reducers: {},
     extraReducers: (builder) => {
       builder
         .addCase(fetchAzkary.fulfilled, (state, action) => {
-          // console.log(action.payload);
           state.azkary = action.payload;
         })
     },
