@@ -1,16 +1,17 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect  } from "react";
-import { fetchLessons } from '../../redux/slices/lessonSlice';
+import { LessonsItem, LessonsState, fetchLessons } from '../../redux/slices/lessonSlice';
 import ProfileSidebar from '../Profile/ProfileSidebar';
 import styles from "./temp.module.css";
 import { Link } from "react-router-dom";
+import { AppDispatch, RootState } from '../../redux/store/store';
 
 
 function Forms() {
-    const lessons = useSelector((state) => state.lessons.lessons)
+    const lessons = useSelector((state: RootState) => state.lessons.lessons)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   
   console.log(lessons);
   
@@ -22,7 +23,7 @@ function Forms() {
     <div className={styles.votingMain}>
     <ProfileSidebar />
     {
-      lessons.map((item)=> {
+      lessons.map((item: LessonsItem)=> {
 
             if(item.name === "Формы соединени букв")
               return (

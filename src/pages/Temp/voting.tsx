@@ -1,17 +1,20 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect  } from "react";
-import { fetchLessons } from '../../redux/slices/lessonSlice';
+import { LessonsItem, LessonsState, fetchLessons } from '../../redux/slices/lessonSlice';
 import ProfileSidebar from '../Profile/ProfileSidebar';
 import styles from "./temp.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from '../../redux/store/store';
 
 
 
 function Voting() {
-    const lessons = useSelector((state) => state.lessons.lessons)
+    const lessons = useSelector((state: RootState) => state.lessons.lessons)
 
-  const dispatch = useDispatch();
+    console.log(lessons);
+    
+
+  const dispatch = useDispatch<AppDispatch>();
   
   console.log(lessons);
   
@@ -23,7 +26,7 @@ function Voting() {
     <div className={styles.votingMain}>
       <ProfileSidebar />
       {
-        lessons.map((item)=> {
+        lessons.map((item: LessonsItem)=> {
 
               if(item.name === "Оглосовки")
                 return (
