@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {},
+  bookmarks: [],
 };
 
 // Инфо пользователя
@@ -66,6 +67,27 @@ export const userChangeAvatar = createAsyncThunk(
   );
 
 
+  export const bookmark = createAsyncThunk(
+    "user/addBookmark",
+    async (moduleId, thunkAPI) => {
+      try {
+        const res = await fetch("http://localhost:3000/bookmark", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+          },
+          body: JSON.stringify({ moduleId }),
+        });
+        const data = await res.json();       
+        return data;
+
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+      }
+    }
+  );
+  
 
 const userSlices = createSlice({
   name: "user",
@@ -81,6 +103,9 @@ const userSlices = createSlice({
       })
       .addCase(userChangeAvatar.fulfilled, (state, action) => {
         state.user = action.payload
+      })
+      .addCase(bookmark.fulfilled, (state, action) => {
+        state.user = action.payload;
       })
   },
 });
