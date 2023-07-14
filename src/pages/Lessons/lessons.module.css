@@ -36,6 +36,21 @@ main {
   'GRAD' 200,
   'opsz' 48 */
 }
+.iconsActive {
+  position: relative;
+  cursor: pointer;
+  top: -15px;
+  left: 215px;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 200, 'opsz' 48;
+}
+.card.bookmarked .iconsActive {
+  position: relative;
+  cursor: pointer;
+  top: -15px;
+  left: 215px;
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 200, 'opsz' 48;
+}
+
 
 
 .material-symbols-outlined {

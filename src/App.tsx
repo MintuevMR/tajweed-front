@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound/index.tsx";
 
 import Temp from "./pages/Temp";
 import SignIn from "./pages/SignIn/index.tsx";
@@ -14,6 +14,8 @@ import Lessons from "./pages/Lessons/index.tsx";
 import Profile from "./pages/Profile/index.tsx";
 import Home from "./pages/Home/Index.tsx";
 import { useSelector } from "react-redux";
+import Voting from "./pages/Temp/voting.tsx";
+import Forms from "./pages/Temp/forms.tsx";
 
 function App() {
   const token = useSelector((state) => state.application.token);
@@ -26,7 +28,6 @@ function App() {
       <Route path="/profile" element={<Navigate to="/login" />} />
       <Route path="/azkary" element={<Navigate to="/login" />} />
       <Route path="/lessons" element={<Navigate to="/login" />} />
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   ) : (
@@ -35,6 +36,8 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/lessons" element={<Lessons />} />
       <Route path="/lessons/alphabet" element={<Temp />} />
+      <Route path="/lessons/voting" element={<Voting />} />
+      <Route path="/lessons/forms" element={<Forms />} />
       <Route path="/azkary" element={<Azkary />} />
       <Route path="/azkary/morning" element={<Morning />} />
       <Route path="/azkary/evening" element={<Evening />} />
