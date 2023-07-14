@@ -1,12 +1,12 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-interface LessonsState {
+export interface LessonsState {
     error: string | null | unknown,
     loading: boolean,
     lessons: LessonsItem[];
 }
 
-interface LessonsItem {
+export interface LessonsItem {
   _id: string;
   name: string;
   title: string;

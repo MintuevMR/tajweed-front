@@ -1,6 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialState = {
+ interface UserState {
+  user: UserItem
+ }
+
+ interface UserItem {
+  _id: string,
+  login: string,
+  firstName: string,
+  lastName: string,
+  role: string,
+  password: string,
+  __v: number
+ }
+
+const initialState: UserState = {
   user: {},
   bookmarks: [],
 };

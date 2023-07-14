@@ -4,13 +4,14 @@ import ProfileSidebar from "../Profile/ProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLessons } from "../../redux/slices/lessonSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../../redux/store/store";
 
 
 const Temp = () => {
 
- const lessons = useSelector((state) => state.lessons.lessons)
+ const lessons = useSelector((state: RootState) => state.lessons.lessons)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   
 
@@ -19,11 +20,6 @@ const Temp = () => {
   }, [])
  
 
-  
-
-   
-   
- 
   const alphabet = [
     "ا",
     "ب",
