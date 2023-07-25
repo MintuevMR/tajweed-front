@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "./ProfileSidebar";
 import styles from "./profile.module.css";
@@ -9,20 +9,15 @@ import {
   userChangeInfo,
   userInfo,
 } from "../../redux/slices/userSlices";
-import { RootState } from "../../redux/store/store";
 
-interface FormData {
-  image: File;
-}
+const Profile = () => {
+  const user = useSelector((state) => state.user.user);
 
-const Profile: React.FC = () => {
-  const user = useSelector((state: RootState) => state.user.user);
-
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const dispatch = useDispatch();
 
-  const handleChangeUserInfo = (e: FormEvent<HTMLFormElement>) => {
+  const handleChangeUserInfo = (e) => {
     e.preventDefault();
     dispatch(userChangeInfo({ firstName, lastName }));
     setFirstName("");
@@ -35,16 +30,14 @@ const Profile: React.FC = () => {
 
   const formData = new FormData();
 
-  const handleChangeAva = (e: FormEvent<HTMLButtonElement>) => {
+  const handleChangeAva = (e) => {
     e.preventDefault();
     dispatch(userChangeAvatar(formData));
   };
 
-  const handleChangeFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      formData.append("image", file);
-    }
+  const handleChangeFile = async (e) => {
+    const file = e.target.files[0];
+    formData.append("image", file);
   };
 
   return (
@@ -88,7 +81,6 @@ const Profile: React.FC = () => {
                   ? teacherImg
                   : `http://localhost:3000${user?.avatar}`
               }
-              alt=""
             />
             <div>
               <input type="file" onChange={handleChangeFile} />

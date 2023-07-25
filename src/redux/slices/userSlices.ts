@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction, Draft } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction, Draft, Dispatch } from "@reduxjs/toolkit";
 
 interface UserState {
   user: UserItem;
@@ -12,6 +12,7 @@ interface UserItem {
   lastName: string;
   role: string;
   password: string;
+  avatar: string; 
   __v: number;
 }
 
@@ -23,27 +24,31 @@ const initialState: UserState = {
     lastName: "",
     role: "",
     password: "",
+    avatar: "",
     __v: 0,
   },
   bookmarks: [],
 };
 
 // Инфо пользователя
-export const userInfo = createAsyncThunk("user/Info", async (_, thunkAPI) => {
-  try {
-    const res = await fetch("http://localhost:3000/profile", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-      },
-    });
-    const json = await res.json();
-    return json as UserItem;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error);
+export const userInfo = createAsyncThunk<UserItem, void, { rejectValue: Error }>(
+  "user/Info",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3000/profile", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const json = await res.json();
+      return json as UserItem;
+    } catch (error) {
+      throw error; // используем throw вместо thunkAPI.rejectWithValue
+    }
   }
-});
+);
 
 // Изменение пользователя
 export const userChangeInfo = createAsyncThunk<
