@@ -8,6 +8,7 @@ import Morning from "./pages/Azkary/morning.tsx";
 import Evening from "./pages/Azkary/evening.tsx";
 
 import Bookmark from "./pages/Bookmark/index.tsx";
+import Groups from "./pages/Groups/index.tsx";
 
 import "./App.css";
 import SignUp from "./pages/SignUp";
@@ -63,6 +64,7 @@ function App() {
         <Route path="/azkary/morning" element={<Morning />} />
         <Route path="/azkary/evening" element={<Evening />} />
         <Route path="/bookmarks" element={<Bookmark />} />
+        <Route path="/groups" element={<Groups />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/groups" element={<Group/>}/>
       </Routes>

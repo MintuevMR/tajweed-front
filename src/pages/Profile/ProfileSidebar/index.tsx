@@ -1,19 +1,32 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './profileSidebar.module.css'
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import styles from "./profileSidebar.module.css";
 import teacherImg from "../../../assets/man.svg";
-import { useDispatch, useSelector } from 'react-redux';
-import { userInfo } from '../../../redux/slices/userSlices';
+import { useDispatch, useSelector } from "react-redux";
+import { userInfo } from "../../../redux/slices/userSlices";
 
 const ProfileSidebar = () => {
-  const user = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.user.user);
+
   const dispath = useDispatch();
 
-  useEffect(() =>{
-    dispath(userInfo())
-  }, [])
+  useEffect(() => {
+    dispath(userInfo());
+  }, []);
 
   return (
+    <div className={styles.wrapper}>
+      <header>
+        <div>
+          <img
+            width={50}
+            src={
+              !user?.avatar
+                ? teacherImg
+                : `http://localhost:3000${user?.avatar}`
+            }
+            alt=""
+          />
         <div className={styles.wrapper}>
         <header>
           <div>
@@ -44,13 +57,35 @@ const ProfileSidebar = () => {
           </span>
           <Link to={"/azkary"}> Азкары </Link>
         </div>
-        <div className={styles.menuItem}>
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
-            bookmarks
-          </span>
-          <Link to={"/bookmarks"}> Мои закладки </Link>
+        <div>
+          <Link to={"/profile"}>{`${user?.lastName} ${user?.firstName}.`}</Link>
         </div>
-        {user && (
+      </header>
+      <div className={styles.menuItem}>
+        <span className={`${styles.icons} icons material-symbols-outlined`}>
+          school
+        </span>
+        <Link to={"/lessons"}> Обучение </Link>
+      </div>
+      <div className={styles.menuItem}>
+        <span className={`${styles.icons} icons material-symbols-outlined`}>
+          menu_book
+        </span>
+        <Link to={"/"}> Коран </Link>
+      </div>
+      <div className={styles.menuItem}>
+        <span className={`${styles.icons} icons material-symbols-outlined`}>
+          auto_stories
+        </span>
+        <Link to={"/azkary"}> Азкары </Link>
+      </div>
+      <div className={styles.menuItem}>
+        <span className={`${styles.icons} icons material-symbols-outlined`}>
+          bookmarks
+        </span>
+        <Link to={"/bookmarks"}> Мои закладки </Link>
+      </div>
+      {user && (
         <div>
           <div className={styles.menuItem}>
             <span className={`${styles.icons} icons material-symbols-outlined`}>
@@ -66,17 +101,23 @@ const ProfileSidebar = () => {
           </div>
         </div>
       )}
-        <div className={styles.menuItem}>
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
+      <div className={styles.menuItem}>
+        <span className={`${styles.icons} icons material-symbols-outlined`}>
           logout
-          </span>
-          <Link to={"/"} onClick={() => {
-            localStorage.removeItem('token')
-            window.location.reload()
-          }}> Выход </Link>
-        </div>
+        </span>
+        <Link
+          to={"/"}
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.reload();
+          }}
+        >
+          {" "}
+          Выход{" "}
+        </Link>
       </div>
-    );
+    </div>
+  );
 };
 
 export default ProfileSidebar;
