@@ -4,6 +4,7 @@ import azkary from "../slices/azkarySlices"
 import lessons from "../slices/lessonSlice" 
 import user from "../slices/userSlices"
 import groups from "../slices/groupsSlices";
+import quran from "../slices/quranSlice"
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     lessons,
     user,
     groups,
+    quran
   },
 });
 

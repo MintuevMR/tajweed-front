@@ -28,7 +28,6 @@ const Lessons = () => {
     <div className={styles.content}>
       {lessons.map((item) => {
         const isBookmarked = bookmarks?.some((bookmark) => bookmark._id === item._id);
-        console.log(isBookmarked);
         
         return (
           <div className={styles.card} key={item._id}>
