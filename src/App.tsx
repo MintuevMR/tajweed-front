@@ -24,6 +24,7 @@ import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
 import Tashdid from "./pages/Temp/tashdid.tsx";
+import AllUsers from "./pages/AllUsers/index.tsx";
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
@@ -55,6 +56,7 @@ function App() {
         <Route path="/azkary/morning" element={<Morning />} />
         <Route path="/azkary/evening" element={<Evening />} />
         <Route path="/bookmarks" element={<Bookmark />} />
+        <Route path="/students" element={<AllUsers />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     )
