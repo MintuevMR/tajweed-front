@@ -24,7 +24,7 @@ const Sura = () => {
       <ProfileSidebar />
       <div className={styles.content} dir="rtl">
         <div className={styles.main}>
-          <div className={styles.sura}>{delimiter}</div>
+          {/* <div className={styles.sura}>{delimiter}</div> */}
           {sura.map((aya) => {
             return (
               <div

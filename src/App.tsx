@@ -28,8 +28,6 @@ import Tashdid from "./pages/Temp/tashdid.tsx";
 import Quran from "./pages/Quran/index.tsx";
 import Sura from "./pages/Quran/Sura.tsx";
 
-// import GroupInput from "./pages/Groups/groupInput.tsx";
-import Group from "./pages/Groups/index.tsx";
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
@@ -44,7 +42,6 @@ function App() {
         <Route path="/azkary" element={ <Navigate to="/login"/>} />
         <Route path="/lessons" element={ <Navigate to="/login"/>} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/groups" element={<Group/>}/>
       </Routes>
     ) : (
       <Routes>
@@ -66,7 +63,7 @@ function App() {
         <Route path="/bookmarks" element={<Bookmark />} />
         <Route path="/groups" element={<Groups />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/groups" element={<Group/>}/>
+        <Route path="/groups" element={<Groups />}/>
       </Routes>
     )
   );

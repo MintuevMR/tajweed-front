@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createGroups } from "../../redux/slices/groupsSlices";
+import { createGroups } from "../../redux/slices/groupsSlice";
 
-const groupInput = () => {
+const GroupInput = () => {
   const [groupName, setGroupName] = useState("");
   const dispatch = useDispatch();
 
@@ -23,4 +23,4 @@ const groupInput = () => {
   );
 };
 
-export default groupInput;
+export default GroupInput;

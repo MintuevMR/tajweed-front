@@ -27,35 +27,6 @@ const ProfileSidebar = () => {
             }
             alt=""
           />
-        <div className={styles.wrapper}>
-        <header>
-          <div>
-            <img width={50}
-              src={!user?.avatar ? teacherImg : `http://localhost:3000${user?.avatar}`}
-              alt=""
-            />
-          </div>
-          <div>
-            <Link to={"/profile"}>{`${user?.lastName} ${user?.firstName}.`}</Link>
-          </div>
-        </header>
-        <div className={styles.menuItem}>
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
-            school
-          </span>
-          <Link to={"/lessons"}> Обучение </Link>
-        </div>
-        <div className={styles.menuItem}>
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
-            menu_book
-          </span>
-          <Link to={"/quran"}> Коран </Link>
-        </div>
-        <div className={styles.menuItem}>
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
-            auto_stories
-          </span>
-          <Link to={"/azkary"}> Азкары </Link>
         </div>
         <div>
           <Link to={"/profile"}>{`${user?.lastName} ${user?.firstName}.`}</Link>
@@ -71,7 +42,7 @@ const ProfileSidebar = () => {
         <span className={`${styles.icons} icons material-symbols-outlined`}>
           menu_book
         </span>
-        <Link to={"/"}> Коран </Link>
+        <Link to={"/quran"}> Коран </Link>
       </div>
       <div className={styles.menuItem}>
         <span className={`${styles.icons} icons material-symbols-outlined`}>
@@ -112,8 +83,7 @@ const ProfileSidebar = () => {
             window.location.reload();
           }}
         >
-          {" "}
-          Выход{" "}
+          Выход
         </Link>
       </div>
     </div>
