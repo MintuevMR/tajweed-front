@@ -12,6 +12,7 @@ export const fetchGroup = createAsyncThunk(
       return groups;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
+      
     }
   }
 );
