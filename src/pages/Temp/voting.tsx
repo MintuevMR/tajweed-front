@@ -28,7 +28,7 @@ function Voting() {
       {
         lessons.map((item: LessonsItem)=> {
 
-              if(item.name === "Оглосовки")
+              if(item.name === "Огласовки")
                 return (
                     <div className={styles.s}>
                     <div className={styles.lessonsTitle}>{item.title}</div>
