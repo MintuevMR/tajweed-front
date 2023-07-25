@@ -8,6 +8,7 @@ import Morning from "./pages/Azkary/morning.tsx";
 import Evening from "./pages/Azkary/evening.tsx";
 
 import Bookmark from "./pages/Bookmark/index.tsx";
+import Groups from "./pages/Groups/index.tsx";
 
 import "./App.css";
 import SignUp from "./pages/SignUp";
@@ -17,14 +18,15 @@ import Home from "./pages/Home/Index.tsx";
 import { useSelector } from "react-redux";
 import Voting from "./pages/Temp/voting.tsx";
 import Forms from "./pages/Temp/forms.tsx";
-
 import { RootState } from "./redux/store/store.ts";
-
 import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
 import Tashdid from "./pages/Temp/tashdid.tsx";
 import AllUsers from "./pages/AllUsers/index.tsx";
+import Quran from "./pages/Quran/index.tsx";
+import Sura from "./pages/Quran/Sura.tsx";
+
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
@@ -43,6 +45,8 @@ function App() {
     ) : (
       <Routes>
         <Route path="/login" element={ <Navigate to="/profile"/>} />
+        <Route path="/quran" element={<Quran/>} />
+        <Route path="/quran/:number" element={<Sura/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/lessons" element={<Lessons />} />
         <Route path="/lessons/alphabet" element={<Temp />} />
@@ -57,6 +61,7 @@ function App() {
         <Route path="/azkary/evening" element={<Evening />} />
         <Route path="/bookmarks" element={<Bookmark />} />
         <Route path="/students" element={<AllUsers />} />
+        <Route path="/groups" element={<Groups />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     )
