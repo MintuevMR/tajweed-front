@@ -25,6 +25,11 @@ import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
 import Tashdid from "./pages/Temp/tashdid.tsx";
+import Quran from "./pages/Quran/index.tsx";
+import Sura from "./pages/Quran/Sura.tsx";
+
+// import GroupInput from "./pages/Groups/groupInput.tsx";
+import Group from "./pages/Groups/index.tsx";
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
@@ -39,10 +44,13 @@ function App() {
         <Route path="/azkary" element={ <Navigate to="/login"/>} />
         <Route path="/lessons" element={ <Navigate to="/login"/>} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/groups" element={<Group/>}/>
       </Routes>
     ) : (
       <Routes>
         <Route path="/login" element={ <Navigate to="/profile"/>} />
+        <Route path="/quran" element={<Quran/>} />
+        <Route path="/quran/:number" element={<Sura/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/lessons" element={<Lessons />} />
         <Route path="/lessons/alphabet" element={<Temp />} />
@@ -58,6 +66,7 @@ function App() {
         <Route path="/bookmarks" element={<Bookmark />} />
         <Route path="/groups" element={<Groups />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/groups" element={<Group/>}/>
       </Routes>
     )
   );
