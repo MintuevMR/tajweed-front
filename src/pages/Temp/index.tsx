@@ -3,6 +3,8 @@ import styles from "./temp.module.css";
 import ProfileSidebar from "../Profile/ProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLessons } from "../../redux/slices/lessonSlice";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Temp = () => {
 
@@ -81,8 +83,8 @@ const Temp = () => {
         
         
         <div className={styles.prevNext}>
-          <button>Предыдущий урок</button>
-          <button>Следующий урок</button> 
+        <button className={styles.left_btn}><Link to={"/lessons"}>Назад</Link></button> 
+        <button className={styles.right_btn}><Link to={"/lessons/voting"}>Следующий урок</Link></button> 
         </div>
       </div>
     </main>
