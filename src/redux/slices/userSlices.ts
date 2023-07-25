@@ -1,107 +1,118 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction, Draft } from "@reduxjs/toolkit";
 
- interface UserState {
-  user: UserItem
- }
+interface UserState {
+  user: UserItem;
+  bookmarks: any[];
+}
 
- interface UserItem {
-  _id: string,
-  login: string,
-  firstName: string,
-  lastName: string,
-  role: string,
-  password: string,
-  __v: number
- }
+interface UserItem {
+  _id: string;
+  login: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  password: string;
+  __v: number;
+}
 
 const initialState: UserState = {
-  user: {},
+  user: {
+    _id: "",
+    login: "",
+    firstName: "",
+    lastName: "",
+    role: "",
+    password: "",
+    __v: 0,
+  },
   bookmarks: [],
 };
 
 // Инфо пользователя
-export const userInfo = createAsyncThunk(
-    "user/Info",
-    async (_, thunkAPI) => {
-      try {
-        const res = await fetch("http://localhost:3000/profile", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-          },
-        });
-        const json = await res.json();
-        return json;
-      } catch (error) {
-        thunkAPI.rejectWithValue(error);
-      }
-    }
-  );
+export const userInfo = createAsyncThunk("user/Info", async (_, thunkAPI) => {
+  try {
+    const res = await fetch("http://localhost:3000/profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+    });
+    const json = await res.json();
+    return json as UserItem;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error);
+  }
+});
 
 // Изменение пользователя
-export const userChangeInfo = createAsyncThunk(
-  "user/Change",
-  async ({ firstName, lastName }, thunkAPI) => {
+export const userChangeInfo = createAsyncThunk<
+  UserItem,
+  { firstName: string; lastName: string }
+>("user/Change", async ({ firstName, lastName }, thunkAPI) => {
+  try {
+    const res = await fetch("http://localhost:3000/profile", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+      body: JSON.stringify({ firstName, lastName }),
+    });
+    const json = await res.json();
+    if (!res.ok) {
+      return thunkAPI.rejectWithValue(json);
+    }
+    return json as UserItem;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+export const userChangeAvatar = createAsyncThunk<UserItem, any>(
+  "user/ChangeAvatar",
+  async (data, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:3000/profile", {
+      const res = await fetch("http://localhost:3000/profile/change-img", {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+        body: data,
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        return thunkAPI.rejectWithValue(json);
+      }
+      return json as UserItem;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const bookmark = createAsyncThunk<any, string>(
+  "user/addBookmark",
+  async (moduleId, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3000/bookmark", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${thunkAPI.getState().application.token}`,
         },
-        body: JSON.stringify({ firstName, lastName }),
+        body: JSON.stringify({ moduleId }),
       });
       const json = await res.json();
+      if (!res.ok) {
+        return thunkAPI.rejectWithValue(json);
+      }
       return json;
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
-
-
-export const userChangeAvatar = createAsyncThunk(
-    "user/ChangeAvatar",
-    async (data, thunkAPI) => {
-      try {
-        const res = await fetch("http://localhost:3000/profile/change-img", {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-          },
-          body: data,
-        });
-        const json = await res.json();
-        return json;
-      } catch (error) {
-        thunkAPI.rejectWithValue(error);
-      }
-    }
-  );
-
-
-  export const bookmark = createAsyncThunk(
-    "user/addBookmark",
-    async (moduleId, thunkAPI) => {
-      try {
-        const res = await fetch("http://localhost:3000/bookmark", {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-          },
-          body: JSON.stringify({ moduleId }),
-        });
-        const data = await res.json();       
-        return data;
-
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error);
-      }
-    }
-  );
-  
 
 const userSlices = createSlice({
   name: "user",
@@ -109,18 +120,18 @@ const userSlices = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(userInfo.fulfilled, (state, action) => {
-        state.user = action.payload
+      .addCase(userInfo.fulfilled, (state, action) => {
+        state.user = action.payload;
       })
       .addCase(userChangeInfo.fulfilled, (state, action) => {
-        state.user = action.payload
+        state.user = action.payload;
       })
       .addCase(userChangeAvatar.fulfilled, (state, action) => {
-        state.user = action.payload
+        state.user = action.payload;
       })
       .addCase(bookmark.fulfilled, (state, action) => {
         state.user = action.payload;
-      })
+      });
   },
 });
 
