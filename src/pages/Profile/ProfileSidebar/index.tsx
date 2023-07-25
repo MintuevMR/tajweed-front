@@ -50,6 +50,22 @@ const ProfileSidebar = () => {
           </span>
           <Link to={"/bookmarks"}> Мои закладки </Link>
         </div>
+        {user && (
+        <div>
+          <div className={styles.menuItem}>
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              group
+            </span>
+            <Link to={"/students"}> Все студенты </Link>
+          </div>
+          <div className={styles.menuItem}>
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              groups
+            </span>
+            <Link to={"/groups"}> Группы </Link>
+          </div>
+        </div>
+      )}
         <div className={styles.menuItem}>
           <span className={`${styles.icons} icons material-symbols-outlined`}>
           logout
