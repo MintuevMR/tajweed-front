@@ -3,6 +3,7 @@ import application from "../slices/appSlices";
 import azkary from "../slices/azkarySlices"
 import lessons from "../slices/lessonSlice" 
 import user from "../slices/userSlices"
+import groups from "../slices/groupsSlice"
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     azkary,
     lessons,
     user,
+    groups
   },
 });
 

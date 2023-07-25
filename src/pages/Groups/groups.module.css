@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+  height: 100vh;
+}
+.main {
+  width: 85%;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 50px;
+  background-color: #fbfbfb;
+  height: 100vh;
+}
+
+.card {
+  padding: 35px;
+  width: 300px;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.card div {
+  word-wrap: break-word;
+}
+
+.card:hover {
+  background-color: rgba(38, 153, 7, 1);
+  color: white;
+}
