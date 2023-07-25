@@ -18,13 +18,12 @@ import Home from "./pages/Home/Index.tsx";
 import { useSelector } from "react-redux";
 import Voting from "./pages/Temp/voting.tsx";
 import Forms from "./pages/Temp/forms.tsx";
-
 import { RootState } from "./redux/store/store.ts";
-
 import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
 import Tashdid from "./pages/Temp/tashdid.tsx";
+import AllUsers from "./pages/AllUsers/index.tsx";
 import Quran from "./pages/Quran/index.tsx";
 import Sura from "./pages/Quran/Sura.tsx";
 
@@ -61,9 +60,9 @@ function App() {
         <Route path="/azkary/morning" element={<Morning />} />
         <Route path="/azkary/evening" element={<Evening />} />
         <Route path="/bookmarks" element={<Bookmark />} />
+        <Route path="/students" element={<AllUsers />} />
         <Route path="/groups" element={<Groups />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/groups" element={<Groups />}/>
       </Routes>
     )
   );

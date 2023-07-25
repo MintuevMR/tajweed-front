@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "./ProfileSidebar";
 import styles from "./profile.module.css";
@@ -9,15 +9,16 @@ import {
   userChangeInfo,
   userInfo,
 } from "../../redux/slices/userSlices";
+import { RootState } from "../../redux/store/store";
 
 const Profile = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state: RootState) => state.user.user);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const dispatch = useDispatch();
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleChangeUserInfo = (e) => {
+  const handleChangeUserInfo = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(userChangeInfo({ firstName, lastName }));
     setFirstName("");
@@ -28,14 +29,14 @@ const Profile = () => {
     dispatch(userInfo());
   }, []);
 
-  const formData = new FormData();
+  const formData: FormData = new FormData();
 
-  const handleChangeAva = (e) => {
+  const handleChangeAva = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(userChangeAvatar(formData));
   };
 
-  const handleChangeFile = async (e) => {
+  const handleChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
     formData.append("image", file);
   };
