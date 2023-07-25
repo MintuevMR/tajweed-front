@@ -36,7 +36,7 @@ const ProfileSidebar = () => {
           <span className={`${styles.icons} icons material-symbols-outlined`}>
             menu_book
           </span>
-          <Link to={"/"}> Коран </Link>
+          <Link to={"/quran"}> Коран </Link>
         </div>
         <div className={styles.menuItem}>
           <span className={`${styles.icons} icons material-symbols-outlined`}>

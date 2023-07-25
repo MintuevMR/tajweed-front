@@ -24,6 +24,8 @@ import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
 import Tashdid from "./pages/Temp/tashdid.tsx";
+import Quran from "./pages/Quran/index.tsx";
+import Sura from "./pages/Quran/Sura.tsx";
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
@@ -42,6 +44,8 @@ function App() {
     ) : (
       <Routes>
         <Route path="/login" element={ <Navigate to="/profile"/>} />
+        <Route path="/quran" element={<Quran/>} />
+        <Route path="/quran/:number" element={<Sura/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/lessons" element={<Lessons />} />
         <Route path="/lessons/alphabet" element={<Temp />} />
