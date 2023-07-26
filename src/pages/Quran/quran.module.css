@@ -76,7 +76,8 @@ main {
 }
 
 .sura {
-  font-size: 32px;
+  font-size: 24px;
+  font-family: "Amiri Quran";
   width: 500px;
   cursor: pointer;
 }
