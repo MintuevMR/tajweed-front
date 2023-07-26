@@ -6,6 +6,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   signUp: false,
   signIn: false,
+  showBar: true,
 };
 
 // Регистрация пользователя
@@ -59,7 +60,11 @@ export const authSignIn = createAsyncThunk(
 const appSlices = createSlice({
   name: "app",
   initialState,
-  reducers: {},
+  reducers: {
+    showBarToggle: (state) => {
+      state.showBar = !state.showBar;
+    },
+  },
   extraReducers: (builder) => {
     builder
       //Регистрация
@@ -72,9 +77,9 @@ const appSlices = createSlice({
       })
       .addCase(authSignUp.rejected, (state, action) => {
         state.signUp = false;
-        if (Array.isArray(action.payload)){
+        if (Array.isArray(action.payload)) {
           state.error = action.payload[0].msg;
-        }else{
+        } else {
           state.error = action.payload;
         }
       })
@@ -94,4 +99,5 @@ const appSlices = createSlice({
   },
 });
 
+export const { showBarToggle } = appSlices.actions;
 export default appSlices.reducer;
