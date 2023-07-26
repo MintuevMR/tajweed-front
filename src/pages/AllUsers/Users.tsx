@@ -7,7 +7,7 @@ const Users = ({ user, loading }) => {
   return (
     <div className={styles.card_user} key={user._id}>
       <p className={styles.user_name}>
-        Имя: {user.firstName} <br/> Фамилия: {user.lastName}
+        Имя: {user.firstName} <br /> Фамилия: {user.lastName}
       </p>
       <div className={styles.btn_userClick}>
         <button className={styles.user_btnClick}>+</button>
@@ -17,6 +17,3 @@ const Users = ({ user, loading }) => {
   )
 };
 export default Users;
-
-
-

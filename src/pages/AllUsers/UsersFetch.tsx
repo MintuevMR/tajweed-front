@@ -3,13 +3,12 @@ import Users from "./Users";
 import Search from "./Search/Search";
 import Pagination from "./Pagination";
 import styles from "./usersList.module.css";
-import { userAll } from "../../redux/slices/userSlices";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersAllPerPage] = useState(5);
+  const [usersAllPerPage] = useState(4);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -36,15 +35,21 @@ const AllUsers = () => {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   return (
-    <div className={styles.container}>
-      <h2>Все студенты</h2>
+    <div>
+      <h2>Все пользователи</h2>
       <Search onSearch={(query) => setSearchQuery(query)} />
       {currentUsers.map((user) => (
         <Users key={user._id} user={user} loading={loading} />
       ))}
       <div className={styles.button_container}>
         <div className={styles.button_wrapper}>
-          <button className={styles.user_btn} onClick={prevPage} disabled={currentPage === 1}>Предыдущая {"\n"} страница</button>
+          <button
+            className={styles.user_btn}
+            onClick={prevPage}
+            disabled={currentPage === 1}
+          >
+            Предыдущая {"\n"} страница
+          </button>
         </div>
         <Pagination
           usersAllPerPage={usersAllPerPage}
@@ -52,7 +57,13 @@ const AllUsers = () => {
           paginate={paginate}
         />
         <div className={styles.button_wrapper}>
-          <button className={styles.user_btn} onClick={nextPage} disabled={currentPage >= Math.ceil(users.length / usersAllPerPage)}>Следующая {"\n"} страница</button>
+          <button
+            className={styles.user_btn}
+            onClick={nextPage}
+            disabled={currentPage >= Math.ceil(users.length / usersAllPerPage)}
+          >
+            Следующая {"\n"} страница
+          </button>
         </div>
       </div>
     </div>

@@ -6,40 +6,49 @@ import { useParams } from "react-router-dom";
 
 const Sura = () => {
   const [sura, setSura] = useState([]);
+  const [suraName, setSuraName] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const { number } = useParams();
   const delimiter = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
-
-  console.log(number);
 
   useEffect(() => {
     fetch(`http://api.alquran.cloud/v1/surah/${number}/ar.alafasy`)
       .then((res) => res.json())
-      .then((data) => setSura(data.data.ayahs));
+      .then((data) => {
+        setSura(data.data.ayahs);
+        setSuraName(data.data.englishName);
+      });
   }, []);
-
-  console.log(sura);
 
   return (
     <main>
       <ProfileSidebar />
       <div className={styles.content} dir="rtl">
         <div className={styles.main}>
-          {/* <div className={styles.sura}>{delimiter}</div> */}
-          {sura.map((aya) => {
-            return (
-              <div
-                className={styles.sura}
-                onClick={() => {
-                  const audio = new Audio(
-                    `https://cdn.islamic.network/quran/audio/128/ar.alafasy/${aya?.number}.mp3`
-                  );
-                  audio.play();
-                }}
-              >
-                {aya?.text.split(delimiter)}
-              </div>
-            );
-          })}
+          <div>{suraName}</div>
+          <div className={styles.sura}>
+            {sura.map((aya) => {
+              return (
+                <span
+                  key={aya.number}
+                  className={styles.sura}
+                  onClick={() => {
+                    if (!isPlaying) {
+                      const audio = new Audio(
+                        `https://cdn.islamic.network/quran/audio/128/ar.alafasy/${aya?.number}.mp3`
+                      );
+                      setIsPlaying(true);
+                      audio.onended = () => setIsPlaying(false);
+                      audio.play();
+                    }
+                  }}
+                >
+                  {aya?.text} ﴿{aya?.number}﴾
+                </span>
+              );
+            })}
+          </div>
         </div>
       </div>
     </main>
