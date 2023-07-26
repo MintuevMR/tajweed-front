@@ -19,8 +19,8 @@ const Quran = () => {
       <div className={styles.content}>
         {surahs.map((sura) => {
           return (
-            <Link to={`/quran/${sura.number}`}>
-              <div className={styles.card}>
+            <Link key={sura.number} to={`/quran/${sura.number}` }>
+              <div className={styles.card} >
                 <div className={styles.number}>{sura.number}</div>
                 <div className={styles.enName}>{sura.englishName}</div>
                 <div className={styles.name}>{sura.name}</div>
