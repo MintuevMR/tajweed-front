@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Users from './Users';
-import Search from './Search/Search';
-import Pagination from './Pagination';
+import React, { useState, useEffect } from "react";
+import Users from "./Users";
+import Search from "./Search/Search";
+import Pagination from "./Pagination";
+import styles from "./usersList.module.css";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersAllPerPage] = useState(4);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getUsers = async () => {
@@ -21,7 +22,6 @@ const AllUsers = () => {
     getUsers();
   }, []);
 
-  
   const filteredUsers = users.filter((user) =>
     user.lastName.toLowerCase().includes(searchQuery?.toLowerCase())
   );
@@ -31,24 +31,41 @@ const AllUsers = () => {
   const currentUsers = filteredUsers.slice(firstUsersIndex, lastUsersIndex);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const nextPage = () => setCurrentPage(prev => prev + 1)
-  const prevPage = () => setCurrentPage(prev => prev - 1)
+  const nextPage = () => setCurrentPage((prev) => prev + 1);
+  const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   return (
     <div>
       <h2>Все пользователи</h2>
       <Search onSearch={(query) => setSearchQuery(query)} />
-      {filteredUsers.map((user) => (
+      {currentUsers.map((user) => (
         <Users key={user._id} user={user} loading={loading} />
       ))}
-      <Pagination
-        usersAllPerPage={usersAllPerPage}
-        totalUsers={filteredUsers.length}
-        paginate={paginate}
-      />
-		<button onClick={prevPage}>Предыдущая страница</button>
-		<button onClick={nextPage}>Следующая страница</button>
-
+      <div className={styles.button_container}>
+        <div className={styles.button_wrapper}>
+          <button
+            className={styles.user_btn}
+            onClick={prevPage}
+            disabled={currentPage === 1}
+          >
+            Предыдущая {"\n"} страница
+          </button>
+        </div>
+        <Pagination
+          usersAllPerPage={usersAllPerPage}
+          totalUsers={filteredUsers.length}
+          paginate={paginate}
+        />
+        <div className={styles.button_wrapper}>
+          <button
+            className={styles.user_btn}
+            onClick={nextPage}
+            disabled={currentPage >= Math.ceil(users.length / usersAllPerPage)}
+          >
+            Следующая {"\n"} страница
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
