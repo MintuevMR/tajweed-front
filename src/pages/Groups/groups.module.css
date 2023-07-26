@@ -1,10 +1,13 @@
 .root {
   display: flex;
   height: 100vh;
+  background-color: #fbfbfb;
+
 }
-.main {
-  width: 85%;
-}
+
+/* .main {
+  width: 80%;
+} */
 
 .content {
   display: flex;
@@ -12,13 +15,13 @@
   flex-wrap: wrap;
   gap: 50px;
   padding: 51px;
-  background-color: #fbfbfb;
   height: 100vh;
 }
 
 .card {
-  padding: 35px;
-  width: 300px;
+  padding: 15px;
+  padding-left: 30px;
+  width: 260px;
   border-radius: 10px;
   font-size: 20px;
   background-color: rgb(255, 255, 255);
@@ -34,3 +37,24 @@
   color: white;
 }
 
+.input_group{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}
+.input_group input{
+    width: 300px;
+    height: 50px;
+    margin-top: 22px;
+    margin-right: 20px;
+}
+
+.delete_group{
+    cursor: pointer;
+    margin-left: 180px;
+}
+
+.btn_check_mark, .btn_redaction_mark{
+  cursor: pointer;
+  margin-bottom: 10px;
+}
