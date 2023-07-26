@@ -5,16 +5,13 @@ function Search({ onSearch }) {
   const [searchValue, setSearchValue] = useState('');
 
   const onChangeSearchInput = (e) => {
-    setSearchValue(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSearch(searchValue);
+    const value = e.target.value;
+    setSearchValue(value);
+    onSearch(value); 
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form}>
       <input
         onChange={onChangeSearchInput}
         className={styles.input}
