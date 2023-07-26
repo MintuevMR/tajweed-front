@@ -36,7 +36,6 @@ const AllUsers = () => {
 
   return (
     <div>
-      <h2>Все пользователи</h2>
       <Search onSearch={(query) => setSearchQuery(query)} />
       {currentUsers.map((user) => (
         <Users key={user._id} user={user} loading={loading} />
