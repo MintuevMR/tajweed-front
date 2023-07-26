@@ -1,13 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import { userAll } from "../../redux/slices/userSlices";
-import { useEffect, useState } from "react";
-import { RootState } from "../../redux/store/store";
-import Users from "./Users";
-import Pagination from "./Pagination";
-import Search from "./Search/Search";
+import React, { useState, useEffect } from 'react';
+import Users from './Users';
+import Search from './Search/Search';
+import Pagination from './Pagination';
 
 const AllUsers = () => {
-  const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
