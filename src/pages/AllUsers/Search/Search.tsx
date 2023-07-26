@@ -17,7 +17,7 @@ function Search({ onSearch }) {
         className={styles.input}
         type="text"
         value={searchValue}
-        placeholder="Введите имя студента"
+        placeholder="Введите фамилию студента"
       />
     </form>
   );
