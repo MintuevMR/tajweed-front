@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './usersList.module.css'
 
 const Pagination = ({ usersAllPerPage, totalUsers, paginate }) => {
   const pageNumbers = [];
@@ -8,7 +9,7 @@ const Pagination = ({ usersAllPerPage, totalUsers, paginate }) => {
   }
   return (
     <div>
-      <ul>
+      <ul className={styles.pagination}>
         {pageNumbers.map((number) => (
           <li key={number}>
             <a href="#" onClick={() => paginate(number)}>
