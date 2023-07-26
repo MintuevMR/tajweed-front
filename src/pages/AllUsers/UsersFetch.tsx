@@ -4,43 +4,49 @@ import { useEffect, useState } from "react";
 import { RootState } from "../../redux/store/store";
 import Users from "./Users";
 import Pagination from "./Pagination";
+import Search from "./Search/Search";
 
 const AllUsers = () => {
   const dispatch = useDispatch();
-  const [usersAll, setUsersAll] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersAllPerPage] = useState(4);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const getUsers = async () => {
       setLoading(true);
       const res = await fetch("http://localhost:3000/users");
       const data = await res.json();
-      setUsersAll(data);
+      setUsers(data);
       setLoading(false);
     };
     getUsers();
   }, []);
 
+  const filteredUsers = users.filter((user) =>
+    user.lastName.toLowerCase().includes(searchQuery?.toLowerCase())
+  );
+
   const lastUsersIndex = currentPage * usersAllPerPage;
   const firstUsersIndex = lastUsersIndex - usersAllPerPage;
-  const currentUsers = usersAll.slice(firstUsersIndex, lastUsersIndex);
+  const currentUsers = filteredUsers.slice(firstUsersIndex, lastUsersIndex);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage(prev => prev + 1)
   const prevPage = () => setCurrentPage(prev => prev - 1)
 
-
   return (
     <div>
       <h2>Все пользователи</h2>
-      {currentUsers?.map((user) => (
-        <Users user={user} loading={loading} />
+      <Search onSearch={(query) => setSearchQuery(query)} />
+      {filteredUsers.map((user) => (
+        <Users key={user._id} user={user} loading={loading} />
       ))}
       <Pagination
         usersAllPerPage={usersAllPerPage}
-        totalUsers={usersAll.length}
+        totalUsers={filteredUsers.length}
         paginate={paginate}
       />
 		<button onClick={prevPage}>Предыдущая страница</button>
