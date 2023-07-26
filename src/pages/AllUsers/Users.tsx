@@ -1,4 +1,4 @@
-import styles from "./usersList.module.css";
+import styles from './usersList.module.css'
 
 const Users = ({ user, loading }) => {
   if (loading) {
@@ -14,6 +14,6 @@ const Users = ({ user, loading }) => {
         <button className={styles.user_btnDelClick}>x</button>
       </div>
     </div>
-  );
+  )
 };
 export default Users;
