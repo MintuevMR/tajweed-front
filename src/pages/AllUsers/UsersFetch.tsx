@@ -44,7 +44,13 @@ const AllUsers = () => {
       ))}
       <div className={styles.button_container}>
         <div className={styles.button_wrapper}>
-          <button className={styles.user_btn} onClick={prevPage} disabled={currentPage === 1}>Предыдущая {"\n"} страница</button>
+          <button
+            className={styles.user_btn}
+            onClick={prevPage}
+            disabled={currentPage === 1}
+          >
+            Предыдущая {"\n"} страница
+          </button>
         </div>
         <Pagination
           usersAllPerPage={usersAllPerPage}
@@ -52,7 +58,13 @@ const AllUsers = () => {
           paginate={paginate}
         />
         <div className={styles.button_wrapper}>
-          <button className={styles.user_btn} onClick={nextPage} disabled={currentPage >= Math.ceil(users.length / usersAllPerPage)}>Следующая {"\n"} страница</button>
+          <button
+            className={styles.user_btn}
+            onClick={nextPage}
+            disabled={currentPage >= Math.ceil(users.length / usersAllPerPage)}
+          >
+            Следующая {"\n"} страница
+          </button>
         </div>
       </div>
     </div>
