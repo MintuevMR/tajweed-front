@@ -52,6 +52,9 @@ export const userChangeInfo = createAsyncThunk(
         body: JSON.stringify({ firstName, lastName }),
       });
       const json = await res.json();
+      if (json.error || json.error[0].msg) {
+        return thunkAPI.rejectWithValue(json.error);
+      }
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -108,7 +111,6 @@ export const userAll = createAsyncThunk("user/all", async (_, thunkAPI) => {
   }
 });
 
-
 const userSlices = createSlice({
   name: "user",
   initialState,
@@ -120,6 +122,13 @@ const userSlices = createSlice({
       })
       .addCase(userChangeInfo.fulfilled, (state, action) => {
         state.user = action.payload;
+      })
+      .addCase(userChangeInfo.rejected, (state, action) => {
+        if (Array.isArray(action.payload)) {
+          state.error = action.payload[0].msg;
+        } else {
+          state.error = action.payload;
+        }
       })
       .addCase(userChangeAvatar.fulfilled, (state, action) => {
         state.user = action.payload;
