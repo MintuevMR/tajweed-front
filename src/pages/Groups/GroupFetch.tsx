@@ -97,7 +97,7 @@ const GroupFetch = () => {
                     edit
                   </div>
                 )}
-              </div>
+              </div> 
               {isEditing ? (
                 <input
                   type="text"
