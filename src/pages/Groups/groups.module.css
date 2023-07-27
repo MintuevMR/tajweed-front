@@ -1,20 +1,11 @@
-.root {
-  display: flex;
-  height: 100vh;
-  background-color: #fbfbfb;
-
-}
-
-/* .main {
-  width: 80%;
-} */
-
 .content {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 50px;
-  padding: 30px;
+  padding: 50px;
+  background-color: #fbfbfb;
 }
 
 .card {

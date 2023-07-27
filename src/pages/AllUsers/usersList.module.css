@@ -1,22 +1,24 @@
-.main {
+.content {
+  width: 100%;
+  overflow-y: scroll;
   display: flex;
-  height: 100vh;
-  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+  padding: 50px;
+  background-color: #fbfbfb;
 }
-.container {
-  width: 100%;
-}
+
 .card_user {
-  display: flex;
-  margin: 15px;
-  border: 1px solid black;
-  border-radius: 15px;
-  width: 1200px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+  box-shadow: 0 5px 10px 0px rgb(209, 209, 209);
+  border: 1px solid green;
 }
+
 .user_name {
-  margin: 20px;
   display: flex;
   align-items: center;
 }
@@ -58,7 +60,6 @@
   align-items: center;
   height: 100px;
   position: absolute;
-  width: 1227px;
   bottom: 50px;
 }
 
@@ -100,11 +101,9 @@
 .pagination a:hover {
   background-color: #007bff;
   color: #fff;
- }
+}
 
- .pagination a:focus {
-	background: green;
-	color: white
- }
-
-
+.pagination a:focus {
+  background: green;
+  color: white;
+}

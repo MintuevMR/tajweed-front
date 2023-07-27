@@ -5,12 +5,12 @@ import styles from "./groups.module.css";
 
 const index = () => {
   return (
-    <div className={styles.root}>
+    <main>
       <ProfileSidebar />
-      <div className={styles.group_div}>
+      <div className={styles.content}>
         <GroupFetch />
       </div>
-    </div>
+    </main>
   );
 };
 
