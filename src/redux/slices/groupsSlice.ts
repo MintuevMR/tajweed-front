@@ -4,7 +4,7 @@ const initialState = {
   groups: [],
 };
 
-export const fetchGroup = createAsyncThunk(
+export const fetchGroups = createAsyncThunk(
   "fetch/groups",
   async (data, thunkAPI) => {
     try {
@@ -17,6 +17,18 @@ export const fetchGroup = createAsyncThunk(
   }
 );
 
+export const fetchGroup = createAsyncThunk(
+  "fetch/group",
+  async (data, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:3000/group${groupId}`);
+      const group = await res.json();
+      return group;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 export const createGroups = createAsyncThunk(
   "create/groups",
   async (groups, thunkAPI) => {
@@ -59,7 +71,7 @@ export const updateGroupsInStore = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ groups: updatedGroupName })
+        body: JSON.stringify({ groups: updatedGroupName }),
       });
       const json = await res.json();
       return json;
@@ -78,6 +90,9 @@ const groupsSlice = createSlice({
       .addCase(fetchGroup.fulfilled, (state, action) => {
         state.groups = action.payload;
       })
+      .addCase(fetchGroups.fulfilled, (state, action) => {
+        state.groups = action.payload;
+      })
       .addCase(fetchGroup.rejected, (state, action) => {
         state.error = action.payload;
       })
@@ -93,7 +108,9 @@ const groupsSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(updateGroupsInStore.fulfilled, (state, action) => {
-        const index = state.groups.findIndex((group) => group._id === action.payload._id);
+        const index = state.groups.findIndex(
+          (group) => group._id === action.payload._id
+        );
         if (index !== -1) {
           state.groups[index].groups = action.payload.groups;
         }
