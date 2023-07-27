@@ -36,9 +36,15 @@ const GroupFetch = () => {
       dispatch(
         updateGroupsInStore({ groupId, updatedGroupName: editingGroupName })
       );
-      setEditingGroupId(null);
     }
+    setEditingGroupId(null);
   };
+
+  const handleStartEditing = (groupId, groupName) => {
+    setEditingGroupId(groupId);
+    setEditingGroupName(groupName);
+  };
+
 
   useEffect(() => {
     dispatch(fetchGroup());
@@ -47,9 +53,16 @@ const GroupFetch = () => {
   return (
     <div className={styles.main}>
       <div className={styles.input_group}>
-        <input type="text" value={groupName} onChange={handleInputChange} />
-        <div className={styles.btn_add_group}>
-          <button onClick={handleAddGroup}>+</button>
+        <input
+          placeholder="Создайте группу..."
+          type="text"
+          value={groupName}
+          onChange={handleInputChange}
+        />
+        <div>
+          <div className={styles.btn_add_group} onClick={handleAddGroup}>
+            +
+          </div>
         </div>
       </div>
       <div className={styles.content}>
@@ -58,31 +71,39 @@ const GroupFetch = () => {
           return (
             <div className={styles.card} key={item._id}>
               <div>
-              <span
+                <span
                   onClick={() => handleDeleteGroup(item._id)}
                   className={`${styles.delete_group} material-symbols-outlined`}
                 >
                   backspace
                 </span>
                 {isEditing ? (
-                  <div className={`${styles.btn_check_mark} material-symbols-outlined `} onClick={() => handleEditGroup(item._id, item.groups)}>
+                  <div
+                    className={`${styles.btn_check_mark} material-symbols-outlined `}
+                    onClick={() => handleEditGroup(item._id)}
+                  >
                     done
                   </div>
                 ) : (
-                  <div className={`${styles.btn_redaction_mark} material-symbols-outlined `} onClick={() => setEditingGroupId(item._id)}>edit</div>
+                  <div
+                    className={`${styles.btn_redaction_mark} material-symbols-outlined `}
+                    onClick={() => handleStartEditing(item._id, item.groups)}
+                  >
+                    edit
+                  </div>
+                )}
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={editingGroupName}
+                    onChange={(e) => {
+                      setEditingGroupName(e.target.value);
+                    }}
+                  />
+                ) : (
+                  <span>{item.groups}</span>
                 )}
               </div>
-              {isEditing ? (
-                <input
-                  type="text"
-                  value={editingGroupName}
-                  onChange={(e) => {
-                    setEditingGroupName(e.target.value);
-                  }}
-                />
-              ) : (
-                <span>{item.groups}</span>
-              )}
             </div>
           );
         })}
