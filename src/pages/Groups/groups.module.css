@@ -14,18 +14,18 @@
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 50px;
-  padding: 51px;
-  height: 100vh;
+  padding: 30px;
 }
 
 .card {
-  padding: 15px;
+  padding: 5px;
   padding-left: 30px;
   width: 260px;
   border-radius: 10px;
   font-size: 20px;
   background-color: rgb(255, 255, 255);
   transition: 0.5s;
+  padding-bottom: 30px;
 }
 
 .card div {
@@ -36,6 +36,9 @@
   background-color: rgba(38, 153, 7, 1);
   color: white;
 }
+/* .card:hover .delete_group{
+  color: red;
+} */
 
 .input_group{
     display: flex;
@@ -43,10 +46,27 @@
     justify-content: center;
 }
 .input_group input{
-    width: 300px;
-    height: 50px;
-    margin-top: 22px;
-    margin-right: 20px;
+  width: 250px;
+  padding: 13px 14px;
+  margin-bottom: 25px;
+  border: 1px solid #919eab4d;
+  border-radius: 10px;
+  outline: none;
+}
+.input_group input:hover {
+  border: 1px solid rgba(38, 153, 7, 1);
+}
+.btn_add_group{
+  cursor: pointer;
+  background: rgba(38, 153, 7, 1);;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding: 10px;
+  margin-left: 5px;
+  color: white;
+  border: none;
+  border-radius: 8px;
 }
 
 .delete_group{
