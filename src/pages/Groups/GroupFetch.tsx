@@ -38,9 +38,15 @@ const GroupFetch = () => {
       dispatch(
         updateGroupsInStore({ groupId, updatedGroupName: editingGroupName })
       );
-      setEditingGroupId(null);
     }
+    setEditingGroupId(null);
   };
+
+  const handleStartEditing = (groupId, groupName) => {
+    setEditingGroupId(groupId);
+    setEditingGroupName(groupName);
+  };
+
 
   useEffect(() => {
     dispatch(fetchGroups());
@@ -49,9 +55,16 @@ const GroupFetch = () => {
   return (
     <>
       <div className={styles.input_group}>
-        <input type="text" value={groupName} onChange={handleInputChange} />
-        <div className={styles.btn_add_group}>
-          <button onClick={handleAddGroup}>+</button>
+        <input
+          placeholder="Создайте группу..."
+          type="text"
+          value={groupName}
+          onChange={handleInputChange}
+        />
+        <div>
+          <div className={styles.btn_add_group} onClick={handleAddGroup}>
+            +
+          </div>
         </div>
       </div>
       <div className={styles.content}>
@@ -69,13 +82,18 @@ const GroupFetch = () => {
                 {isEditing ? (
                   <div
                     className={`${styles.btn_check_mark} material-symbols-outlined `}
+<<<<<<< HEAD
                     onClick={() => handleEditGroup(item._id, item.groups)}
+=======
+                    onClick={() => handleEditGroup(item._id)}
+>>>>>>> 68adb6994c200e317a6b2f3094c54835aee6a2da
                   >
                     done
                   </div>
                 ) : (
                   <div
                     className={`${styles.btn_redaction_mark} material-symbols-outlined `}
+<<<<<<< HEAD
                     onClick={() => setEditingGroupId(item._id)}
                   >
                     edit
@@ -96,6 +114,25 @@ const GroupFetch = () => {
                   <span>{item.groups}</span>
                 </Link>
               )}
+=======
+                    onClick={() => handleStartEditing(item._id, item.groups)}
+                  >
+                    edit
+                  </div>
+                )}
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={editingGroupName}
+                    onChange={(e) => {
+                      setEditingGroupName(e.target.value);
+                    }}
+                  />
+                ) : (
+                  <span>{item.groups}</span>
+                )}
+              </div>
+>>>>>>> 68adb6994c200e317a6b2f3094c54835aee6a2da
             </div>
           );
         })}

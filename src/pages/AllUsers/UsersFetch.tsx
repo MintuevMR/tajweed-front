@@ -35,11 +35,14 @@ const AllUsers = () => {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   return (
-    <div>
-      <Search onSearch={(query) => setSearchQuery(query)} />
-      {currentUsers.map((user) => (
-        <Users key={user._id} user={user} loading={loading} />
-      ))}
+    <>
+      <div className={styles.content}>
+        <Search onSearch={(query) => setSearchQuery(query)} />
+        {currentUsers.map((user) => (
+          <Users key={user._id} user={user} loading={loading} />
+        ))}
+      </div>
+
       <div className={styles.button_container}>
         <div className={styles.button_wrapper}>
           <button
@@ -65,7 +68,7 @@ const AllUsers = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
