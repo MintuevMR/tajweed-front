@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './usersList.module.css'
+import styles from "./usersList.module.css";
 
 const Pagination = ({ usersAllPerPage, totalUsers, paginate }) => {
   const pageNumbers = [];

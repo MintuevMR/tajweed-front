@@ -100,4 +100,11 @@
 .pagination a:hover {
   background-color: #007bff;
   color: #fff;
-}
+ }
+
+ .pagination a:focus {
+	background: green;
+	color: white
+ }
+
+
