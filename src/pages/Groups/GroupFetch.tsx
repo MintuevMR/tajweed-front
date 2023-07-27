@@ -82,18 +82,16 @@ const GroupFetch = () => {
                 {isEditing ? (
                   <div
                     className={`${styles.btn_check_mark} material-symbols-outlined `}
-<<<<<<< HEAD
+
                     onClick={() => handleEditGroup(item._id, item.groups)}
-=======
-                    onClick={() => handleEditGroup(item._id)}
->>>>>>> 68adb6994c200e317a6b2f3094c54835aee6a2da
+
                   >
                     done
                   </div>
                 ) : (
                   <div
                     className={`${styles.btn_redaction_mark} material-symbols-outlined `}
-<<<<<<< HEAD
+
                     onClick={() => setEditingGroupId(item._id)}
                   >
                     edit
@@ -114,25 +112,7 @@ const GroupFetch = () => {
                   <span>{item.groups}</span>
                 </Link>
               )}
-=======
-                    onClick={() => handleStartEditing(item._id, item.groups)}
-                  >
-                    edit
-                  </div>
-                )}
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={editingGroupName}
-                    onChange={(e) => {
-                      setEditingGroupName(e.target.value);
-                    }}
-                  />
-                ) : (
-                  <span>{item.groups}</span>
-                )}
-              </div>
->>>>>>> 68adb6994c200e317a6b2f3094c54835aee6a2da
+
             </div>
           );
         })}
