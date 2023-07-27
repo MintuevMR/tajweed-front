@@ -3,13 +3,12 @@ import Users from "./Users";
 import Search from "./Search/Search";
 import Pagination from "./Pagination";
 import styles from "./usersList.module.css";
-import { userAll } from "../../redux/slices/userSlices";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersAllPerPage] = useState(5);
+  const [usersAllPerPage] = useState(4);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -36,8 +35,7 @@ const AllUsers = () => {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   return (
-    <div className={styles.container}>
-      <h2>Все студенты</h2>
+    <div>
       <Search onSearch={(query) => setSearchQuery(query)} />
       {currentUsers.map((user) => (
         <Users key={user._id} user={user} loading={loading} />

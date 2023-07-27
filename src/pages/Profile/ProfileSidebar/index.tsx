@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./profileSidebar.module.css";
 import teacherImg from "../../../assets/man.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "../../../redux/slices/userSlices";
+import { showBarToggle } from "../../../redux/slices/appSlices";
 
 const ProfileSidebar = () => {
   const user = useSelector((state) => state.user.user);
+  const showBar = useSelector((state) => state.application.showBar);
 
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispath(userInfo());
+    dispatch(userInfo());
   }, []);
 
   return (
@@ -29,62 +31,169 @@ const ProfileSidebar = () => {
           />
         </div>
         <div>
-          <Link to={"/profile"}>{`${user?.lastName} ${user?.firstName}.`}</Link>
+          {showBar ? (
+            <Link
+              to={"/profile"}
+            >{`${user?.lastName} ${user?.firstName}.`}</Link>
+          ) : null}
         </div>
       </header>
-      <div className={styles.menuItem}>
-        <span className={`${styles.icons} icons material-symbols-outlined`}>
-          school
-        </span>
-        <Link to={"/lessons"}> Обучение </Link>
-      </div>
-      <div className={styles.menuItem}>
-        <span className={`${styles.icons} icons material-symbols-outlined`}>
-          menu_book
-        </span>
-        <Link to={"/quran"}> Коран </Link>
-      </div>
-      <div className={styles.menuItem}>
-        <span className={`${styles.icons} icons material-symbols-outlined`}>
-          auto_stories
-        </span>
-        <Link to={"/azkary"}> Азкары </Link>
-      </div>
-      <div className={styles.menuItem}>
-        <span className={`${styles.icons} icons material-symbols-outlined`}>
-          bookmarks
-        </span>
-        <Link to={"/bookmarks"}> Мои закладки </Link>
-      </div>
+      <Link to={"/lessons"}>
+        <div className={styles.menuItem}>
+          {showBar ? (
+            <>
+              <span
+                className={`${styles.icons} icons material-symbols-outlined`}
+              >
+                school
+              </span>
+              Обучение
+            </>
+          ) : (
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              school
+            </span>
+          )}
+        </div>
+      </Link>
+      <Link to={"/quran"}>
+        <div className={styles.menuItem}>
+          {showBar ? (
+            <>
+              <span
+                className={`${styles.icons} icons material-symbols-outlined`}
+              >
+                menu_book
+              </span>
+              Коран
+            </>
+          ) : (
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              menu_book
+            </span>
+          )}
+        </div>
+      </Link>
+      <Link to={"/azkary"}>
+        <div className={styles.menuItem}>
+          {showBar ? (
+            <>
+              <span
+                className={`${styles.icons} icons material-symbols-outlined`}
+              >
+                auto_stories
+              </span>
+              Азкары
+            </>
+          ) : (
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              auto_stories
+            </span>
+          )}
+        </div>
+      </Link>
+      <Link to={"/bookmarks"}>
+        <div className={styles.menuItem}>
+          {showBar ? (
+            <>
+              <span
+                className={`${styles.icons} icons material-symbols-outlined`}
+              >
+                bookmarks
+              </span>
+              <span>Мои закладки</span>
+            </>
+          ) : (
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              bookmarks
+            </span>
+          )}
+        </div>
+      </Link>
       {user && (
         <div>
-          <div className={styles.menuItem}>
-            <span className={`${styles.icons} icons material-symbols-outlined`}>
-              group
-            </span>
-            <Link to={"/students"}> Все студенты </Link>
-          </div>
-          <div className={styles.menuItem}>
-            <span className={`${styles.icons} icons material-symbols-outlined`}>
-              groups
-            </span>
-            <Link to={"/groups"}> Группы </Link>
-          </div>
+          <Link to={"/students"}>
+            <div className={styles.menuItem}>
+              {showBar ? (
+                <>
+                  <span
+                    className={`${styles.icons} icons material-symbols-outlined`}
+                  >
+                    group
+                  </span>
+                  Все студенты
+                </>
+              ) : (
+                <span
+                  className={`${styles.icons} icons material-symbols-outlined`}
+                >
+                  group
+                </span>
+              )}
+            </div>
+          </Link>
+          <Link to={"/groups"}>
+            <div className={styles.menuItem}>
+              {showBar ? (
+                <>
+                  <span
+                    className={`${styles.icons} icons material-symbols-outlined`}
+                  >
+                    groups
+                  </span>
+                  Группы
+                </>
+              ) : (
+                <span
+                  className={`${styles.icons} icons material-symbols-outlined`}
+                >
+                  groups
+                </span>
+              )}
+            </div>
+          </Link>
         </div>
       )}
-      <div className={styles.menuItem}>
-        <span className={`${styles.icons} icons material-symbols-outlined`}>
-          logout
-        </span>
-        <Link
-          to={"/"}
-          onClick={() => {
-            localStorage.removeItem("token");
-            window.location.reload();
-          }}
-        >
-          Выход
-        </Link>
+      <Link
+        to={"/"}
+        onClick={() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        }}
+      >
+        <div className={styles.menuItem}>
+          {showBar ? (
+            <>
+              <span
+                className={`${styles.icons} icons material-symbols-outlined`}
+              >
+                logout
+              </span>
+              Выход
+            </>
+          ) : (
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              logout
+            </span>
+          )}
+        </div>
+      </Link>
+      <div
+        className={styles.menuItem}
+        onClick={() => dispatch(showBarToggle())}
+      >
+        {showBar ? (
+          <>
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              format_letter_spacing
+            </span>
+            <span>Свернуть меню</span>
+          </>
+        ) : (
+          <span className={`${styles.icons} icons material-symbols-outlined`}>
+            format_letter_spacing
+          </span>
+        )}
       </div>
     </div>
   );

@@ -1,13 +1,12 @@
-.main{
+.main {
   display: flex;
   height: 100vh;
   width: 100%;
-  
-  }
-  .container {
+}
+.container {
   width: 100%;
-  }
-  .card_user{
+}
+.card_user {
   display: flex;
   margin: 15px;
   border: 1px solid black;
@@ -15,23 +14,22 @@
   width: 1200px;
   justify-content: space-between;
   flex-wrap: wrap;
-  }
-  .user_name{
+}
+.user_name {
   margin: 20px;
   display: flex;
   align-items: center;
-  }
-
-
-  .btn_userClick{
-  display: flex;
-  align-items: center;
-  
 }
 
-  .user_btnClick, .user_btnDelClick {
+.btn_userClick {
   display: flex;
-  padding: 10px 20px; 
+  align-items: center;
+}
+
+.user_btnClick,
+.user_btnDelClick {
+  display: flex;
+  padding: 10px 20px;
   margin: 8px;
   border-radius: 8px;
   align-items: center;
@@ -39,26 +37,21 @@
   width: 50px;
   width: 40px;
 }
-.user_btnDelClick{
-    background-color: red;
+.user_btnDelClick {
+  background-color: red;
+}
 
-  }
-  
-
-  
-  .user_btn{
-  padding: 6px 12px; 
-   margin: 10px;
+.user_btn {
+  padding: 6px 12px;
+  margin: 10px;
   white-space: pre-line;
   word-break: break-word;
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  }
-  
-  
+}
 
-  .button_container {
+.button_container {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -67,57 +60,51 @@
   position: absolute;
   width: 1227px;
   bottom: 50px;
- }
- 
- 
- .button_wrapper button {
-  width: 150px;
+}
+
+.button_wrapper button {
   padding: 8px 16px;
   border: none;
   background-color: green;
   color: #fff;
   cursor: pointer;
- }
- 
- .button_wrapper button:hover {
+}
+
+.button_wrapper button:hover {
   background-color: #0056b3;
- }
- .button_wrapper button:disabled {
+}
+.button_wrapper button:disabled {
   background-color: #c0c0c0;
   cursor: not-allowed;
- }
- .button_wrapper:last-child {
-  margin-left: auto;
- }
-
- 
+}
 
 .pagination {
   display: flex;
   justify-content: center;
   list-style: none;
   width: 100%;
-  padding: 360px;
-  
- }
- 
- .pagination li {
+}
+
+.pagination li {
   margin: 0 5px;
- }
- 
- .pagination a {
+}
+
+.pagination a {
   padding: 5px 10px;
   border: 1px solid green;
   border-radius: 4px;
   text-decoration: none;
   color: green;
- }
- 
- .pagination a:hover {
+}
+
+.pagination a:hover {
   background-color: #007bff;
   color: #fff;
  }
+
  .pagination a:focus {
 	background: green;
 	color: white
  }
+
+

@@ -12,12 +12,13 @@ function Search({ onSearch }) {
 
   return (
     <form className={styles.form}>
+      <h2>Все пользователи</h2>
       <input
         onChange={onChangeSearchInput}
         className={styles.input}
         type="text"
         value={searchValue}
-        placeholder="Введите имя студента"
+        placeholder="Введите фамилию..."
       />
     </form>
   );
