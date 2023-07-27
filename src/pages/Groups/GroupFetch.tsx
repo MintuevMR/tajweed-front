@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import {
   createGroups,
   deleteGroups,
-  fetchGroup,
+  fetchGroups,
   updateGroupsInStore,
 } from "../../redux/slices/groupsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./groups.module.css";
+import { Link } from "react-router-dom";
 
 const GroupFetch = () => {
   const groups = useSelector((state) => state.groups.groups);
+
   const dispatch = useDispatch();
   const [editingGroupId, setEditingGroupId] = useState(null);
   const [editingGroupName, setEditingGroupName] = useState("");
@@ -41,11 +43,11 @@ const GroupFetch = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchGroup());
+    dispatch(fetchGroups());
   }, []);
 
   return (
-    <div className={styles.main}>
+    <>
       <div className={styles.input_group}>
         <input type="text" value={groupName} onChange={handleInputChange} />
         <div className={styles.btn_add_group}>
@@ -58,18 +60,26 @@ const GroupFetch = () => {
           return (
             <div className={styles.card} key={item._id}>
               <div>
-              <span
+                <span
                   onClick={() => handleDeleteGroup(item._id)}
                   className={`${styles.delete_group} material-symbols-outlined`}
                 >
                   backspace
                 </span>
                 {isEditing ? (
-                  <div className={`${styles.btn_check_mark} material-symbols-outlined `} onClick={() => handleEditGroup(item._id, item.groups)}>
+                  <div
+                    className={`${styles.btn_check_mark} material-symbols-outlined `}
+                    onClick={() => handleEditGroup(item._id, item.groups)}
+                  >
                     done
                   </div>
                 ) : (
-                  <div className={`${styles.btn_redaction_mark} material-symbols-outlined `} onClick={() => setEditingGroupId(item._id)}>edit</div>
+                  <div
+                    className={`${styles.btn_redaction_mark} material-symbols-outlined `}
+                    onClick={() => setEditingGroupId(item._id)}
+                  >
+                    edit
+                  </div>
                 )}
               </div>
               {isEditing ? (
@@ -81,13 +91,16 @@ const GroupFetch = () => {
                   }}
                 />
               ) : (
-                <span>{item.groups}</span>
+                <Link to={`/groups/group/${item._id}`}>
+                  {" "}
+                  <span>{item.groups}</span>
+                </Link>
               )}
             </div>
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 
