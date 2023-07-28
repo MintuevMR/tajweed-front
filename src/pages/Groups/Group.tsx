@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGroup, fetchGroups } from "../../redux/slices/groupsSlice";
+import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { Link, useParams } from "react-router-dom";
 import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import styles from "./groups.module.css";
+
 const Group = () => {
   const { id } = useParams();
   const groups = useSelector((state) => state.groups.groups);
@@ -31,12 +32,14 @@ const Group = () => {
               <table className={styles.table}>
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Список группы</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {group.users.map((student) => (
+                  {group.users.map((student, index) => (
                     <tr key={student._id}>
+                      <td>{index + 1}</td>
                       <td>
                         {student.firstName} {student.lastName}
                       </td>
