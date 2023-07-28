@@ -1,25 +1,21 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import NotFound from "./pages/Lessons/NotFound/index.tsx";
+import { useSelector } from "react-redux";
 
+import NotFound from "./pages/Lessons/NotFound/index.tsx";
 import Temp from "./pages/Temp";
 import SignIn from "./pages/SignIn/index.tsx";
 import Azkary from "./pages/Azkary/index.tsx";
 import Morning from "./pages/Azkary/morning.tsx";
 import Evening from "./pages/Azkary/evening.tsx";
-
 import Bookmark from "./pages/Bookmark/index.tsx";
 import Groups from "./pages/Groups/index.tsx";
 import Group from "./pages/Groups/Group.tsx";
-
-import "./App.css";
 import SignUp from "./pages/SignUp";
 import Lessons from "./pages/Lessons/index.tsx";
 import Profile from "./pages/Profile/index.tsx";
 import Home from "./pages/Home/Index.tsx";
-import { useSelector } from "react-redux";
 import Voting from "./pages/Temp/voting.tsx";
 import Forms from "./pages/Temp/forms.tsx";
-import { RootState } from "./redux/store/store.ts";
 import Madda from "./pages/Temp/madda.tsx";
 import Sukun from "./pages/Temp/sukun.tsx";
 import Tanvin from "./pages/Temp/tanvin.tsx";
@@ -28,9 +24,12 @@ import AllUsers from "./pages/AllUsers/index.tsx";
 import Quran from "./pages/Quran/index.tsx";
 import Sura from "./pages/Quran/Sura.tsx";
 
+import { RootState } from "./redux/store/store.ts";
+import "./App.scss";
+
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
-
+  
   return !token ? (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -39,7 +38,22 @@ function App() {
       <Route path="/profile" element={<Navigate to="/login" />} />
       <Route path="/azkary" element={<Navigate to="/login" />} />
       <Route path="/lessons" element={<Navigate to="/login" />} />
+      <Route path="/quran" element={<Navigate to="/login" />} />
+      <Route path="/quran/:number" element={<Navigate to="/login" />} />
+      <Route path="/lessons/alphabet" element={<Navigate to="/login" />} />
+      <Route path="/lessons/voting"element={<Navigate to="/login" />} />
+      <Route path="/lessons/forms" element={<Navigate to="/login" />} />
+      <Route path="/lessons/madda" element={<Navigate to="/login" />} />
+      <Route path="/lessons/sukun" element={<Navigate to="/login" />} />
+      <Route path="/lessons/tanvin" element={<Navigate to="/login" />} />
+      <Route path="/lessons/tashdid" element={<Navigate to="/login" />} />
+      <Route path="/azkary"element={<Navigate to="/login" />} />
+      <Route path="/azkary/morning" element={<Navigate to="/login" />} />
+      <Route path="/azkary/evening" element={<Navigate to="/login" />} />
+      <Route path="/bookmarks" element={<Navigate to="/login" />} />
+      <Route path="/students" element={<Navigate to="/login" />} />
       <Route path="/groups" element={<Navigate to="/login" />} />
+      <Route path="/groups/group/:id"element={<Navigate to="/login" />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   ) : (

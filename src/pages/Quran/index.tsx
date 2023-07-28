@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSurahs } from "../../redux/slices/quranSlice";
 import ProfileSidebar from "../Profile/ProfileSidebar";
-import styles from "./quran.module.css";
 import { Link } from "react-router-dom";
+import CardQuran from "@/components/CardQuran";
+import "@/App.scss";
 
 const Quran = () => {
   const surahs = useSelector((state) => state.quran.surahs);
@@ -16,15 +17,15 @@ const Quran = () => {
   return (
     <main>
       <ProfileSidebar />
-      <div className={styles.content}>
+      <div className="content">
         {surahs.map((sura) => {
           return (
-            <Link key={sura.number} to={`/quran/${sura.number}` }>
-              <div className={styles.card} >
-                <div className={styles.number}>{sura.number}</div>
-                <div className={styles.enName}>{sura.englishName}</div>
-                <div className={styles.name}>{sura.name}</div>
-              </div>
+            <Link key={sura.number} to={`/quran/${sura.number}`}>
+              <CardQuran
+                number={sura.number}
+                title={sura.englishName}
+                subTitle={sura.name}
+              />
             </Link>
           );
         })}
