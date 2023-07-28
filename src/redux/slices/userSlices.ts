@@ -52,9 +52,12 @@ export const userChangeInfo = createAsyncThunk(
         body: JSON.stringify({ firstName, lastName }),
       });
       const json = await res.json();
-      if (json.error || json.error[0].msg) {
+
+      if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
+      
+      
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
