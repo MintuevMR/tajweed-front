@@ -108,7 +108,7 @@ const GroupFetch = () => {
                       {" "}
                       <span>{item.groups}</span>
                     </Link>
-                    <div className={styles.studentCount}></div>
+                    <div className={styles.studentCount}>Студентов: {item.users.length}</div>
                   </>
                 )}
               </div>
