@@ -3,24 +3,23 @@ import Users from "./Users";
 import Search from "./Search/Search";
 import Pagination from "./Pagination";
 import styles from "./usersList.module.css";
-import GroupFetch from "../Groups/GroupFetch";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchGroups } from "../../redux/slices/groupsSlice";
-import { userAll } from "../../redux/slices/userSlices";
 
 const AllUsers = () => {
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersAllPerPage] = useState(4);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const groups = useSelector(state => state.groups.groups)
-  const users = useSelector(state => state.user.users)
-  const dispatch = useDispatch()
-
   useEffect(() => {
-    dispatch(userAll())
-    dispatch(fetchGroups())
+    const getUsers = async () => {
+      setLoading(true);
+      const res = await fetch("http://localhost:3000/users");
+      const data = await res.json();
+      setUsers(data);
+      setLoading(false);
+    };
+    getUsers();
   }, []);
 
   const filteredUsers = users.filter((user) =>
@@ -36,11 +35,14 @@ const AllUsers = () => {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   return (
-    <div className={styles.content}>
-      <Search onSearch={(query) => setSearchQuery(query)} />
-      {currentUsers.map((user) => (
-        <Users key={user._id} user={user} loading={loading} groups={groups} />
-      ))}
+    <>
+      <div className={styles.content}>
+        <Search onSearch={(query) => setSearchQuery(query)} />
+        {currentUsers.map((user) => (
+          <Users key={user._id} user={user} loading={loading} />
+        ))}
+      </div>
+
       <div className={styles.button_container}>
         <div className={styles.button_wrapper}>
           <button
@@ -66,7 +68,7 @@ const AllUsers = () => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
