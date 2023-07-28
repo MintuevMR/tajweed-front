@@ -1,21 +1,24 @@
 .content {
   width: 100%;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   gap: 50px;
+  padding: 50px;
   background-color: #fbfbfb;
 }
+
 .card_user {
-  display: flex;
-  margin: 15px;
-  border: 1px solid black;
-  border-radius: 15px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+  box-shadow: 0 5px 10px 0px rgb(209, 209, 209);
+  border: 1px solid green;
 }
+
 .user_name {
-  margin: 20px;
   display: flex;
   align-items: center;
 }
@@ -37,7 +40,7 @@
   width: 40px;
 }
 .user_btnDelClick {
-  background-color: gray;
+  background-color: red;
 }
 
 .user_btn {
@@ -80,6 +83,7 @@
   display: flex;
   justify-content: center;
   list-style: none;
+  width: 100%;
 }
 
 .pagination li {
@@ -97,11 +101,9 @@
 .pagination a:hover {
   background-color: #007bff;
   color: #fff;
- }
+}
 
- .pagination a:focus {
-	background: green;
-	color: white
- }
-
-
+.pagination a:focus {
+  background: green;
+  color: white;
+}
