@@ -8,6 +8,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./groups.module.css";
 import { Link } from "react-router-dom";
+import Users from "../AllUsers/Users";
+import GroupsModal from "./GroupModal";
 
 const GroupFetch = () => {
   const groups = useSelector((state) => state.groups.groups);
