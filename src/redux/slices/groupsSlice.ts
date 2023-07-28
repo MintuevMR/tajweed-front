@@ -6,7 +6,7 @@ const initialState = {
 
 export const fetchGroups = createAsyncThunk(
   "fetch/groups",
-  async (data, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const res = await fetch(`http://localhost:3000/groups`);
       const groups = await res.json();
@@ -17,18 +17,6 @@ export const fetchGroups = createAsyncThunk(
   }
 );
 
-export const fetchGroup = createAsyncThunk(
-  "fetch/group",
-  async (data, thunkAPI) => {
-    try {
-      const res = await fetch(`http://localhost:3000/group${groupId}`);
-      const group = await res.json();
-      return group;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
 export const createGroups = createAsyncThunk(
   "create/groups",
   async (groups, thunkAPI) => {
@@ -80,6 +68,31 @@ export const updateGroupsInStore = createAsyncThunk(
     }
   }
 );
+export const addUserInGroup = createAsyncThunk(
+  "addUser/groups",
+  async ({ groupId, userId }, thunkAPI) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/group/${groupId}/add-user/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+
+      if(data.error) {
+        return thunkAPI.rejectWithValue(data.error)
+      }
+
+      return { groupId, data };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const groupsSlice = createSlice({
   name: "groups",
@@ -87,13 +100,10 @@ const groupsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGroup.fulfilled, (state, action) => {
-        state.groups = action.payload;
-      })
       .addCase(fetchGroups.fulfilled, (state, action) => {
         state.groups = action.payload;
       })
-      .addCase(fetchGroup.rejected, (state, action) => {
+      .addCase(fetchGroups.rejected, (state, action) => {
         state.error = action.payload;
       })
       .addCase(createGroups.fulfilled, (state, action) => {
@@ -117,7 +127,17 @@ const groupsSlice = createSlice({
       })
       .addCase(updateGroupsInStore.rejected, (state, action) => {
         state.error = action.payload;
-      });
+      })
+      .addCase(addUserInGroup.fulfilled, (state, action) => {
+        state.groups = state.groups.map((item) => {
+          if (item._id === action.payload.groupId) {
+            item.users.push(action.payload.data);
+          }
+          return item;
+        });
+      })
+
+      .addDefaultCase((state) => state);
   },
 });
 
