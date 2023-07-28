@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./quran.module.scss";
-import ProfileSidebar from "../Profile/ProfileSidebar";
+import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 

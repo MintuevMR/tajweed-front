@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileSidebar from "../Profile/ProfileSidebar/index";
+import ProfileSidebar from "../../components/Profile/ProfileSidebar/index";
 import styles from "./azkary.module.css"
 import { Link } from "react-router-dom";
 

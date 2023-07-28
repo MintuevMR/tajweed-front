@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSurahs } from "../../redux/slices/quranSlice";
-import ProfileSidebar from "../Profile/ProfileSidebar";
+import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import { Link } from "react-router-dom";
 import CardQuran from "@/components/CardQuran";
 import "@/App.scss";
