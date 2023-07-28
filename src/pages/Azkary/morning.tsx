@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./azkary.module.css";
-import ProfileSidebar from "../Profile/ProfileSidebar/index";
+import ProfileSidebar from "../../components/Profile/ProfileSidebar/index";
 import strelkaup from "../../assets/strelkaup.png";
 import vnimanie from "../../assets/vnimanie.png";
 import { useDispatch, useSelector } from "react-redux";

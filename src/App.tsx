@@ -12,7 +12,7 @@ import Groups from "./pages/Groups/index.tsx";
 import Group from "./pages/Groups/Group.tsx";
 import SignUp from "./pages/SignUp";
 import Lessons from "./pages/Lessons/index.tsx";
-import Profile from "./pages/Profile/index.tsx";
+import Profile from "./components/Profile/index.tsx";
 import Home from "./pages/Home/Index.tsx";
 import Voting from "./pages/Temp/voting.tsx";
 import Forms from "./pages/Temp/forms.tsx";

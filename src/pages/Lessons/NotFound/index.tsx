@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileSidebar from "../../Profile/ProfileSidebar";
+import ProfileSidebar from "../../../components/Profile/ProfileSidebar";
 import styles from "./notFound.module.css";
 
 const NotFound = () => {
