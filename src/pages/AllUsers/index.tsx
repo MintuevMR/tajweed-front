@@ -5,10 +5,10 @@ import styles from "./usersList.module.css";
 
 const index = () => {
   return (
-    <div className={styles.main}>
+    <main>
       <ProfileSidebar />
       <UsersFetch />
-    </div>
+    </main>
   );
 };
 

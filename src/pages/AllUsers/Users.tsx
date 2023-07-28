@@ -1,33 +1,73 @@
 import styles from "./usersList.module.css";
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import GroupsModal from "../Groups/GroupModal";
+import { useDispatch, useSelector } from "react-redux";
+import { addUserInGroup } from "../../redux/slices/groupsSlice";
 
-const Users = ({ user, loading }) => {
+const Users = ({ user, loading, groups }) => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedGroup, setSelectedGroup] = useState("");
+  // const [disabledBtn, setDisabledBtn] = useState(true)
+
+  const gr = useSelector((state) => state.groups.groups)
+  console.log('gr', gr);
 
 
+  
 
   const handleOpenModal = () => {
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
   const handleCloseModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
-
+  const handleSelectGroup = (groupId) => {
+    setSelectedGroup(groupId);
+    handleCloseModal();
+    // setDisabledBtn(false)
+  };
 
   if (loading) {
     return <h2>Loading...</h2>;
   }
+
+console.log();
+
+// const hasUserInGroup = groups.find(item => item.users.includes(user._id))
+// console.log('has in group', hasUserInGroup)
+// const hasUserInGroup = () =>{
+//   if(disabledBtn === false){
+//     setDisabledBtn(true)
+//   }
+// }
+const hasUserInGroup = groups.some((group) => group.users.includes(user._id));
+
+
   return (
     <div className={styles.card_user} key={user._id}>
       <p className={styles.user_name}>
         Имя: {user.firstName} <br /> Фамилия: {user.lastName}
       </p>
       <div className={styles.btn_userClick}>
-        <button onClick={handleOpenModal} className={styles.user_btnClick}>+</button>
-        <button onClick={handleCloseModal} className={styles.user_btnDelClick}>x</button>
+        <button
+        style={hasUserInGroup ? {backgroundColor: "gray"} : null}
+          disabled={hasUserInGroup}
+          onClick={handleOpenModal}
+          className={styles.user_btnClick}
+        >
+          +
+        </button>
+        <button className={styles.user_btnDelClick}>x</button>
       </div>
-      {showModal && <GroupsModal onClose={handleCloseModal} />} 
+      {showModal && (
+        <GroupsModal
+          user={user}
+          groups={groups}
+          onClose={handleCloseModal}
+          onSelectGroup={handleSelectGroup}
+        />
+      )}
     </div>
   );
 };

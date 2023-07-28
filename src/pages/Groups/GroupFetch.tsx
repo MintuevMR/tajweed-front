@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import {
   createGroups,
   deleteGroups,
-  fetchGroup,
+  fetchGroups,
   updateGroupsInStore,
 } from "../../redux/slices/groupsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./groups.module.css";
+import Users from "../AllUsers/Users";
+import GroupsModal from "./GroupModal";
 
 const GroupFetch = () => {
   const groups = useSelector((state) => state.groups.groups);
@@ -27,7 +29,7 @@ const GroupFetch = () => {
     if (groupName.trim() === "") {
       return;
     }
-    dispatch(createGroups(groupName));
+    dispatch(createGroups(groupName));s
     setGroupName("");
   };
 
@@ -47,7 +49,7 @@ const GroupFetch = () => {
 
 
   useEffect(() => {
-    dispatch(fetchGroup());
+    dispatch(fetchGroups());
   }, []);
 
   return (
