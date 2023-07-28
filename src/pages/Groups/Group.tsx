@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGroup, fetchGroups } from "../../redux/slices/groupsSlice";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProfileSidebar from "../Profile/ProfileSidebar";
 import styles from "./groups.module.css";
 const Group = () => {
@@ -22,7 +22,9 @@ const Group = () => {
         <div className={styles.centerContent}>
           <div className={styles.heading}>
             <h2>{group.groups}</h2>
+            <Link to={"/students"}>
             <button className={styles.btnAdd}>Добавить в группу</button>
+            </Link>
           </div>
           {group.users.length > 0 ? (
             <div className={styles.rodTable}>
