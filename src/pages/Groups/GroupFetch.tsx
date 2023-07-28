@@ -7,11 +7,11 @@ import {
 } from "../../redux/slices/groupsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./groups.module.css";
-import { Link } from "react-router-dom";
+import Users from "../AllUsers/Users";
+import GroupsModal from "./GroupModal";
 
 const GroupFetch = () => {
   const groups = useSelector((state) => state.groups.groups);
-
   const dispatch = useDispatch();
   const [editingGroupId, setEditingGroupId] = useState(null);
   const [editingGroupName, setEditingGroupName] = useState("");
@@ -29,7 +29,7 @@ const GroupFetch = () => {
     if (groupName.trim() === "") {
       return;
     }
-    dispatch(createGroups(groupName));
+    dispatch(createGroups(groupName));s
     setGroupName("");
   };
 
@@ -53,7 +53,7 @@ const GroupFetch = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.main}>
       <div className={styles.input_group}>
         <input
           placeholder="Создайте группу..."
@@ -82,7 +82,7 @@ const GroupFetch = () => {
                 {isEditing ? (
                   <div
                     className={`${styles.btn_check_mark} material-symbols-outlined `}
-                    onClick={() => handleEditGroup(item._id, item.groups)}
+                    onClick={() => handleEditGroup(item._id)}
                   >
                     done
                   </div>
@@ -94,28 +94,23 @@ const GroupFetch = () => {
                     edit
                   </div>
                 )}
-              {isEditing ? (
-                <input
-                className={styles.edit_input}
-                type="text"
-                value={editingGroupName}
-                onChange={(e) => {
-                  setEditingGroupName(e.target.value);
-                }}
-                />
+                {isEditing ? (
+                  <input
+                    type="text"
+                    value={editingGroupName}
+                    onChange={(e) => {
+                      setEditingGroupName(e.target.value);
+                    }}
+                  />
                 ) : (
-                  <Link to={`/groups/group/${item._id}`}>
-                  {" "}
                   <span>{item.groups}</span>
-                </Link>
-              )}
-
-              </div> 
+                )}
+              </div>
             </div>
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
