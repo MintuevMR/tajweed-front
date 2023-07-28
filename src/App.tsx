@@ -25,7 +25,7 @@ import Quran from "./pages/Quran/index.tsx";
 import Sura from "./pages/Quran/Sura.tsx";
 
 import { RootState } from "./redux/store/store.ts";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
