@@ -47,7 +47,6 @@ const GroupFetch = () => {
     setEditingGroupName(groupName);
   };
 
-
   useEffect(() => {
     dispatch(fetchGroups());
   }, []);
@@ -94,23 +93,25 @@ const GroupFetch = () => {
                     edit
                   </div>
                 )}
-              {isEditing ? (
-                <input
-                className={styles.edit_input}
-                type="text"
-                value={editingGroupName}
-                onChange={(e) => {
-                  setEditingGroupName(e.target.value);
-                }}
-                />
+                {isEditing ? (
+                  <input
+                    className={styles.edit_input}
+                    type="text"
+                    value={editingGroupName}
+                    onChange={(e) => {
+                      setEditingGroupName(e.target.value);
+                    }}
+                  />
                 ) : (
-                  <Link to={`/groups/group/${item._id}`}>
-                  {" "}
-                  <span>{item.groups}</span>
-                </Link>
-              )}
-
-              </div> 
+                  <>
+                    <Link to={`/groups/group/${item._id}`}>
+                      {" "}
+                      <span>{item.groups}</span>
+                    </Link>
+                    <div className={styles.studentCount}></div>
+                  </>
+                )}
+              </div>
             </div>
           );
         })}
