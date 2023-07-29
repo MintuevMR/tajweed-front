@@ -10,9 +10,11 @@ main {
 }
 
 .profileChange {
-  padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  gap: 50px;
 }
 
 .form {
@@ -46,3 +48,14 @@ main {
   background: rgb(37, 86, 18);
 }
 
+.avatar {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.avatar img {
+  width: 100px;
+  border-radius: 10px;
+}

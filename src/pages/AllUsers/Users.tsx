@@ -1,19 +1,18 @@
 import styles from "./usersList.module.css";
 import React, { useState } from "react";
-import GroupsModal from "../Groups/GroupModal";
 import { useDispatch, useSelector } from "react-redux";
-import { addUserInGroup } from "../../redux/slices/groupsSlice";
+import {  addUserInGroup,  deleteUserInGroup,} from "../../redux/slices/groupsSlice";
 
-import { UserAddOutlined, UserDeleteOutlined } from "@ant-design/icons";
-import { Button,  Modal } from "antd";
+import {
+  UserAddOutlined,
+  UserDeleteOutlined,
+  EditTwoTone,
+} from "@ant-design/icons";
+import { Button, Modal } from "antd";
 
 const Users = ({ user, loading, groups }) => {
   const [showModal, setShowModal] = useState(false);
-
-//const [selectedGroup, setSelectedGroup] = useState("");
-// const gr = useSelector((state) => state.groups.groups);
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -22,21 +21,14 @@ const Users = ({ user, loading, groups }) => {
     setShowModal(false);
   };
 
-  // const handleSelectGroup = (groupId) => {
-  //   setSelectedGroup(groupId);
-  //   handleCloseModal();
-  // };
-
-// console.log(groupId);
-
-
-  const handleAddGroup = (groupId) => {
+  const handleAddUserInGroup = (groupId) => {
     dispatch(addUserInGroup({ groupId, userId: user._id }));
-     handleCloseModal();
+    handleCloseModal();
   };
 
   const handleDeleteUserInGroup = (groupId) => {
-    dispatch(DeleteUserInGroup({ groupId, userId: user._id }));
+    dispatch(deleteUserInGroup({ groupId, userId: user._id }));
+    handleCloseModal();
   };
 
   if (loading) {
@@ -53,30 +45,43 @@ const Users = ({ user, loading, groups }) => {
         Имя: {user.firstName} <br /> Фамилия: {user.lastName}
       </span>
       <div className={styles.btn_userClick}>
-        <Button
-          icon={<UserAddOutlined />}
-          disabled={hasUserInGroup}
-          onClick={handleOpenModal}
-          className={styles.user_btnClick}
-        />
-        <Button
-          icon={<UserDeleteOutlined />}
-          className={styles.user_btnClick}
-        />
+        <Button icon={<EditTwoTone />} onClick={handleOpenModal} />
       </div>
       {showModal && (
         <div>
           <Modal
-            title="Basic Modal"
+            title="Добавление или удаление из группы"
             open={true}
             onOk={handleCloseModal}
-            // onCancel={handleCancel}
+            onCancel={handleCloseModal}
           >
-            {groups?.map((group) => (
-              <li key={group._id} onClick={() => handleAddGroup(group._id)}>
-                {group.groups}
-              </li>
-            ))}
+            <div>
+              {groups?.map((group) => (
+                <li key={group._id}>
+                  <Button
+                    icon={<UserAddOutlined />}
+                    onClick={() => handleAddUserInGroup(group._id)}
+                    disabled={hasUserInGroup}
+                  />
+                  Добавить в {group.groups}
+                </li>
+              ))}
+            </div>
+            <div>
+              {groups
+                ?.filter((group) =>
+                  group.users.some((item) => item._id === user._id)
+                )
+                .map((group) => (
+                  <li key={group._id}>
+                    <Button
+                      onClick={() => handleDeleteUserInGroup(group._id)}
+                      icon={<UserDeleteOutlined />}
+                    />
+                    Удалить из {group.groups}
+                  </li>
+                ))}
+            </div>
           </Modal>
         </div>
 

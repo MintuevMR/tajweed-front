@@ -27,7 +27,7 @@
   color: white;
 }
 
-button {
+.button {
   padding: 15px;
   color: white;
   background: rgba(38, 153, 7, 1);
@@ -38,7 +38,7 @@ button {
 }
 
 
-button:hover {
+.button:hover {
   background: rgb(37, 86, 18);
 }
 

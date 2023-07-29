@@ -1,4 +1,5 @@
 export const handleUserInfoFulfilled = (state, action) => {
+  state.error = null;
   state.user = action.payload;
 };
 

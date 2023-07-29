@@ -111,7 +111,7 @@ const ProfileSidebar = () => {
         </div>
       </Link>
       {user && (
-        <div>
+        <>
           <Link to={"/students"}>
             <div className={styles.menuItem}>
               {showBar ? (
@@ -152,7 +152,7 @@ const ProfileSidebar = () => {
               )}
             </div>
           </Link>
-        </div>
+        </>
       )}
       <Link
         to={"/"}
