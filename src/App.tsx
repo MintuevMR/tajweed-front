@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import NotFound from "./pages/Lessons/NotFound/index.tsx";
+import NotFound from "./pages/NotFound/index.tsx";
 import Temp from "./pages/Temp";
 import SignIn from "./pages/SignIn/index.tsx";
 import Azkary from "./pages/Azkary/index.tsx";
