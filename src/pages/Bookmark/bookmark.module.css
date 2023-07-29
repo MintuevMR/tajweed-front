@@ -17,6 +17,7 @@
   cursor: pointer;
   top: -15px;
   left: 215px;
+
   /* font-variation-settings:
   'FILL' 1,
   'wght' 500,
@@ -25,6 +26,7 @@
 }
 
 .iconsActive {
+  color: rgb(255, 72, 0);
   position: relative;
   cursor: pointer;
   top: -15px;

@@ -6,7 +6,7 @@ import {  addUserInGroup,  deleteUserInGroup,} from "../../redux/slices/groupsSl
 import {
   UserAddOutlined,
   UserDeleteOutlined,
-  EditTwoTone,
+  EditOutlined, 
 } from "@ant-design/icons";
 import { Button, Modal } from "antd";
 
@@ -45,7 +45,7 @@ const Users = ({ user, loading, groups }) => {
         Имя: {user.firstName} <br /> Фамилия: {user.lastName}
       </span>
       <div className={styles.btn_userClick}>
-        <Button icon={<EditTwoTone />} onClick={handleOpenModal} />
+        <Button icon={<EditOutlined />} onClick={handleOpenModal} />
       </div>
       {showModal && (
         <div>
