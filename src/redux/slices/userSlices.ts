@@ -19,6 +19,7 @@ const initialState: UserState = {
   user: {},
   users: [],
   bookmarks: [],
+  error: null
 };
 
 // Инфо пользователя
@@ -123,7 +124,11 @@ const userSlices = createSlice({
       .addCase(userInfo.fulfilled, (state, action) => {
         state.user = action.payload;
       })
+      .addCase(userChangeInfo.pending, (state, action) => {
+        state.error = null
+      })
       .addCase(userChangeInfo.fulfilled, (state, action) => {
+        state.error = null
         state.user = action.payload;
       })
       .addCase(userChangeInfo.rejected, (state, action) => {

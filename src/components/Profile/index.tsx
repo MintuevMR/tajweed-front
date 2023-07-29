@@ -2,6 +2,7 @@ import React, { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "./ProfileSidebar";
 import styles from "./profile.module.css";
+import { notification } from "antd";
 import teacherImg from "../../assets/man.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,6 +14,7 @@ import { RootState } from "../../redux/store/store";
 
 const Profile = () => {
   const user = useSelector((state: RootState) => state.user.user);
+  const error = useSelector((state: RootState) => state.user.error);
 
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -26,8 +28,17 @@ const Profile = () => {
   };
 
   useEffect(() => {
+
     dispatch(userInfo());
-  }, []);
+
+    if (error) {
+      notification.error({
+        message: 'Ошибка',
+        description: error,
+        duration: 3,
+      });
+    }
+  }, [error]); //
 
   const formData: FormData = new FormData();
 
