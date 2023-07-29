@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSurahs } from "../../redux/slices/quranSlice";
 import ProfileSidebar from "../../components/Profile/ProfileSidebar";
 import { Link } from "react-router-dom";
-import CardQuran from "@/components/CardQuran";
+import CardQuran from "@/components/CardQuran/CardQuran";
 import "@/App.scss";
 
 const Quran = () => {
