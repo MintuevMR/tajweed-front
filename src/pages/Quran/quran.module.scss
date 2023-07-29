@@ -9,10 +9,13 @@
 
   span {
     padding: 0 5px 0 5px;
+    transition: 0.5s;
 
     &:hover {
       color: rgba(38, 153, 7, 1);
       background-color: aliceblue;
     }
   }
+
+  
 }

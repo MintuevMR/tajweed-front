@@ -38,12 +38,10 @@
   background-color: gray;
 }
 
-button {
-  padding: 0;
-  margin: 0;
-}
-
 .button_container {
+  width: 400px;
+  position: fixed;
+  bottom: 50px;
   display: flex;
   justify-content: space-between;
 }

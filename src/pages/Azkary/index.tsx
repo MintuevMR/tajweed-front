@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Azkary = () => {
   return (
-    <div className={styles.main}>
+    <main>
       <ProfileSidebar />
       <div className={styles.content}>
         <div className={styles.content_link}>
@@ -15,7 +15,7 @@ const Azkary = () => {
           <Link to="/azkary/evening">Вечерние азкары</Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

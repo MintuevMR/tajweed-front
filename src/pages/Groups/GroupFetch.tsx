@@ -8,7 +8,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./groups.module.css";
 import { Link } from "react-router-dom";
-
+import { Button } from "antd";
+import { GroupOutlined } from "@ant-design/icons";
 
 const GroupFetch = () => {
   const groups = useSelector((state) => state.groups.groups);
@@ -62,9 +63,7 @@ const GroupFetch = () => {
           onChange={handleInputChange}
         />
         <div>
-          <div className={styles.btn_add_group} onClick={handleAddGroup}>
-            +
-          </div>
+          <Button icon={<GroupOutlined />} onClick={handleAddGroup}> +</Button>
         </div>
       </div>
       <div className={styles.content}>
@@ -108,7 +107,9 @@ const GroupFetch = () => {
                     <Link to={`/groups/group/${item._id}`}>
                       <span>{item.groups}</span>
                     </Link>
-                    <div className={styles.studentCount}>Студентов: {item.users.length}</div>
+                    <div className={styles.studentCount}>
+                      Студентов: {item.users.length}
+                    </div>
                   </>
                 )}
               </div>
