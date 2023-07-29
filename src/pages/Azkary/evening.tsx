@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAzkary } from "../../redux/slices/azkarySlices";
 import styles from "./azkary.module.css";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar/index";
+import ProfileSidebar from "../../components/ProfileSidebar/index";
 import strelkaup from "../../assets/strelkaup.png";
 import vnimanie from "../../assets/vnimanie.png";
 import { AppDispatch, RootState } from "../../redux/store/store";

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./temp.module.css";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar";
+import ProfileSidebar from "../../components/ProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLessons } from "../../redux/slices/lessonSlice";
 import { Link, useNavigate } from "react-router-dom";

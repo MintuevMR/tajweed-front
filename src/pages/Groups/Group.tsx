@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { Link, useParams } from "react-router-dom";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar";
+import ProfileSidebar from "../../components/ProfileSidebar";
 import styles from "./groups.module.css";
 
 const Group = () => {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect  } from "react";
 import { LessonsItem, LessonsState, fetchLessons } from '../../redux/slices/lessonSlice';
-import ProfileSidebar from '../../components/Profile/ProfileSidebar';
+import ProfileSidebar from '../../components/ProfileSidebar';
 import styles from "./temp.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from '../../redux/store/store';

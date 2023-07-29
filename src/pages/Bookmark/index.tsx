@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar/index";
+import ProfileSidebar from "../../components/ProfileSidebar/index";
 import styles from "./bookmark.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";

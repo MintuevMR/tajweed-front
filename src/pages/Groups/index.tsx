@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar";
+import ProfileSidebar from "../../components/ProfileSidebar";
 import GroupFetch from "./GroupFetch";
 import styles from "./groups.module.css";
 
