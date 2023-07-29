@@ -102,10 +102,13 @@ const Profile = () => {
                     : `http://localhost:3000${user?.avatar}`
                 }
               />
+              <div className={styles.avatarButtons}>
               <Upload {...uploadProps} showUploadList={true}>
                 <Button icon={<UploadOutlined />}>Выберите фото</Button>
               </Upload>
               <Button onClick={handleChangeAva}>Отправить</Button>
+              </div>
+ 
             </div>
           </div>
           <form className={styles.form} onSubmit={handleChangeUserInfo}>

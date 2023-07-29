@@ -50,9 +50,16 @@ main {
 
 .avatar {
   display: flex;
+  width: 500px;
   margin-bottom: 20px;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.avatarButtons{
+  display: flex;
+  justify-content: space-around;
+  
 }
 
 .avatar img {
