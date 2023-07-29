@@ -78,7 +78,7 @@ const GroupFetch = () => {
                   onClick={() => handleDeleteGroup(item._id)}
                   className={`${styles.delete_group} material-symbols-outlined`}
                 >
-                  backspace
+                  delete
                 </span>
                 {isEditing ? (
                   <div

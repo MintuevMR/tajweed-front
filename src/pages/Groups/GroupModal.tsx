@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Users from "../AllUsers/Users";
 import { useDispatch } from "react-redux";
 import { addUserInGroup } from "../../redux/slices/groupsSlice";
+import { Button, Modal } from "antd";
 
 const GroupsModal = ({ groups, onClose, user }) => {
   const dispatch = useDispatch()
@@ -13,7 +14,9 @@ const GroupsModal = ({ groups, onClose, user }) => {
 
   return (
     <div>
-      <ul>
+
+      <ul >
+
         {groups?.map((group) => (
           <li key={group._id} onClick={() => handleAddGroup(group._id)}>{group.groups}</li>
         ))}

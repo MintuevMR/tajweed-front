@@ -1,20 +1,7 @@
-main {
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 50px;
-  padding: 50px;
-  background-color: #fbfbfb;
-}
-
 .card {
   padding: 35px;
   width: 300px;
+  height: 200px;
   border-radius: 10px;
   font-size: 20px;
   background-color: rgb(255, 255, 255);

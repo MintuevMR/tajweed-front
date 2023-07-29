@@ -1,23 +1,20 @@
 .content {
   width: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
+  flex-wrap: wrap;
   gap: 50px;
+  padding: 50px;
   background-color: #fbfbfb;
 }
+
 .card_user {
   display: flex;
   margin: 15px;
-  border: 1px solid black;
+  padding: 20px;
+  border: 1px solid rgb(33, 138, 85);
   border-radius: 15px;
   justify-content: space-between;
   flex-wrap: wrap;
-}
-.user_name {
-  margin: 20px;
-  display: flex;
-  align-items: center;
 }
 
 .btn_userClick {
@@ -36,44 +33,19 @@
   width: 50px;
   width: 40px;
 }
+
 .user_btnDelClick {
   background-color: gray;
 }
 
-.user_btn {
-  padding: 6px 12px;
-  margin: 10px;
-  white-space: pre-line;
-  word-break: break-word;
-  border-radius: 8px;
-  display: inline-block;
-  text-align: center;
+button {
+  padding: 0;
+  margin: 0;
 }
 
 .button_container {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  align-items: center;
-  height: 100px;
-  position: absolute;
-  bottom: 50px;
-}
-
-.button_wrapper button {
-  padding: 8px 16px;
-  border: none;
-  background-color: green;
-  color: #fff;
-  cursor: pointer;
-}
-
-.button_wrapper button:hover {
-  background-color: #0056b3;
-}
-.button_wrapper button:disabled {
-  background-color: #c0c0c0;
-  cursor: not-allowed;
 }
 
 .pagination {
@@ -97,11 +69,9 @@
 .pagination a:hover {
   background-color: #007bff;
   color: #fff;
- }
+}
 
- .pagination a:focus {
-	background: green;
-	color: white
- }
-
-
+.pagination a:focus {
+  background: green;
+  color: white;
+}

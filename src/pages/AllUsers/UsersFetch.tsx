@@ -7,6 +7,9 @@ import GroupFetch from "../Groups/GroupFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { userAll } from "../../redux/slices/userSlices";
+import "@/App.scss";
+import { Button } from "antd";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 
 const AllUsers = () => {
   const [loading, setLoading] = useState(false);
@@ -14,13 +17,13 @@ const AllUsers = () => {
   const [usersAllPerPage] = useState(4);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const groups = useSelector(state => state.groups.groups)
-  const users = useSelector(state => state.user.users)
-  const dispatch = useDispatch()
+  const groups = useSelector((state) => state.groups.groups);
+  const users = useSelector((state) => state.user.users);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(userAll())
-    dispatch(fetchGroups())
+    dispatch(userAll());
+    dispatch(fetchGroups());
   }, []);
 
   const filteredUsers = users.filter((user) =>
@@ -36,34 +39,31 @@ const AllUsers = () => {
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
   return (
-    <div className={styles.content}>
-      <Search onSearch={(query) => setSearchQuery(query)} />
-      {currentUsers.map((user) => (
-        <Users key={user._id} user={user} loading={loading} groups={groups} />
-      ))}
-      <div className={styles.button_container}>
-        <div className={styles.button_wrapper}>
-          <button
-            className={styles.user_btn}
+    <div className="content">
+      <div>
+        <div>
+          <Search onSearch={(query) => setSearchQuery(query)} />
+        </div>
+        {currentUsers.map((user) => (
+          <Users key={user._id} user={user} loading={loading} groups={groups} />
+        ))}
+
+        <div className={styles.button_container}>
+          <Button
+            icon={<LeftOutlined />}
             onClick={prevPage}
             disabled={currentPage === 1}
-          >
-            Предыдущая {"\n"} страница
-          </button>
-        </div>
-        <Pagination
-          usersAllPerPage={usersAllPerPage}
-          totalUsers={filteredUsers.length}
-          paginate={paginate}
-        />
-        <div className={styles.button_wrapper}>
-          <button
-            className={styles.user_btn}
+          />
+          <Pagination
+            usersAllPerPage={usersAllPerPage}
+            totalUsers={filteredUsers.length}
+            paginate={paginate}
+          />
+          <Button
+            icon={<RightOutlined />}
             onClick={nextPage}
             disabled={currentPage >= Math.ceil(users.length / usersAllPerPage)}
-          >
-            Следующая {"\n"} страница
-          </button>
+          />
         </div>
       </div>
     </div>
