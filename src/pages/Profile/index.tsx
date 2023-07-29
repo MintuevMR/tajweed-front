@@ -1,6 +1,6 @@
 import React, { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-import ProfileSidebar from "../ProfileSidebar";
+import ProfileSidebar from "../../components/ProfileSidebar";
 import styles from "./profile.module.css";
 import { notification } from "antd";
 import teacherImg from "../../assets/man.svg";

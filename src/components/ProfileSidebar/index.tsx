@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./profileSidebar.module.css";
+import styles from "./profileSidebar.module.scss";
 import teacherImg from "@/assets/man.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "@/redux/slices/userSlices";
