@@ -10,8 +10,6 @@ const ProfileSidebar = () => {
   const user = useSelector((state) => state.user.user);
   const showBar = useSelector((state) => state.application.showBar);
 
-  console.log(user.role);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

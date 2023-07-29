@@ -4,6 +4,9 @@ import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { Link, useParams } from "react-router-dom";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import styles from "./groups.module.css";
+import { Button } from "antd";
+
+import { UserAddOutlined } from "@ant-design/icons";
 
 const Group = () => {
   const { id } = useParams();
@@ -24,7 +27,7 @@ const Group = () => {
           <div className={styles.heading}>
             <h2>{group.groups}</h2>
             <Link to={"/students"}>
-              <button className={styles.btnAdd}>Добавить в группу</button>
+              <Button icon={<UserAddOutlined />}> +</Button>
             </Link>
           </div>
           {group.users.length > 0 ? (
