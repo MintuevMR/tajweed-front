@@ -48,8 +48,8 @@
 
 .modal {
   position: fixed;
-  bottom: 50px;
-  left: 30px;
+  bottom: 150px;
+  left: 230px;
   /* background-color: #ffffff; */
   /* background-color: #ffffff80; */
   padding: 7px;
@@ -66,8 +66,8 @@
  
 .counter {
   position: fixed;
-  bottom: 90px;
-  left: 50px;
+  bottom: 190px;
+  left: 250px;
   color: black;
   cursor: pointer;
 }

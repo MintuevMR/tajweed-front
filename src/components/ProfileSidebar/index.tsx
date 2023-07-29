@@ -10,6 +10,8 @@ const ProfileSidebar = () => {
   const user = useSelector((state) => state.user.user);
   const showBar = useSelector((state) => state.application.showBar);
 
+  console.log(user.role);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -110,7 +112,7 @@ const ProfileSidebar = () => {
           )}
         </div>
       </Link>
-      {user && (
+      {user.role === "moder" && (
         <>
           <Link to={"/students"}>
             <div className={styles.menuItem}>
@@ -183,16 +185,18 @@ const ProfileSidebar = () => {
         onClick={() => dispatch(showBarToggle())}
       >
         {showBar ? (
-          <>
+          <div className={styles.lastMenuItem}>
             <span className={`${styles.icons} icons material-symbols-outlined`}>
               format_letter_spacing
             </span>
             <span>Свернуть меню</span>
-          </>
+          </div>
         ) : (
-          <span className={`${styles.icons} icons material-symbols-outlined`}>
-            format_letter_spacing
-          </span>
+          <div className={styles.lastMenuItem}>
+            <span className={`${styles.icons} icons material-symbols-outlined`}>
+              format_letter_spacing
+            </span>
+          </div>
         )}
       </div>
     </div>

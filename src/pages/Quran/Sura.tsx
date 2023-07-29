@@ -27,8 +27,9 @@ const Sura = () => {
     <main>
       <ProfileSidebar />
       <div className="content" dir="rtl">
-        <div>{suraName}</div>
+       
         <div className={styles.sura}>
+        <div>{suraName}</div>
           {sura.map((aya) => {
             return (
               <span
