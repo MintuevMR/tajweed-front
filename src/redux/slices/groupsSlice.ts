@@ -83,8 +83,34 @@ export const addUserInGroup = createAsyncThunk(
       );
       const data = await res.json();
 
-      if(data.error) {
-        return thunkAPI.rejectWithValue(data.error)
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      }
+
+      return { groupId, data };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteUserInGroup = createAsyncThunk(
+  "deleteUser/groups",
+  async ({ groupId, userId }, thunkAPI) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/group/${groupId}/delete-user/${userId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
       }
 
       return { groupId, data };
@@ -106,9 +132,11 @@ const groupsSlice = createSlice({
       .addCase(fetchGroups.rejected, (state, action) => {
         state.error = action.payload;
       })
+
       .addCase(createGroups.fulfilled, (state, action) => {
         state.groups.push(action.payload);
       })
+
       .addCase(deleteGroups.fulfilled, (state, action) => {
         state.groups = state.groups.filter(
           (group) => group._id !== action.payload
@@ -117,6 +145,7 @@ const groupsSlice = createSlice({
       .addCase(deleteGroups.rejected, (state, action) => {
         state.error = action.payload;
       })
+
       .addCase(updateGroupsInStore.fulfilled, (state, action) => {
         const index = state.groups.findIndex(
           (group) => group._id === action.payload._id
@@ -128,6 +157,7 @@ const groupsSlice = createSlice({
       .addCase(updateGroupsInStore.rejected, (state, action) => {
         state.error = action.payload;
       })
+
       .addCase(addUserInGroup.fulfilled, (state, action) => {
         state.groups = state.groups.map((item) => {
           if (item._id === action.payload.groupId) {
@@ -135,6 +165,18 @@ const groupsSlice = createSlice({
           }
           return item;
         });
+      })
+
+      .addCase(deleteUserInGroup.fulfilled, (state, action) => {
+        state.groups = state.groups.map((item) => {
+          if (item._id === action.payload.groupId) {
+            item.users = item.users.filter(
+              (user) => user._id !== action.payload.data._id
+            );
+          }
+          return item;
+        });
+        console.log(state.groups);
       })
 
       .addDefaultCase((state) => state);

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./profileSidebar.module.css";
-import teacherImg from "../../../assets/man.svg";
+import styles from "./profileSidebar.module.scss";
+import teacherImg from "@/assets/man.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { userInfo } from "../../../redux/slices/userSlices";
-import { showBarToggle } from "../../../redux/slices/appSlices";
+import { userInfo } from "@/redux/slices/userSlices";
+import { showBarToggle } from "@/redux/slices/appSlices";
 
 const ProfileSidebar = () => {
   const user = useSelector((state) => state.user.user);
@@ -111,7 +111,7 @@ const ProfileSidebar = () => {
         </div>
       </Link>
       {user && (
-        <div>
+        <>
           <Link to={"/students"}>
             <div className={styles.menuItem}>
               {showBar ? (
@@ -152,7 +152,7 @@ const ProfileSidebar = () => {
               )}
             </div>
           </Link>
-        </div>
+        </>
       )}
       <Link
         to={"/"}

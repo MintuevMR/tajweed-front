@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./usersList.module.css";
+import { Button } from "antd";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 
 const Pagination = ({ usersAllPerPage, totalUsers, paginate }) => {
   const pageNumbers = [];
@@ -9,7 +11,9 @@ const Pagination = ({ usersAllPerPage, totalUsers, paginate }) => {
   }
   return (
     <div>
+
       <ul className={styles.pagination}>
+      {/* <Button icon={<LeftOutlined />} /> */}
         {pageNumbers.map((number) => (
           <li key={number}>
             <a href="#" onClick={() => paginate(number)}>

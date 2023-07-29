@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import ProfileSidebar from "../../components/Profile/ProfileSidebar/index";
+import ProfileSidebar from "../../components/ProfileSidebar/index";
 import styles from "./bookmark.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { bookmark } from "../../redux/slices/userSlices";
+import '@/App.scss'
 
 const Bookmarks = () => {
   const bookmarks = useSelector((state) => state.user.user.bookmarks);
@@ -16,7 +17,7 @@ const Bookmarks = () => {
   return (
     <main>
       <ProfileSidebar />
-      <div className={styles.content}>
+      <div className="content">
         {bookmarks && Array.isArray(bookmarks) && bookmarks.length === 0 ? (
           <div className={styles.emptyMessage}>Нет закладок</div>
         ) : (

@@ -1,5 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+import {
+  handleUserInfoFulfilled,
+  handleUserChangeInfoPending,
+  handleUserChangeInfoFulfilled,
+  handleUserChangeInfoRejected,
+  handleUserChangeAvatarFulfilled,
+  handleBookmarkFulfilled,
+  handleUserAllFulfilled,
+} from "./userHendlers";
+
 interface UserState {
   user: UserItem;
   users: UserItem[];
@@ -19,6 +29,7 @@ const initialState: UserState = {
   user: {},
   users: [],
   bookmarks: [],
+  error: null,
 };
 
 // Инфо пользователя
@@ -56,8 +67,7 @@ export const userChangeInfo = createAsyncThunk(
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
-      
-      
+
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -120,28 +130,13 @@ const userSlices = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(userInfo.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(userChangeInfo.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(userChangeInfo.rejected, (state, action) => {
-        if (Array.isArray(action.payload)) {
-          state.error = action.payload[0].msg;
-        } else {
-          state.error = action.payload;
-        }
-      })
-      .addCase(userChangeAvatar.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(bookmark.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(userAll.fulfilled, (state, action) => {
-        state.users = action.payload;
-      });
+      .addCase(userInfo.fulfilled, handleUserInfoFulfilled)
+      .addCase(userChangeInfo.pending, handleUserChangeInfoPending)
+      .addCase(userChangeInfo.fulfilled, handleUserChangeInfoFulfilled)
+      .addCase(userChangeInfo.rejected, handleUserChangeInfoRejected)
+      .addCase(userChangeAvatar.fulfilled, handleUserChangeAvatarFulfilled)
+      .addCase(bookmark.fulfilled, handleBookmarkFulfilled)
+      .addCase(userAll.fulfilled, handleUserAllFulfilled);
   },
 });
 

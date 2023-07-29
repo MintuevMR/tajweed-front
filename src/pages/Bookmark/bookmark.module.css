@@ -1,20 +1,7 @@
-main {
-  display: flex;
-}
-
-.content {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 50px;
-  padding: 50px;
-  background-color: #fbfbfb;
-}
-
 .card {
   padding: 35px;
   width: 300px;
+  height: 200px;
   border-radius: 10px;
   font-size: 20px;
   background-color: rgb(255, 255, 255);
@@ -30,6 +17,7 @@ main {
   cursor: pointer;
   top: -15px;
   left: 215px;
+
   /* font-variation-settings:
   'FILL' 1,
   'wght' 500,
@@ -38,6 +26,7 @@ main {
 }
 
 .iconsActive {
+  color: rgb(255, 72, 0);
   position: relative;
   cursor: pointer;
   top: -15px;

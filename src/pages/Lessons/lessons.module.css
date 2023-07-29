@@ -37,6 +37,7 @@ main {
   'opsz' 48 */
 }
 .iconsActive {
+  color: rgb(255, 72, 0);
   position: relative;
   cursor: pointer;
   top: -15px;

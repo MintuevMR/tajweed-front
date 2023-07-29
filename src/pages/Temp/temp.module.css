@@ -27,38 +27,15 @@
   color: white;
 }
 
-button {
-  padding: 15px;
-  color: white;
-  background: rgba(38, 153, 7, 1);
-  border: none;
-  border-radius: 8px;
-  margin-top: 24px;
-  cursor: pointer;
-}
-
-
-button:hover {
-  background: rgb(37, 86, 18);
-}
-
-.prevNext{
+.prevNext {
   display: flex;
+  margin: auto;
+  width: 100%;
   justify-content: space-around;
-
-}
-
-.right_btn{
   position: fixed;
   bottom: 40px;
-  right: 100px;
+  left: 80px;
 }
-.left_btn{
-  position: fixed;
-  bottom: 40px;
-  left: 270px;
-}
-
 
 main {
   display: flex;
@@ -75,65 +52,61 @@ main {
 }
 .votingMain {
   display: flex;
-  }
-  .lessonsTitle{
-    margin: 20px;
-    text-align: center;
-    border: 1px solid green;
-    border-radius: 10px;
-    padding: 10px;
-    width: fit-content;
-    background: rgba(38, 153, 7, 1);
-    color: white;
-  }
-  .lessonsDesc {
-    margin: auto  ;
-    text-align: center;
-    border: 1px solid  rgba(38, 153, 7, 1);
-    border-radius: 10px;
-    padding: 10px;
-    width: 900px;
-  }
-  .lessonsText{
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 20px;
-    text-align: center;
-    width: 900px;
-    margin: auto;
-  }
-  .TextDesc{
-    margin-top: 200px;
-  }
-  .mainLessons{
-    display: flex;
-    flex-direction: column;
-  }
-  .s{
-    width: 100%;
-  }
-  th{
-    border-radius: 3px;
-    padding: 5px;
-   color: white;
-   font-size: 20px;
-   font: 1em sans-serif;
-
-  }
-  tr{
-    padding: 5px;
-
-  }
-  table{
+}
+.lessonsTitle {
+  margin: 20px;
+  text-align: center;
+  border: 1px solid green;
+  border-radius: 10px;
+  padding: 10px;
+  width: fit-content;
+  background: rgba(38, 153, 7, 1);
+  color: white;
+}
+.lessonsDesc {
+  margin: auto;
+  text-align: center;
+  border: 1px solid rgba(38, 153, 7, 1);
+  border-radius: 10px;
+  padding: 10px;
+  width: 900px;
+}
+.lessonsText {
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  width: 900px;
+  margin: auto;
+}
+.TextDesc {
+  margin-top: 200px;
+}
+.mainLessons {
+  display: flex;
+  flex-direction: column;
+}
+.s {
+  width: 100%;
+}
+th {
+  border-radius: 3px;
+  padding: 5px;
+  color: white;
+  font-size: 20px;
+  font: 1em sans-serif;
+}
+tr {
+  padding: 5px;
+}
+table {
   margin-bottom: 90px;
-  }
-  thead {
-   background-color: green;
-   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-  }
-  td {
-   border: 1px solid black;
-
-  }
+}
+thead {
+  background-color: green;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+td {
+  border: 1px solid black;
+}

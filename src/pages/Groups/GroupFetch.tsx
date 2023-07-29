@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   createGroups,
   deleteGroups,
@@ -8,8 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./groups.module.css";
 import { Link } from "react-router-dom";
-import Users from "../AllUsers/Users";
-import GroupsModal from "./GroupModal";
+
 
 const GroupFetch = () => {
   const groups = useSelector((state) => state.groups.groups);
@@ -78,7 +77,7 @@ const GroupFetch = () => {
                   onClick={() => handleDeleteGroup(item._id)}
                   className={`${styles.delete_group} material-symbols-outlined`}
                 >
-                  backspace
+                  delete
                 </span>
                 {isEditing ? (
                   <div
@@ -107,7 +106,6 @@ const GroupFetch = () => {
                 ) : (
                   <>
                     <Link to={`/groups/group/${item._id}`}>
-                      {" "}
                       <span>{item.groups}</span>
                     </Link>
                     <div className={styles.studentCount}>Студентов: {item.users.length}</div>
