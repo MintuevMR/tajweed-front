@@ -53,7 +53,7 @@ const Temp = () => {
   return (
     <main>
       <ProfileSidebar />
-      <div className={styles.content}>
+      <div className='content'>
         <div className={styles.alphabet} dir="rtl">
           {alphabet.map((huruf, index) => {
             return (

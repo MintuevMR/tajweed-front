@@ -4,7 +4,7 @@ import ProfileSidebar from "../../components/ProfileSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import "@/App.scss";
+
 
 const Sura = () => {
   const [sura, setSura] = useState([]);

@@ -20,8 +20,9 @@ function Tanvin() {
   }, []);
 
   return (
-    <div className={styles.votingMain}>
+    <main>
       <ProfileSidebar />
+      <div className="content">
       {lessons.map((item: LessonsItem) => {
         if (item.name === "Танвин")
           return (
@@ -50,7 +51,8 @@ function Tanvin() {
             </div>
           );
       })}
-    </div>
+      </div>
+    </main>
   );
 }
 

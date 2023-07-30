@@ -8,7 +8,7 @@ import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { userAll } from "../../redux/slices/userSlices";
 import { Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import "@/App.scss";
+
 
 const AllUsers = () => {
   const [loading, setLoading] = useState(false);

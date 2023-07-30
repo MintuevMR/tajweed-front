@@ -13,45 +13,46 @@ function Madda() {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  console.log(lessons);
 
   useEffect(() => {
     dispatch(fetchLessons());
   }, []);
 
   return (
-    <div className={styles.votingMain}>
+    <main>
       <ProfileSidebar />
-      {lessons.map((item: LessonsItem) => {
-        if (item.name === "Мадда")
-          return (
-            <div className={styles.s}>
-              <div className={styles.lessonsTitle}>{item.title}</div>
-              <h4 className={styles.lessonsDesc}> {item.description}</h4>
-              <div className={styles.TextDesc}>
-                <div className={styles.lessonsText}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Suscipit sapiente distinctio aliquid, soluta corrupti rem
-                  voluptas saepe! Error natus maiores, at debitis consequatur
-                  enim quam ipsam placeat nulla sit a?
+      <div className="content">
+        {lessons.map((item: LessonsItem) => {
+          if (item.name === "Мадда")
+            return (
+              <div className={styles.s}>
+                <div className={styles.lessonsTitle}>{item.title}</div>
+                <h4 className={styles.lessonsDesc}> {item.description}</h4>
+                <div className={styles.TextDesc}>
+                  <div className={styles.lessonsText}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Suscipit sapiente distinctio aliquid, soluta corrupti rem
+                    voluptas saepe! Error natus maiores, at debitis consequatur
+                    enim quam ipsam placeat nulla sit a?
+                  </div>
                 </div>
-              </div>
-              <div className={styles.prevNext}>
                 <div className={styles.prevNext}>
-                  <Link to={"/lessons/forms"}>
-                    <Button type="default" color="#389e0d">
-                      Следующий урок
-                    </Button>
-                  </Link>
-                  <Link to={"/lessons/sukun"}>
-                    <Button type="default"> Следующий урок</Button>
-                  </Link>
+                  <div className={styles.prevNext}>
+                    <Link to={"/lessons/forms"}>
+                      <Button type="default" color="#389e0d">
+                        Следующий урок
+                      </Button>
+                    </Link>
+                    <Link to={"/lessons/sukun"}>
+                      <Button type="default"> Следующий урок</Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-      })}
-    </div>
+            );
+        })}
+      </div>
+    </main>
   );
 }
 

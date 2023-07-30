@@ -20,37 +20,39 @@ function Tashdid() {
   }, []);
 
   return (
-    <div className={styles.votingMain}>
+    <main>
       <ProfileSidebar />
-      {lessons.map((item: LessonsItem) => {
-        if (item.name === "Ташдид")
-          return (
-            <div className={styles.s}>
-              <div className={styles.lessonsTitle}>{item.title}</div>
-              <h4 className={styles.lessonsDesc}> {item.description}</h4>
-              <div className={styles.TextDesc}>
-                <div className={styles.lessonsText}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores rerum enim quia cum omnis! Impedit temporibus
-                  cumque quod perferendis vero culpa. Expedita eos natus
-                  reprehenderit debitis modi recusandae doloribus cum!
+      <div className="content">
+        {lessons.map((item: LessonsItem) => {
+          if (item.name === "Ташдид")
+            return (
+              <div className={styles.s}>
+                <div className={styles.lessonsTitle}>{item.title}</div>
+                <h4 className={styles.lessonsDesc}> {item.description}</h4>
+                <div className={styles.TextDesc}>
+                  <div className={styles.lessonsText}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores rerum enim quia cum omnis! Impedit temporibus
+                    cumque quod perferendis vero culpa. Expedita eos natus
+                    reprehenderit debitis modi recusandae doloribus cum!
+                  </div>
+                </div>
+
+                <div className={styles.prevNext}>
+                  <Link to={"/lessons/tanvin"}>
+                    <Button type="default" color="#389e0d">
+                      Предыдущий урок
+                    </Button>
+                  </Link>
+                  <Link to={"/lessons"}>
+                    <Button type="default"> Выйти</Button>
+                  </Link>
                 </div>
               </div>
-
-              <div className={styles.prevNext}>
-                <Link to={"/lessons/tanvin"}>
-                  <Button type="default" color="#389e0d">
-                    Предыдущий урок
-                  </Button>
-                </Link>
-                <Link to={"/lessons"}>
-                  <Button type="default"> Выйти</Button>
-                </Link>
-              </div>
-            </div>
-          );
-      })}
-    </div>
+            );
+        })}
+      </div>
+    </main>
   );
 }
 

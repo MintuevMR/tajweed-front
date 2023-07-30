@@ -4,7 +4,7 @@ import { fetchSurahs } from "../../redux/slices/quranSlice";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { Link } from "react-router-dom";
 import CardQuran from "@/components/CardQuran/CardQuran";
-import "@/App.scss";
+
 
 const Quran = () => {
   const surahs = useSelector((state) => state.quran.surahs);
