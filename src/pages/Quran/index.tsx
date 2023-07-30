@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import CardQuran from "@/components/CardQuran/CardQuran";
 
 
+
 const Quran = () => {
   const surahs = useSelector((state) => state.quran.surahs);
   const dispath = useDispatch();
