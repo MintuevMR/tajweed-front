@@ -29,7 +29,7 @@ import "./App.scss";
 
 function App() {
   const token = useSelector((state: RootState) => state.application.token);
-  
+
   return !token ? (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -41,23 +41,24 @@ function App() {
       <Route path="/quran" element={<Navigate to="/login" />} />
       <Route path="/quran/:number" element={<Navigate to="/login" />} />
       <Route path="/lessons/alphabet" element={<Navigate to="/login" />} />
-      <Route path="/lessons/voting"element={<Navigate to="/login" />} />
+      <Route path="/lessons/voting" element={<Navigate to="/login" />} />
       <Route path="/lessons/forms" element={<Navigate to="/login" />} />
       <Route path="/lessons/madda" element={<Navigate to="/login" />} />
       <Route path="/lessons/sukun" element={<Navigate to="/login" />} />
       <Route path="/lessons/tanvin" element={<Navigate to="/login" />} />
       <Route path="/lessons/tashdid" element={<Navigate to="/login" />} />
-      <Route path="/azkary"element={<Navigate to="/login" />} />
+      <Route path="/azkary" element={<Navigate to="/login" />} />
       <Route path="/azkary/morning" element={<Navigate to="/login" />} />
       <Route path="/azkary/evening" element={<Navigate to="/login" />} />
       <Route path="/bookmarks" element={<Navigate to="/login" />} />
       <Route path="/students" element={<Navigate to="/login" />} />
       <Route path="/groups" element={<Navigate to="/login" />} />
-      <Route path="/groups/group/:id"element={<Navigate to="/login" />} />
+      <Route path="/groups/group/:id" element={<Navigate to="/login" />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   ) : (
     <Routes>
+      <Route path="/" element={<Navigate to="/profile" />} />
       <Route path="/login" element={<Navigate to="/profile" />} />
       <Route path="/quran" element={<Quran />} />
       <Route path="/quran/:number" element={<Sura />} />
