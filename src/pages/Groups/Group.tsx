@@ -22,6 +22,7 @@ const Group = () => {
   return (
     <main>
       <ProfileSidebar />
+      <div className="content">
       {group ? (
         <div className={styles.centerContent}>
           <div className={styles.heading}>
@@ -58,6 +59,8 @@ const Group = () => {
       ) : (
         <div>Группа не найдена</div>
       )}
+      </div>
+
     </main>
   );
 };

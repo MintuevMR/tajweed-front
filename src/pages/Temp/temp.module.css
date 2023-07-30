@@ -37,22 +37,11 @@
   left: 80px;
 }
 
-main {
-  display: flex;
-  height: 100vh;
-}
 
-.content {
-  width: 100%;
-  background-color: #fbfbfb;
-}
 
-.img {
-  width: 50%;
-}
-.votingMain {
-  display: flex;
-}
+
+
+
 .lessonsTitle {
   margin: 20px;
   text-align: center;

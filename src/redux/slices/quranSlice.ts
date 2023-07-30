@@ -1,4 +1,25 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+
+interface Ayahs {
+  audio: string;
+  text: string;
+}
+
+interface Surah {
+  ayahs: Ayahs[];
+  englishName: string;
+  englishNameTranslation: string;
+  name: string;
+  number: number;
+  numberOfAyahs: number;
+  revelationType: string;
+}
+
+interface QuranState {
+  surahs: Surah[];
+  loading: boolean;
+  error: string | null;
+}
 
 const initialState = {
   surahs: [],
@@ -6,7 +27,7 @@ const initialState = {
   error: null,
 };
 
-export const fetchSurahs = createAsyncThunk(
+export const fetchSurahs = createAsyncThunk<Surah[], void, { rejectValue: string | unknown}>(
   "quran/fetchSurahs",
 
   async (_, thunkAPI) => {
@@ -15,7 +36,7 @@ export const fetchSurahs = createAsyncThunk(
       const surahs = res.json();
       return surahs;
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -29,11 +50,11 @@ const quranSlice = createSlice({
       .addCase(fetchSurahs.pending, (state) => {
         state.loading = true;
       })
-      .addCase(fetchSurahs.fulfilled, (state, action) => {
+      .addCase(fetchSurahs.fulfilled, (state, action: PayloadAction<Surah[]>) => {
         state.loading = false;
         state.surahs = action.payload.data;
       })
-      .addCase(fetchSurahs.rejected, (state, action) => {
+      .addCase(fetchSurahs.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.error = action.error.message;
       });

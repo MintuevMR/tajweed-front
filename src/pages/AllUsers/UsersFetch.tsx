@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Users from "./Users";
-import Search from "./Search/Search";
+import Search from "./Search/index";
 import Pagination from "./Pagination";
 import styles from "./usersList.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { userAll } from "../../redux/slices/userSlices";
 import { Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import "@/App.scss";
+
 
 const AllUsers = () => {
   const [loading, setLoading] = useState(false);

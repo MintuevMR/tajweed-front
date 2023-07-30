@@ -47,7 +47,7 @@ const ProfileSidebar = () => {
               >
                 school
               </span>
-              Обучение
+              <span>Обучение</span>
             </>
           ) : (
             <span className={`${styles.icons} icons material-symbols-outlined`}>

@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+
+  input {
+    width: 40%;
+    padding: 8px 12px;
+    margin-bottom: 25px;
+    border: 1px solid #919eab4d;
+    border-radius: 10px;
+    outline: none;
+
+    &:hover {
+      border: 1px solid rgba(38, 153, 7, 1);
+    }
+  }
+}
+  

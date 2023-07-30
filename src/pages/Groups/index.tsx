@@ -7,7 +7,7 @@ const index = () => {
   return (
     <main>
       <ProfileSidebar />
-      <div className={styles.content}>
+      <div className='content'>
         <GroupFetch />
       </div>
     </main>

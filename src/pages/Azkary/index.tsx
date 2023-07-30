@@ -7,7 +7,7 @@ const Azkary = () => {
   return (
     <main>
       <ProfileSidebar />
-      <div className={styles.content}>
+      <div className='content'>
         <div className={styles.content_link}>
           <Link to="/azkary/morning">Утренние азкары</Link>
         </div>

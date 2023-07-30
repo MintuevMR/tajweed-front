@@ -1,14 +1,18 @@
 import styles from "./usersList.module.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  addUserInGroup,  deleteUserInGroup,} from "../../redux/slices/groupsSlice";
+import {
+  addUserInGroup,
+  deleteUserInGroup,
+} from "../../redux/slices/groupsSlice";
 
 import {
   UserAddOutlined,
   UserDeleteOutlined,
-  EditOutlined, 
+  EditOutlined,
 } from "@ant-design/icons";
 import { Button, Modal } from "antd";
+import teacherImg from "@/assets/man.svg";
 
 const Users = ({ user, loading, groups }) => {
   const [showModal, setShowModal] = useState(false);
@@ -41,6 +45,9 @@ const Users = ({ user, loading, groups }) => {
 
   return (
     <div className={styles.card_user} key={user._id}>
+      <div>
+        <img src={user.avatar ? `http://localhost:3000${user.avatar}` : teacherImg } width={50} height={50} />
+      </div>
       <span>
         Имя: {user.firstName} <br /> Фамилия: {user.lastName}
       </span>

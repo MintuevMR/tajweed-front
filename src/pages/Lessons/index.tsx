@@ -1,4 +1,4 @@
-import styles from "./lessons.module.css";
+import styles from "./lessons.module.scss";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import React, { useEffect } from "react";
@@ -25,7 +25,7 @@ const Lessons = () => {
   return (
     <main>
     <ProfileSidebar />
-    <div className={styles.content}>
+    <div className="content">
       {lessons.map((item) => {
         const isBookmarked = bookmarks?.some((bookmark) => bookmark._id === item._id);
         
