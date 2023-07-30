@@ -14,11 +14,7 @@ import { Button } from "antd";
 function Voting() {
   const lessons = useSelector((state: RootState) => state.lessons.lessons);
 
-  console.log(lessons);
-
   const dispatch = useDispatch<AppDispatch>();
-
-  console.log(lessons);
 
   useEffect(() => {
     dispatch(fetchLessons());

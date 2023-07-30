@@ -13,7 +13,6 @@ function Tanvin() {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  console.log(lessons);
 
   useEffect(() => {
     dispatch(fetchLessons());

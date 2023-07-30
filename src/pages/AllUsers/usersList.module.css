@@ -1,11 +1,4 @@
-.content {
-  width: 100%;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 50px;
-  padding: 50px;
-  background-color: #fbfbfb;
-}
+
 
 .card_user {
   display: flex;

@@ -1,4 +1,4 @@
-import styles from "./lessons.module.css";
+import styles from "./lessons.module.scss";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import React, { useEffect } from "react";

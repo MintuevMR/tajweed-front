@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import ProfileSidebar from "../../components/ProfileSidebar";
-import styles from "./profile.module.css";
+import styles from "./profile.module.scss";
 import { notification } from "antd";
 import teacherImg from "../../assets/man.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -86,7 +86,7 @@ const Profile = () => {
   return (
     <main>
       <ProfileSidebar />
-      <div className={styles.content}>
+      <div className="content">
         <div className={styles.profileChange}>
           <div>
             <h1>Мой профиль</h1>
