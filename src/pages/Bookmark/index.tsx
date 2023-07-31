@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
 import ProfileSidebar from "../../components/ProfileSidebar/index";
 import styles from "./bookmark.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { bookmark } from "../../redux/slices/userSlices";
+import { AppDispatch, RootState } from "@/redux/store/store";
 
+const Bookmarks: React.FC = () => {
+  const bookmarks = useSelector(
+    (state: RootState) => state.user.user.bookmarks
+  );
+  const dispatch = useDispatch<AppDispatch>();
 
-const Bookmarks = () => {
-  const bookmarks = useSelector((state) => state.user.user.bookmarks);
-  const dispatch = useDispatch();
-
-  const handleBookmark = (moduleId) => {
+  const handleBookmark = (moduleId: string) => {
     dispatch(bookmark(moduleId));
   };
 
@@ -28,7 +29,9 @@ const Bookmarks = () => {
               <span
                 onClick={() => handleBookmark(item._id)}
                 className={`${styles.icons} icons material-symbols-outlined ${
-                  bookmarks && Array.isArray(bookmarks) && bookmarks.length > 0 ? styles.iconsActive : ""
+                  bookmarks && Array.isArray(bookmarks) && bookmarks.length > 0
+                    ? styles.iconsActive
+                    : ""
                 }`}
               >
                 bookmarks

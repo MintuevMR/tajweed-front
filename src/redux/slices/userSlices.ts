@@ -37,6 +37,7 @@ interface UserItem {
   role: string;
   password: string;
   avatar: string;
+  bookmarks: string;
   __v: number;
 }
 
