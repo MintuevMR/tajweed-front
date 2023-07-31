@@ -5,12 +5,13 @@ import teacherImg from "@/assets/man.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "@/redux/slices/userSlices";
 import { showBarToggle } from "@/redux/slices/appSlices";
+import { AppDispatch, RootState } from "@/redux/store/store";
 
 const ProfileSidebar = () => {
-  const user = useSelector((state) => state.user.user);
-  const showBar = useSelector((state) => state.application.showBar);
+  const user = useSelector((state: RootState) => state.user.user);
+  const showBar = useSelector((state: RootState) => state.application.showBar);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(userInfo());
