@@ -8,9 +8,9 @@ import { fetchLessons } from "../../redux/slices/lessonSlice";
 import { bookmark } from "../../redux/slices/userSlices";
 import { AppDispatch, RootState } from "../../redux/store/store";
 
-const Lessons = () => {
-  const lessons = useSelector((state) => state.lessons.lessons);
-  const bookmarks = useSelector((state) => state.user.user.bookmarks);
+const Lessons: React.FC = () => {
+  const lessons = useSelector((state: RootState) => state.lessons.lessons);
+  const bookmarks = useSelector((state: RootState) => state.user.user.bookmarks);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -18,7 +18,7 @@ const Lessons = () => {
     dispatch(fetchLessons());
   }, []);
 
-  const handleBookmark = (moduleId) => {
+  const handleBookmark = (moduleId: string) => {
     dispatch(bookmark(moduleId));
   };
 
@@ -27,7 +27,7 @@ const Lessons = () => {
     <ProfileSidebar />
     <div className="content">
       {lessons.map((item) => {
-        const isBookmarked = bookmarks?.some((bookmark) => bookmark._id === item._id);
+        const isBookmarked = bookmarks?.some((bookmark) => bookmark === item._id);
         
         return (
           <div className={styles.card} key={item._id}>

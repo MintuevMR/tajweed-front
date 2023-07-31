@@ -5,7 +5,7 @@ interface Ayahs {
   text: string;
 }
 
-interface Surah {
+ export interface Surah {
   ayahs: Ayahs[];
   englishName: string;
   englishNameTranslation: string;
@@ -13,6 +13,7 @@ interface Surah {
   number: number;
   numberOfAyahs: number;
   revelationType: string;
+  surahs: Surah[]
 }
 
 interface QuranState {

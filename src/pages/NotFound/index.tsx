@@ -2,7 +2,7 @@ import React from "react";
 import ProfileSidebar from "@/components/ProfileSidebar";
 import styles from "./notFound.module.scss";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <main>
       <ProfileSidebar />
