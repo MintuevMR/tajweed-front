@@ -96,7 +96,7 @@ const Users: React.FC<UserProps> = ({ user, loading, groups }) => {
             <div>
               {groups
                 ?.filter((group) =>
-                  group.users.some((item) => item._id === user._id)
+                  group.users.some((item: string) => item._id === user._id)
                 )
                 .map((group) => (
                   <li key={group._id}>
