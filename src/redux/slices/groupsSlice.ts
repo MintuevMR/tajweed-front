@@ -119,7 +119,7 @@ GroupIdAndUserId,
 );
 
 export const deleteUserInGroup = createAsyncThunk<
-{ groupId: string; data: any },
+{ groupId: string; userId: string },
 GroupIdAndUserId,
 { rejectValue: unknown }
 >(
@@ -141,7 +141,7 @@ GroupIdAndUserId,
         return thunkAPI.rejectWithValue(data.error);
       }
 
-      return { groupId, data };
+      return { groupId, userId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -200,7 +200,7 @@ const groupsSlice = createSlice({
         state.groups = state.groups.map((item) => {
           if (item._id === action.payload.groupId) {
             item.users = item.users.filter(
-              (user) => user._id !== action.payload.data._id
+              (user) => user._id !== action.payload.userId
             );
           }
           return item;
