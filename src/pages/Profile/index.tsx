@@ -10,10 +10,12 @@ import {
   userChangeInfo,
   userInfo,
 } from "../../redux/slices/userSlices";
-import { RootState } from "../../redux/store/store";
+import { AppDispatch, RootState } from "../../redux/store/store";
 import { UploadOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import { Button, Upload } from "antd";
+import { RcFile } from "antd/es/upload";
+import { UploadFile } from "antd/es/upload/interface";
 
 const Profile = () => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -40,19 +42,21 @@ const Profile = () => {
 
   const uploadProps: UploadProps = {
     beforeUpload: handleChangeFile,
-    customRequest: async ({ file, onSuccess, onError }) => {
+    customRequest: async ({ file, onSuccess, onError }: any) => {
       try {
         setTimeout(() => {
-          onSuccess("success", new XMLHttpRequest());
+          onSuccess?.("success", new XMLHttpRequest());
         }, 1000);
       } catch (error) {
-        onError(error);
+        onError?.(error);
       }
     },
     showUploadList: false, // Убираем отображение списка загруженных файлов
   };
 
-  const handleChangeAva = (e: FormEvent<HTMLButtonElement>) => {
+  const handleChangeAva: React.MouseEventHandler<HTMLButtonElement> = (
+    e: FormEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
     if (avatarFile) {
       const formData: FormData = new FormData();
@@ -72,7 +76,7 @@ const Profile = () => {
     if (error) {
       notification.error({
         message: "Ошибка",
-        description: error,
+        description: error as string,
         duration: 3,
       });
     }
@@ -103,12 +107,11 @@ const Profile = () => {
                 }
               />
               <div className={styles.avatarButtons}>
-              <Upload {...uploadProps} showUploadList={true}>
-                <Button icon={<UploadOutlined />}>Выберите фото</Button>
-              </Upload>
-              <Button onClick={handleChangeAva}>Отправить</Button>
+                <Upload {...uploadProps} showUploadList={true}>
+                  <Button icon={<UploadOutlined />}>Выберите фото</Button>
+                </Upload>
+                <Button onClick={handleChangeAva}>Отправить</Button>
               </div>
- 
             </div>
           </div>
           <form className={styles.form} onSubmit={handleChangeUserInfo}>
