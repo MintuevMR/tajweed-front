@@ -7,13 +7,14 @@ import styles from "./groups.module.css";
 import { Button } from "antd";
 
 import { UserAddOutlined } from "@ant-design/icons";
+import { AppDispatch, RootState } from "@/redux/store/store";
 
 const Group = () => {
   const { id } = useParams();
-  const groups = useSelector((state) => state.groups.groups);
+  const groups = useSelector((state: RootState) => state.groups.groups);
   const group = groups.find((item) => item._id === id);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchGroups());
