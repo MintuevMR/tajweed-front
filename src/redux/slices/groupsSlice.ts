@@ -1,13 +1,13 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import Item from "antd/es/list/Item";
 
-interface User {
+export interface User {
   _id: string;
   firstName: string;
   lastName: string;
+  avatar: string;
 }
 
-interface Group {
+export interface Group {
   _id: string;
   groups: string;
   users: User[];
@@ -15,14 +15,14 @@ interface Group {
 
 interface GroupsState {
   groups: Group[];
-  error?: any; 
+  error?: any;
 }
 
 const initialState: GroupsState = {
   groups: [],
 };
 
-type GroupIdAndUserId = { groupId: string; userId: string; };
+type GroupIdAndUserId = { groupId: string; userId: string };
 
 export const fetchGroups = createAsyncThunk<Group[], void>(
   "fetch/groups",
@@ -70,83 +70,77 @@ export const deleteGroups = createAsyncThunk<string, string>(
   }
 );
 
-export const updateGroupsInStore = createAsyncThunk<{ groupId: string; updatedGroupName: string }, { groupId: string; updatedGroupName: string }>(
-  "edit/groups",
-  async ({ groupId, updatedGroupName }, thunkAPI) => {
-    try {
-      await fetch(`http://localhost:3000/group/${groupId}`, {
-        method: "PATCH",
+export const updateGroupsInStore = createAsyncThunk<
+  { groupId: string; updatedGroupName: string },
+  { groupId: string; updatedGroupName: string }
+>("edit/groups", async ({ groupId, updatedGroupName }, thunkAPI) => {
+  try {
+    await fetch(`http://localhost:3000/group/${groupId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ groups: updatedGroupName }),
+    });
+    return { groupId, updatedGroupName };
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+export const addUserInGroup = createAsyncThunk<
+  { groupId: string; data: any },
+  GroupIdAndUserId,
+  { rejectValue: unknown }
+>("addUser/groups", async ({ groupId, userId }, thunkAPI) => {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/group/${groupId}/add-user/${userId}`,
+      {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ groups: updatedGroupName }),
-      });
-      return { groupId, updatedGroupName };
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-export const addUserInGroup = createAsyncThunk<
-{ groupId: string; data: any },
-GroupIdAndUserId,
-{ rejectValue: unknown }
->(
-  "addUser/groups",
-  async ({ groupId, userId }, thunkAPI) => {
-    try {
-      const res = await fetch(
-        `http://localhost:3000/group/${groupId}/add-user/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await res.json();
-
-      if (data.error) {
-        return thunkAPI.rejectWithValue(data.error);
       }
+    );
+    const data = await res.json();
 
-      return { groupId, data };
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+    if (data.error) {
+      return thunkAPI.rejectWithValue(data.error);
     }
+
+    return { groupId, data };
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
   }
-);
+});
 
 export const deleteUserInGroup = createAsyncThunk<
-{ groupId: string; data: any },
-GroupIdAndUserId,
-{ rejectValue: unknown }
->(
-  "deleteUser/groups",
-  async ({ groupId, userId }, thunkAPI) => {
-    try {
-      const res = await fetch(
-        `http://localhost:3000/group/${groupId}/delete-user/${userId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await res.json();
-
-      if (data.error) {
-        return thunkAPI.rejectWithValue(data.error);
+  { groupId: string; data: any },
+  GroupIdAndUserId,
+  { rejectValue: unknown }
+>("deleteUser/groups", async ({ groupId, userId }, thunkAPI) => {
+  try {
+    const res = await fetch(
+      `http://localhost:3000/group/${groupId}/delete-user/${userId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
+    );
+    const data = await res.json();
 
-      return { groupId, data };
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+    if (data.error) {
+      return thunkAPI.rejectWithValue(data.error);
     }
+
+    return { groupId, data };
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
   }
-);
+});
 
 const groupsSlice = createSlice({
   name: "groups",
@@ -161,9 +155,12 @@ const groupsSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(createGroups.fulfilled, (state, action: PayloadAction<Group[]>) => {
-        state.groups.push(...action.payload);
-      })
+      .addCase(
+        createGroups.fulfilled,
+        (state, action: PayloadAction<Group[]>) => {
+          state.groups.push(...action.payload);
+        }
+      )
 
       .addCase(deleteGroups.fulfilled, (state, action) => {
         state.groups = state.groups.filter(
@@ -174,14 +171,20 @@ const groupsSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(updateGroupsInStore.fulfilled, (state, action: PayloadAction<{ groupId: string; updatedGroupName: string }>) => {
-        state.groups = state.groups.map(item => {
-          if(item._id === action.payload.groupId) {
-            return {...item, groups: action.payload.updatedGroupName}
-          }
-          return item
-        })
-      })
+      .addCase(
+        updateGroupsInStore.fulfilled,
+        (
+          state,
+          action: PayloadAction<{ groupId: string; updatedGroupName: string }>
+        ) => {
+          state.groups = state.groups.map((item) => {
+            if (item._id === action.payload.groupId) {
+              return { ...item, groups: action.payload.updatedGroupName };
+            }
+            return item;
+          });
+        }
+      )
 
       .addCase(updateGroupsInStore.rejected, (state, action) => {
         state.error = action.payload;

@@ -8,7 +8,7 @@ import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { userAll } from "../../redux/slices/userSlices";
 import { Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import { RootState } from "@/redux/store/store";
+import { AppDispatch, RootState } from "@/redux/store/store";
 
 const AllUsers = () => {
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const AllUsers = () => {
 
   const groups = useSelector((state: RootState) => state.groups.groups);
   const users = useSelector((state: RootState) => state.user.users);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(userAll());

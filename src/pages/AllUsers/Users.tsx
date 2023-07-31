@@ -1,6 +1,6 @@
 import styles from "./usersList.module.css";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addUserInGroup,
   deleteUserInGroup,
@@ -12,26 +12,18 @@ import {
 } from "@ant-design/icons";
 import { Button, Modal } from "antd";
 import teacherImg from "@/assets/man.svg";
+import { AppDispatch } from "@/redux/store/store";
+import { Group, User } from "../../redux/slices/groupsSlice"
 
 interface UserProps {
-  user: users;
+  user: User;
   loading: boolean;
-  groups: groups[];
+  groups: Group[];
 }
-
-type UserItem = {
-  _id: string;
-  login: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-  password: string;
-  __v: number;
-};
 
 const Users: React.FC<UserProps> = ({ user, loading, groups }) => {
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -55,7 +47,7 @@ const Users: React.FC<UserProps> = ({ user, loading, groups }) => {
   }
 
   const hasUserInGroup = groups.some((group) =>
-    group.users.find((el: UserItem) => el._id === user._id)
+    group.users.find((el: User) => el._id === user._id)
   );
 
   return (
@@ -96,7 +88,7 @@ const Users: React.FC<UserProps> = ({ user, loading, groups }) => {
             <div>
               {groups
                 ?.filter((group) =>
-                  group.users.some((item: string) => item._id === user._id)
+                  group.users.some((item) => item._id === user._id)
                 )
                 .map((group) => (
                   <li key={group._id}>
@@ -110,13 +102,6 @@ const Users: React.FC<UserProps> = ({ user, loading, groups }) => {
             </div>
           </Modal>
         </div>
-
-        // <GroupsModal
-        //   user={user}
-        //   groups={groups}
-        //   onClose={handleCloseModal}
-        //   onSelectGroup={handleSelectGroup}
-        // />
       )}
     </div>
   );
