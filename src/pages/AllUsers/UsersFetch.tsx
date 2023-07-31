@@ -8,7 +8,7 @@ import { fetchGroups } from "../../redux/slices/groupsSlice";
 import { userAll } from "../../redux/slices/userSlices";
 import { Button } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-
+import { RootState } from "@/redux/store/store";
 
 const AllUsers = () => {
   const [loading, setLoading] = useState(false);
@@ -16,8 +16,8 @@ const AllUsers = () => {
   const [usersAllPerPage] = useState(4);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const groups = useSelector((state) => state.groups.groups);
-  const users = useSelector((state) => state.user.users);
+  const groups = useSelector((state: RootState) => state.groups.groups);
+  const users = useSelector((state: RootState) => state.user.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const AllUsers = () => {
   const firstUsersIndex = lastUsersIndex - usersAllPerPage;
   const currentUsers = filteredUsers.slice(firstUsersIndex, lastUsersIndex);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage((prev) => prev + 1);
   const prevPage = () => setCurrentPage((prev) => prev - 1);
 
