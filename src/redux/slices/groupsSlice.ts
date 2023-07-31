@@ -1,10 +1,30 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import Item from "antd/es/list/Item";
 
-const initialState = {
+interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface Group {
+  _id: string;
+  groups: string;
+  users: User[];
+}
+
+interface GroupsState {
+  groups: Group[];
+  error?: any; 
+}
+
+const initialState: GroupsState = {
   groups: [],
 };
 
-export const fetchGroups = createAsyncThunk(
+type GroupIdAndUserId = { groupId: string; userId: string; };
+
+export const fetchGroups = createAsyncThunk<Group[], void>(
   "fetch/groups",
   async (_, thunkAPI) => {
     try {
@@ -17,7 +37,7 @@ export const fetchGroups = createAsyncThunk(
   }
 );
 
-export const createGroups = createAsyncThunk(
+export const createGroups = createAsyncThunk<Group[], string>(
   "create/groups",
   async (groups, thunkAPI) => {
     try {
@@ -36,7 +56,7 @@ export const createGroups = createAsyncThunk(
   }
 );
 
-export const deleteGroups = createAsyncThunk(
+export const deleteGroups = createAsyncThunk<string, string>(
   "delete/groups",
   async (groupId, thunkAPI) => {
     try {
@@ -50,25 +70,29 @@ export const deleteGroups = createAsyncThunk(
   }
 );
 
-export const updateGroupsInStore = createAsyncThunk(
+export const updateGroupsInStore = createAsyncThunk<{ groupId: string; updatedGroupName: string }, { groupId: string; updatedGroupName: string }>(
   "edit/groups",
   async ({ groupId, updatedGroupName }, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3000/group/${groupId}`, {
+      await fetch(`http://localhost:3000/group/${groupId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ groups: updatedGroupName }),
       });
-      const json = await res.json();
-      return json;
+      return { groupId, updatedGroupName };
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
-export const addUserInGroup = createAsyncThunk(
+
+export const addUserInGroup = createAsyncThunk<
+{ groupId: string; data: any },
+GroupIdAndUserId,
+{ rejectValue: unknown }
+>(
   "addUser/groups",
   async ({ groupId, userId }, thunkAPI) => {
     try {
@@ -94,7 +118,11 @@ export const addUserInGroup = createAsyncThunk(
   }
 );
 
-export const deleteUserInGroup = createAsyncThunk(
+export const deleteUserInGroup = createAsyncThunk<
+{ groupId: string; data: any },
+GroupIdAndUserId,
+{ rejectValue: unknown }
+>(
   "deleteUser/groups",
   async ({ groupId, userId }, thunkAPI) => {
     try {
@@ -133,8 +161,8 @@ const groupsSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(createGroups.fulfilled, (state, action) => {
-        state.groups.push(action.payload);
+      .addCase(createGroups.fulfilled, (state, action: PayloadAction<Group[]>) => {
+        state.groups.push(...action.payload);
       })
 
       .addCase(deleteGroups.fulfilled, (state, action) => {
@@ -146,14 +174,15 @@ const groupsSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(updateGroupsInStore.fulfilled, (state, action) => {
-        const index = state.groups.findIndex(
-          (group) => group._id === action.payload._id
-        );
-        if (index !== -1) {
-          state.groups[index].groups = action.payload.groups;
-        }
+      .addCase(updateGroupsInStore.fulfilled, (state, action: PayloadAction<{ groupId: string; updatedGroupName: string }>) => {
+        state.groups = state.groups.map(item => {
+          if(item._id === action.payload.groupId) {
+            return {...item, groups: action.payload.updatedGroupName}
+          }
+          return item
+        })
       })
+
       .addCase(updateGroupsInStore.rejected, (state, action) => {
         state.error = action.payload;
       })

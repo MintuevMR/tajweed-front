@@ -22,6 +22,7 @@ const Sura = () => {
       });
   }, []);
 
+  
   return (
     <main>
       <ProfileSidebar />
@@ -29,7 +30,7 @@ const Sura = () => {
         <div className={styles.rules} dir="ltr">
           <h4>Правила Нун-сакина</h4>
           <div>
-            <Switch checkedChildren="Изх1ар" unCheckedChildren="Изх1ар" />
+            <Switch checkedChildren="Изх1ар" unCheckedChildren="Изх1ар" onClick={()=>{console.log(sura[0].text)}}/>
           </div>
           <div>
             <Switch checkedChildren="Идг1ом" unCheckedChildren="Идг1ом" />

@@ -10,20 +10,27 @@ import styles from "./groups.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 import { GroupOutlined } from "@ant-design/icons";
+import { AppDispatch, RootState } from "@/redux/store/store";
+
+interface Group {
+  _id: string;
+  groups: string;
+  users: any[]; 
+}
 
 const GroupFetch = () => {
-  const groups = useSelector((state) => state.groups.groups);
+  const groups = useSelector((state: RootState) => state.groups.groups);
 
-  const dispatch = useDispatch();
-  const [editingGroupId, setEditingGroupId] = useState(null);
-  const [editingGroupName, setEditingGroupName] = useState("");
-  const [groupName, setGroupName] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
+  const [editingGroupId, setEditingGroupId] = useState<string | null>(null);
+  const [editingGroupName, setEditingGroupName] = useState<string>("");
+  const [groupName, setGroupName] = useState<string>("");
 
-  const handleDeleteGroup = (groupId) => {
+  const handleDeleteGroup = (groupId: string) => {
     dispatch(deleteGroups(groupId));
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGroupName(e.target.value);
   };
 
@@ -35,7 +42,7 @@ const GroupFetch = () => {
     setGroupName("");
   };
 
-  const handleEditGroup = (groupId) => {
+  const handleEditGroup = (groupId: string) => {
     if (editingGroupName.trim() !== "") {
       dispatch(
         updateGroupsInStore({ groupId, updatedGroupName: editingGroupName })
@@ -44,7 +51,7 @@ const GroupFetch = () => {
     setEditingGroupId(null);
   };
 
-  const handleStartEditing = (groupId, groupName) => {
+  const handleStartEditing = (groupId: string, groupName: string) => {
     setEditingGroupId(groupId);
     setEditingGroupName(groupName);
   };
@@ -81,7 +88,7 @@ const GroupFetch = () => {
                 {isEditing ? (
                   <div
                     className={`${styles.btn_check_mark} material-symbols-outlined `}
-                    onClick={() => handleEditGroup(item._id, item.groups)}
+                    onClick={() => handleEditGroup(item._id)}
                   >
                     done
                   </div>
