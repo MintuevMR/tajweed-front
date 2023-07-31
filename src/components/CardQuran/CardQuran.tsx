@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./card.module.scss";
 
-const CardQuran = ({id, number, title, subTitle}) => {
+interface CardQuranProps {
+  id: number;
+  number: number;
+  title: string;
+  subTitle: string;
+}
+
+const CardQuran: React.FC<CardQuranProps> = ({ id, number, title, subTitle }) => {
   return (
     <div>
       <div className={styles.card}>
