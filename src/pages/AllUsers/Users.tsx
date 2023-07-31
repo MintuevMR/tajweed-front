@@ -5,7 +5,6 @@ import {
   addUserInGroup,
   deleteUserInGroup,
 } from "../../redux/slices/groupsSlice";
-
 import {
   UserAddOutlined,
   UserDeleteOutlined,
@@ -14,7 +13,23 @@ import {
 import { Button, Modal } from "antd";
 import teacherImg from "@/assets/man.svg";
 
-const Users = ({ user, loading, groups }) => {
+interface UserProps {
+  user: users;
+  loading: boolean;
+  groups: groups[];
+}
+
+type UserItem = {
+  _id: string;
+  login: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  password: string;
+  __v: number;
+};
+
+const Users: React.FC<UserProps> = ({ user, loading, groups }) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -25,12 +40,12 @@ const Users = ({ user, loading, groups }) => {
     setShowModal(false);
   };
 
-  const handleAddUserInGroup = (groupId) => {
+  const handleAddUserInGroup = (groupId: string) => {
     dispatch(addUserInGroup({ groupId, userId: user._id }));
     handleCloseModal();
   };
 
-  const handleDeleteUserInGroup = (groupId) => {
+  const handleDeleteUserInGroup = (groupId: string) => {
     dispatch(deleteUserInGroup({ groupId, userId: user._id }));
     handleCloseModal();
   };
@@ -40,13 +55,17 @@ const Users = ({ user, loading, groups }) => {
   }
 
   const hasUserInGroup = groups.some((group) =>
-    group.users.find((el) => el._id === user._id)
+    group.users.find((el: UserItem) => el._id === user._id)
   );
 
   return (
     <div className={styles.card_user} key={user._id}>
       <div>
-        <img src={user.avatar ? `http://localhost:3000${user.avatar}` : teacherImg } width={50} height={50} />
+        <img
+          src={user.avatar ? `http://localhost:3000${user.avatar}` : teacherImg}
+          width={50}
+          height={50}
+        />
       </div>
       <span>
         Имя: {user.firstName} <br /> Фамилия: {user.lastName}

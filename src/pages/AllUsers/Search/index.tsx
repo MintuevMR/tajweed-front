@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import styles from './Search.module.scss';
+import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import styles from "./Search.module.scss";
 
-function Search({ onSearch }) {
-  const [searchValue, setSearchValue] = useState('');
+interface SearchProps {
+  onSearch: (value: string) => void;
+}
 
-  const onChangeSearchInput = (e) => {
+function Search({ onSearch }: SearchProps) {
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const onChangeSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchValue(value);
-    onSearch(value); 
+    onSearch(value);
   };
 
   return (
