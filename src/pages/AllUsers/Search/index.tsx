@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styles from "./Search.module.scss";
 
 interface SearchProps {
