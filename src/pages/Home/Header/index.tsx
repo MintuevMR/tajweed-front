@@ -4,7 +4,6 @@ import socialIcons from "../../../assets/icons.png";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
 
-
 const Header = () => {
   const handleScrollUp = () => {
     window.scrollTo({ top: 2300, behavior: "smooth" });
@@ -24,25 +23,32 @@ const Header = () => {
           <nav className={styles.nav}>
             <ul className={styles.navList}>
               {/* <li>Азкары</li> */}
+              <li>Коран</li>
               <li onClick={handleScroll}>Контакты</li>
               <li onClick={handleScrollUp}>О нас</li>
             </ul>
           </nav>
           <div className={styles.buttons}>
-            <button className={styles.loginButton}> <Link to = '/login'>Войти</Link> </button>
-            <button className={styles.registerButton}><Link to = '/register'>Регистрация</Link></button>
+            <button className={styles.loginButton}>
+              {" "}
+              <Link to="/login">Войти</Link>{" "}
+            </button>
+            <button className={styles.registerButton}>
+              <Link to="/register">Регистрация</Link>
+            </button>
           </div>
         </header>
         <div className={styles.slogan}>
           Не будь чужим для КОРАНА
           <div>Зарегистрируйся и научись читать Коран у себя дома</div>
-          <button> Начать сейчас</button>
+          <button>
+            <Link to="/login">Начать сейчас</Link>
+          </button>
           <img src={socialIcons} alt="icons" />
         </div>
       </div>
     </div>
   );
 };
-
 
 export default Header;
