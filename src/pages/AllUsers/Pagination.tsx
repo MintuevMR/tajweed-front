@@ -4,6 +4,7 @@ import styles from "./usersList.module.css";
 interface PaginationProps {
   usersAllPerPage: number;
   totalUsers: number;
+  currentPage: number;
   paginate: (pageNumber: number) => void;
 }
 
@@ -11,6 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({
   usersAllPerPage,
   totalUsers,
   paginate,
+  currentPage
 }) => {
   const pageNumbers: number[] = [];
 
@@ -22,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <ul className={styles.pagination}>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <a href="#" onClick={() => paginate(number)}>
+            <a className={currentPage === number ? `${styles.activePage}` : ''} href="#" onClick={() => paginate(number)}>
               {number}{" "}
             </a>
           </li>
