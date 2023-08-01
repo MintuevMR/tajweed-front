@@ -4,7 +4,7 @@ interface AzkaryState {
   azkary: AzkaryItem[];
 }
 
-interface AzkaryItem {
+export interface AzkaryItem {
   id: string;
   headerText: string;
   number: string;

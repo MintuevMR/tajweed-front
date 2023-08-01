@@ -4,16 +4,16 @@ import ProfileSidebar from "../../components/ProfileSidebar/index";
 import strelkaup from "../../assets/strelkaup.png";
 import vnimanie from "../../assets/vnimanie.png";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAzkary } from "../../redux/slices/azkarySlices";
+import { fetchAzkary, AzkaryItem } from "../../redux/slices/azkarySlices";
 import { AppDispatch, RootState } from "../../redux/store/store";
 
-const evening = () => {
-  const [counter, setCounter] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
-  const scrollRef = useRef(null);
-  const [showScrollButton, setShowScrollButton] = useState(false);
+const Evening: React.FC = () => {
+  const [counter, setCounter] = useState<number>(0);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const scrollRef = useRef<HTMLHeadingElement>(null);
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const azkary = useSelector((state: RootState) => state.azkary.azkary);
+  const azkary: AzkaryItem[] = useSelector((state: RootState) => state.azkary.azkary);
 
   const handleScrollUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -82,12 +82,12 @@ const evening = () => {
         <ProfileSidebar />
 
         <div className={styles.container}>
-          <h2>Утренние азкары</h2>
+          <h2>Вечерние азкары</h2>
           <div>
             {azkary.map((item) => {
               if (
                 item.discriptionText &&
-                item.headerText === "Утренний азкар"
+                item.headerText === "Вечерний азкар"
               ) {
                 return (
                   <div
@@ -118,7 +118,7 @@ const evening = () => {
                   </div>
                 );
               }
-              if (item.headerText === "Утренний азкар") {
+              if (item.headerText === "Вечерний азкар") {
                 return (
                   <div
                     key={item.id}
@@ -141,6 +141,7 @@ const evening = () => {
                   </div>
                 );
               }
+              return null;
             })}
           </div>
         </div>
@@ -155,4 +156,4 @@ const evening = () => {
   );
 };
 
-export default evening;
+export default Evening;

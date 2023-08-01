@@ -7,13 +7,24 @@ import strelkaup from "../../assets/strelkaup.png";
 import vnimanie from "../../assets/vnimanie.png";
 import { AppDispatch, RootState } from "../../redux/store/store";
 
+interface AzkaryItem {
+  id: string;
+  headerText: string;
+  number: number;
+  arabText: string;
+  translateText: string;
+  transcriptText: string;
+  footerCount: number;
+  footerName: string;
+  discriptionText?: string;
+}
 
-const evening = () => {
-  const [counter, setCounter] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
+const Evening: React.FC = () => {
+  const [counter, setCounter] = useState<number>(0);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const azkary = useSelector((state: RootState) => state.azkary.azkary);
+  const azkary: any = useSelector((state: RootState) => state.azkary.azkary);
 
   const handleScrollUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -80,7 +91,7 @@ const evening = () => {
 
         <div className={styles.container}>
           <h2>Вечерние азкары</h2>
-          {azkary.map((item) => {
+          {azkary.map((item: any) => {
             if (item.discriptionText && item.headerText === "Вечерний ") {
               return (
                 <div key={item.id} className={styles.card_azkar}>
@@ -124,6 +135,7 @@ const evening = () => {
                 </div>
               );
             }
+            return null;
           })}
         </div>
       </div>
@@ -137,4 +149,4 @@ const evening = () => {
   );
 };
 
-export default evening;
+
