@@ -1,13 +1,14 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Item from "antd/es/list/Item";
 
-interface User {
+export interface User {
   _id: string;
   firstName: string;
   lastName: string;
+  avatar: string;
 }
 
-interface Group {
+export interface Group {
   _id: string;
   groups: string;
   users: User[];
