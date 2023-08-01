@@ -60,7 +60,6 @@
   border: 1px solid green;
   border-radius: 4px;
   text-decoration: none;
-  color: green;
 }
 
 .pagination a:hover {
@@ -70,5 +69,9 @@
 
 .pagination a:focus {
   background: green;
+  color: white;
+}
+.activePage {
+  background-color: green;
   color: white;
 }

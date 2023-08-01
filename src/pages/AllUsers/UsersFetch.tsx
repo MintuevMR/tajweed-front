@@ -57,6 +57,7 @@ const AllUsers = () => {
             usersAllPerPage={usersAllPerPage}
             totalUsers={filteredUsers.length}
             paginate={paginate}
+            currentPage={currentPage}
           />
           <Button
             icon={<RightOutlined />}
