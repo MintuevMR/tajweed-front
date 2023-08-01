@@ -27,7 +27,7 @@ const Lessons: React.FC = () => {
     <ProfileSidebar />
     <div className="content">
       {lessons.map((item) => {
-        const isBookmarked = bookmarks?.some((bookmark) => bookmark === item._id);
+       const isBookmarked = bookmarks?.some((bookmark) => bookmark._id=== item._id);
         
         return (
           <div className={styles.card} key={item._id}>
