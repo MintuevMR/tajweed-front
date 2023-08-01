@@ -19,7 +19,7 @@ interface UserState {
   error: unknown;
 }
 
-interface IBookmarks {
+export interface IBookmarks {
   _id: string;
   name: string;
   title: string;
@@ -124,7 +124,7 @@ export const userChangeAvatar = createAsyncThunk<
 
 export const bookmark = createAsyncThunk<
   AsyncThunkReturnType,
-  void,
+  string,
   { state: RootState }
 >("user/addBookmark", async (moduleId, thunkAPI) => {
   try {
