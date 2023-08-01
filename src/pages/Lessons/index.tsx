@@ -5,18 +5,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLessons } from "../../redux/slices/lessonSlice";
 
-import { bookmark } from "../../redux/slices/userSlices";
+import { IBookmarks, bookmark } from "../../redux/slices/userSlices";
 import { AppDispatch, RootState } from "../../redux/store/store";
 
 const Lessons: React.FC = () => {
   const lessons = useSelector((state: RootState) => state.lessons.lessons);
-  const bookmarks = useSelector((state: RootState) => state.user.user.bookmarks);
+  const bookmarks: any = useSelector((state: RootState) => state.user.user.bookmarks);
 
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchLessons());
-  }, []);
+  }, [dispatch]);
 
   const handleBookmark = (moduleId: string) => {
     dispatch(bookmark(moduleId));
@@ -27,7 +27,7 @@ const Lessons: React.FC = () => {
     <ProfileSidebar />
     <div className="content">
       {lessons.map((item) => {
-       const isBookmarked = bookmarks?.some((bookmark) => bookmark._id=== item._id);
+       const isBookmarked: boolean = bookmarks?.some((bookmark: IBookmarks) => bookmark._id === item._id);
         
         return (
           <div className={styles.card} key={item._id}>
