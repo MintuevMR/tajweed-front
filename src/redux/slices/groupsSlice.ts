@@ -1,13 +1,13 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import Item from "antd/es/list/Item";
 
-export interface User {
+interface User {
   _id: string;
   firstName: string;
   lastName: string;
-  avatar: string;
 }
 
-export interface Group {
+interface Group {
   _id: string;
   groups: string;
   users: User[];
@@ -116,7 +116,7 @@ export const addUserInGroup = createAsyncThunk<
 });
 
 export const deleteUserInGroup = createAsyncThunk<
-  { groupId: string; data: any },
+  { groupId: string; userId: string },
   GroupIdAndUserId,
   { rejectValue: unknown }
 >("deleteUser/groups", async ({ groupId, userId }, thunkAPI) => {
@@ -136,7 +136,7 @@ export const deleteUserInGroup = createAsyncThunk<
       return thunkAPI.rejectWithValue(data.error);
     }
 
-    return { groupId, data };
+    return { groupId, userId };
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
@@ -158,7 +158,7 @@ const groupsSlice = createSlice({
       .addCase(
         createGroups.fulfilled,
         (state, action: PayloadAction<Group[]>) => {
-          state.groups.push(...action.payload);
+          state.groups = state.groups.concat(action.payload);
         }
       )
 
@@ -203,7 +203,7 @@ const groupsSlice = createSlice({
         state.groups = state.groups.map((item) => {
           if (item._id === action.payload.groupId) {
             item.users = item.users.filter(
-              (user) => user._id !== action.payload.data._id
+              (user) => user._id !== action.payload.userId
             );
           }
           return item;
